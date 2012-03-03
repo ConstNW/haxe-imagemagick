@@ -1,0 +1,6 @@
+<project name='ImageMagick' url='https://code.google.com/p/haxe-imagemagick' license='LGPL'>
+    <user name='yar3333'/>
+    <tag v='php'/>
+    <description>HaXe binding for the ImageMagick php library.</description>
+    <version name='1.0'>Init version.</version>
+</project>
