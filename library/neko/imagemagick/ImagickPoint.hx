@@ -25,9 +25,9 @@
  * DAMAGE.
  */
 
-package neko.ImageMagick;
+package neko.imagemagick;
 
-class Point
+class ImagickPoint
 {
 	public var x : Int;
 	public var y : Int;

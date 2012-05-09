@@ -4,6 +4,7 @@ package haxe.imagemagick;
 private typedef PhpImagick = php.imagemagick.Imagick;
 #elseif neko
 private typedef NekoImagick = neko.imagemagick.Imagick;
+import neko.imagemagick.ImagickPoint;
 #end
 
 class ImagickUnsupportedMethodException
@@ -118,7 +119,7 @@ class Imagick
 		#if php
 		return pimg.colorFloodfillImage(fill, fuzz, bordercolor, x, y);
 		#elseif neko
-		return nimg.colorFloodFill(fill, fuzz, bordercolor, new nMagick.Point(x, y));
+		return nimg.colorFloodFill(fill, fuzz, bordercolor, new ImagickPoint(x, y));
 		#end
 	}
 	
@@ -195,7 +196,7 @@ class Imagick
 		#elseif neko
 		var oldCompositeMode = nimg.composite;
 		nimg.composite = nimg.getCompositeOperatorEnum(op);
-		var r = nimg.compositeImage(img.nimg, new nMagick.Point(x, y)); 
+		var r = nimg.compositeImage(img.nimg, new ImagickPoint(x, y)); 
 		nimg.composite = oldCompositeMode;
 		return r;
 		#end
@@ -206,7 +207,7 @@ class Imagick
 		#if php
 		return pimg.cropImage(a, b, c, d);
 		#elseif neko
-		return nimg.crop(a, b, new nMagick.Point(c, d));
+		return nimg.crop(a, b, new ImagickPoint(c, d));
 		#end
 	}
 }

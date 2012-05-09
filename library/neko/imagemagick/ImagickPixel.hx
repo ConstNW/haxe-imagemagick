@@ -25,9 +25,9 @@
  * DAMAGE.
  */
 
-package neko.ImageMagick;
+package neko.imagemagick;
 
-class Pixel
+class ImagickPixel
 {
 	public var __d : Void;
 	

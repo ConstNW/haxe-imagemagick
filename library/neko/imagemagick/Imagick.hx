@@ -25,11 +25,11 @@
  * DAMAGE.
  */
 
-package neko.ImageMagick;
+package neko.imagemagick;
 
-import neko.ImageMagick.Point;
-import neko.ImageMagick.Pixel;
-import neko.ImageMagick.Draw;
+import neko.imagemagick.ImagickPoint;
+import neko.imagemagick.ImagickPixel;
+import neko.imagemagick.ImagickDraw;
 
 enum NoiseType
 {
@@ -210,24 +210,24 @@ enum Filter
 	SincFilter;
 }
 
-class Manager
+class Imagick
 {
 	private var __m : Void;
 	
-	public var backgroundColor (getBackgroundColor,setBackgroundColor) : Pixel;
-	public var redPrimary (getRedPrimary,setRedPrimary) : Point;
-	public var greenPrimary (getGreenPrimary,setGreenPrimary) : Point;
-	public var bluePrimary (getBluePrimary,setBluePrimary) : Point;
-	public var borderColor (getBorderColor,setBorderColor) : Pixel;
+	public var backgroundColor (getBackgroundColor,setBackgroundColor) : ImagickPixel;
+	public var redPrimary (getRedPrimary,setRedPrimary) : ImagickPoint;
+	public var greenPrimary (getGreenPrimary,setGreenPrimary) : ImagickPoint;
+	public var bluePrimary (getBluePrimary,setBluePrimary) : ImagickPoint;
+	public var borderColor (getBorderColor,setBorderColor) : ImagickPixel;
 	public var composite (getComposite,setComposite) : CompositeOperator;
 	public var compression (getCompression,setCompression) : Compression;
 	public var depth (getDepth,setDepth) : Int;
 	public var format (getFormat,setFormat) : String;
 	public var gamma (getGamma,setGamma) : Float;
 	public var matte (getMatte,setMatte) : Bool;
-	public var matteColor (getMatteColor,setMatteColor) : Pixel;
+	public var matteColor (getMatteColor,setMatteColor) : ImagickPixel;
 	public var units (getUnits,setUnits) : Units;
-	public var whitePoint (getWhitePoint,setWhitePoint) : Point;
+	public var whitePoint (getWhitePoint,setWhitePoint) : ImagickPoint;
 	public var width (getWidth,null) : Int;
 	public var height (getHeight,null) : Int;
 	
@@ -904,7 +904,7 @@ class Manager
 
 	@param			nMagick	The image to add to the current image.
 	*/
-	public function addImage( m : Manager ) : Bool
+	public function addImage( m : Imagick ) : Bool
 	{
 		return nMagick_add_image( __m, untyped m.__m );
 	}
@@ -925,7 +925,7 @@ class Manager
 
 	@param
 	*/
-	public function affineTransform( draw_magick : Draw ) : Bool
+	public function affineTransform( draw_magick : ImagickDraw ) : Bool
 	{
 		return nMagick_affine_transform( __m, untyped draw_magick.__d );
 	}
@@ -938,7 +938,7 @@ class Manager
 	@param			angle			rotate text relative to this angle.
 	@param			text			text to draw.
 	*/
-	public function annotate( draw_magick : Draw, point : Point, angle : Int, text : String ) : Bool
+	public function annotate( draw_magick : ImagickDraw, point : ImagickPoint, angle : Int, text : String ) : Bool
 	{
 		return nMagick_annotate( __m, untyped draw_magick.__d, point, angle, untyped text.__s );
 	}
@@ -948,7 +948,7 @@ class Manager
 					into black while leaving all pixels above the threshold unchanged.
 	@param			Threshold	The PixelWand.
 	*/
-	public function blackThreshold( threshold : Pixel ) : Bool
+	public function blackThreshold( threshold : ImagickPixel ) : Bool
 	{
 		return nMagick_black_threshold( __m, untyped threshold.__d );
 	}
@@ -975,7 +975,7 @@ class Manager
 	@param			width		The border width.
 	@param			height		The border height.
 	*/
-	public function border( bordercolor : Pixel, width : Int, height : Int ) : Bool
+	public function border( bordercolor : ImagickPixel, width : Int, height : Int ) : Bool
 	{
 		return nMagick_border( __m, untyped bordercolor.__d, width, height );
 	}
@@ -999,7 +999,7 @@ class Manager
 	@param			height	The region height.
 	@param			point		x and y of the region offset.
 	*/
-	public function chop( width : Int, height : Int, point : Point ) : Bool
+	public function chop( width : Int, height : Int, point : ImagickPoint ) : Bool
 	{
 		return nMagick_chop( __m, width, height, point );
 	}
@@ -1052,7 +1052,7 @@ class Manager
 	@param			bordercolor	The border color pixel wand.
 	@param			point		The starting location of the operation.
 	*/
-	public function colorFloodFill( fill : Pixel, fuzz : Float, bordercolor : Pixel, point : Point ) : Bool
+	public function colorFloodFill( fill : ImagickPixel, fuzz : Float, bordercolor : ImagickPixel, point : ImagickPoint ) : Bool
 	{
 		return nMagick_colorfloodfill( __m, untyped fill.__d, fuzz, untyped bordercolor.__d, point );
 	}
@@ -1063,7 +1063,7 @@ class Manager
 	@param			colorize	The colorize pixel wand.
 	@param			opacity		The opacity pixel wand.
 	*/
-	public function colorize( colorize : Pixel, opacity : Pixel ) : Bool
+	public function colorize( colorize : ImagickPixel, opacity : ImagickPixel ) : Bool
 	{
 		return nMagick_colorize( __m, untyped colorize.__d, untyped opacity.__d );
 	}
@@ -1093,7 +1093,7 @@ class Manager
 
 	@param			point			The column and row offset of the composited image.
 	*/
-	public function compositeImage( composite_wand : Manager, point : Point ) : Bool
+	public function compositeImage( composite_wand : Imagick, point : ImagickPoint ) : Bool
 	{
 		return nMagick_composite( __m, untyped composite_wand.__m, point );
 	}
@@ -1129,7 +1129,7 @@ class Manager
 	@param			height	The region height.
 	@param			point	The region x,y offset.
 	*/
-	public function crop( width : Int, height : Int, point : Point ) : Bool
+	public function crop( width : Int, height : Int, point : ImagickPoint ) : Bool
 	{
 		return nMagick_crop( __m, width, height, point );
 	}
@@ -1147,7 +1147,7 @@ class Manager
 
 	@param			drawing_wand	image to draw.
 	*/
-	public function draw( drawing_wand : Manager ) : Bool
+	public function draw( drawing_wand : Imagick ) : Bool
 	{
 		return nMagick_draw( __m, untyped drawing_wand.__m );
 	}
@@ -1255,9 +1255,9 @@ class Manager
 	@param			height	The region height.
 	@param			point	The region offset.
 	*/
-	public function getRegion( width : Int, height : Int, point : Point ) : Manager
+	public function getRegion( width : Int, height : Int, point : ImagickPoint ) : Imagick
 	{
-		var m = new Manager();
+		var m = new Imagick();
 		untyped m.__m = nMagick_get_region( __m, width, height, point );
 		return m;
 	}
@@ -1267,7 +1267,7 @@ class Manager
 	*/
 	public function getBackgroundColor()
 	{
-		var p = new Pixel();
+		var p = new ImagickPixel();
 		untyped p.__d = nMagick_get_background_color( __m );
 		return p;
 	}
@@ -1275,7 +1275,7 @@ class Manager
 	/*
 	@description	Sets the image background color.
 	*/
-	public function setBackgroundColor( color : Pixel )
+	public function setBackgroundColor( color : ImagickPixel )
 	{
 		nMagick_set_background_color( __m, untyped color.__d );
 		return null;
@@ -1295,17 +1295,17 @@ class Manager
 	/*
 	@description	Returns the chromaticy red primary point.
 	*/
-	public function getRedPrimary() : Point
+	public function getRedPrimary() : ImagickPoint
 	{
 		var o = nMagick_get_red_primary( __m );
-		return new Point( o.x, o.y );
+		return new ImagickPoint( o.x, o.y );
 	}
 
 	/*
 	@description	Sets the chromaticy red primary point.
-	@param			Point	The chromaticity red primary point.
+	@param			ImagickPoint	The chromaticity red primary point.
 	*/
-	public function setRedPrimary( point : Point )
+	public function setRedPrimary( point : ImagickPoint )
 	{
 		nMagick_set_red_primary( __m, point );
 		return null;
@@ -1313,19 +1313,19 @@ class Manager
 
 	/*
 	@description	Returns the chromaticy green primary point.
-	@param			Point	The chromaticity green primary point.
+	@param			ImagickPoint	The chromaticity green primary point.
 	*/
-	public function getGreenPrimary() : Point
+	public function getGreenPrimary() : ImagickPoint
 	{
 		var o = nMagick_get_green_primary( __m );
-		return new Point( o.x, o.y );
+		return new ImagickPoint( o.x, o.y );
 	}
 
 	/*
 	@description	Sets the chromaticy green primary point.
-	@param			Point	The chromaticity green primary point.
+	@param			ImagickPoint	The chromaticity green primary point.
 	*/
-	public function setGreenPrimary( point : Point )
+	public function setGreenPrimary( point : ImagickPoint )
 	{
 		nMagick_set_green_primary( __m, point );
 		return null;
@@ -1333,19 +1333,19 @@ class Manager
 
 	/*
 	@description	Returns the chromaticy blue primary point for the image.
-	@param			Point	The chromaticity blue primary point.
+	@param			ImagickPoint	The chromaticity blue primary point.
 	*/
-	public function getBluePrimary() : Point
+	public function getBluePrimary() : ImagickPoint
 	{
 		var o = nMagick_get_blue_primary( __m );
-		return new Point( o.x, o.y );
+		return new ImagickPoint( o.x, o.y );
 	}
 
 	/*
 	@description	Sets the chromaticy blue primary point for the image.
-	@param			Point	The chromaticity blue primary point.
+	@param			ImagickPoint	The chromaticity blue primary point.
 	*/
-	public function setBluePrimary( point : Point )
+	public function setBluePrimary( point : ImagickPoint )
 	{
 		nMagick_set_blue_primary( __m, point );
 		return null;
@@ -1354,9 +1354,9 @@ class Manager
 	/*
 	@description	Returns the image border color.
 	*/
-	public function getBorderColor() : Pixel
+	public function getBorderColor() : ImagickPixel
 	{
-		var p = new Pixel();
+		var p = new ImagickPixel();
 		untyped p.__d = nMagick_get_border_color( __m );
 		return p;
 	}
@@ -1365,7 +1365,7 @@ class Manager
 	@description	Sets the image border color.
 	@param			border_color	Return the border color.
 	*/
-	public function setBorderColor( border_color : Pixel )
+	public function setBorderColor( border_color : ImagickPixel )
 	{
 		nMagick_set_border_color( __m, untyped border_color.__d );
 		return null;
@@ -1376,9 +1376,9 @@ class Manager
 	@param			index	The offset into the image colormap.
 	@param			color	Return the colormap color in this wand.
 	*/
-	public function getColorMapColor( index : Int ) : Pixel
+	public function getColorMapColor( index : Int ) : ImagickPixel
 	{
-		var p = new Pixel();
+		var p = new ImagickPixel();
 		untyped p.__d = nMagick_get_colormap_color( __m, index );
 		return p;
 	}
@@ -1388,7 +1388,7 @@ class Manager
 	@param			index	The offset into the image colormap.
 	@param			color	Set the colormap color in this wand.
 	*/
-	public function setColorMapColor( index : Int, color : Pixel )
+	public function setColorMapColor( index : Int, color : ImagickPixel )
 	{
 		nMagick_set_colormap_color( __m, index, untyped color.__d );
 		return null;
@@ -1668,7 +1668,7 @@ class Manager
 
 	@param			distortion	The computed distortion between the images.
 	*/
-	public function getDistortion( ref : Manager, metric : Metric ) : Float
+	public function getDistortion( ref : Imagick, metric : Metric ) : Float
 	{
 		return nMagick_get_distortion( __m, untyped ref.__m, getMetricId( metric ) );
 	}
@@ -1676,10 +1676,10 @@ class Manager
 	/*
 	@description	Gets the extrema for the image.
 	*/
-	public function getExtrema() : Point
+	public function getExtrema() : ImagickPoint
 	{
 		var p = nMagick_get_extrema( __m );
-		return new Point( p.x, p.y );
+		return new ImagickPoint( p.x, p.y );
 	}
 
 	/*
@@ -1775,9 +1775,9 @@ class Manager
 	@description	Returns the image matte color.
 	@param			matte_color		Return the matte color.
 	*/
-	public function getMatteColor() : Pixel
+	public function getMatteColor() : ImagickPixel
 	{
-		var p = new Pixel();
+		var p = new ImagickPixel();
 		untyped p.__d = nMagick_get_matte_color( __m );
 		return p;
 	}
@@ -1786,7 +1786,7 @@ class Manager
 	@description	Sets the image matte color.
 	@param			matte_color		Return the matte color.
 	*/
-	public function setMatteColor( mc : Pixel )
+	public function setMatteColor( mc : ImagickPixel )
 	{
 		nMagick_set_matte_color( __m, untyped mc.__d );
 		return null;
@@ -1795,9 +1795,9 @@ class Manager
 	/*
 	@description	Returns the color of the specified pixel.
 	*/
-	public function getPixelColor( pt : Point ) : Pixel
+	public function getPixelColor( pt : ImagickPoint ) : ImagickPixel
 	{
-		var p = new Pixel();
+		var p = new ImagickPixel();
 		untyped p.__d = nMagick_get_pixel_color( __m, pt );
 		return p;
 	}
@@ -1805,10 +1805,10 @@ class Manager
 	/*
 	@description	Gets the image X and Y resolution.
 	*/
-	public function getResolution() : Point
+	public function getResolution() : ImagickPoint
 	{
 		var p = nMagick_get_resolution( __m );
-		return new Point( p.x, p.y );
+		return new ImagickPoint( p.x, p.y );
 	}
 
 	/*
@@ -1916,10 +1916,10 @@ class Manager
 	/*
 	@description	Returns the chromaticy white point.
 	*/
-	public function getWhitePoint() : Point
+	public function getWhitePoint() : ImagickPoint
 	{
 		var p = nMagick_get_white_point( __m );
-		return new Point( p.x, p.y );
+		return new ImagickPoint( p.x, p.y );
 	}
 
 	/*
@@ -1927,7 +1927,7 @@ class Manager
 	@param			x	The horizontal location.
 	@param			y	The vertical location.
 	*/
-	public function setWhitePoint( p : Point )
+	public function setWhitePoint( p : ImagickPoint )
 	{
 		nMagick_set_white_point( __m, p.x, p.y );
 		return null;
@@ -1997,7 +1997,7 @@ class Manager
 	@description	Replaces the colors of an image with the closest color from a 
 					reference image.
 	*/
-	public function map( magickb : Manager, dither : Bool ) : Bool
+	public function map( magickb : Imagick, dither : Bool ) : Bool
 	{
 		return nMagick_map( __m, untyped magickb.__m, dither );
 	}
@@ -2099,7 +2099,7 @@ class Manager
 					are now interpreted as the same color for the purposes of the 
 					floodfill.
 	*/
-	public function paintTransparent( target : Pixel, opacity : Float, fuzz : Float ) : Bool
+	public function paintTransparent( target : ImagickPixel, opacity : Float, fuzz : Float ) : Bool
 	{
 		return nMagick_paint_transparent( __m, untyped target.__d, opacity, fuzz );
 	}
@@ -2214,7 +2214,7 @@ class Manager
 	@description	resample image to desired resolution.
 					
 					Bessel Blackman Box Catrom Cubic Gaussian Hanning 
-					Hermite Lanczos Mitchell Point Quandratic Sinc Triangle
+					Hermite Lanczos Mitchell ImagickPoint Quandratic Sinc Triangle
 
 					Most of the filters are FIR (finite impulse response), however, 
 					Bessel, Gaussian, and Sinc are IIR (infinite impulse response). 
@@ -2266,7 +2266,7 @@ class Manager
 	@param			background	The background pixel wand.
 	@param			degrees		The number of degrees to rotate the image.
 	*/
-	public function rotate( background : Pixel, degrees : Float ) : Bool
+	public function rotate( background : ImagickPixel, degrees : Float ) : Bool
 	{
 		return nMagick_rotate( __m, untyped background.__d, degrees );
 	}
@@ -2346,7 +2346,7 @@ class Manager
 	@param			sigma	The standard deviation of the Gaussian, in pixels.
 	@param			point	The shadow offset.
 	*/
-	public function shadow( radius : Float, sigma : Float, point : Point ) : Bool
+	public function shadow( radius : Float, sigma : Float, point : ImagickPoint ) : Bool
 	{
 		return nMagick_shadow( __m, radius, sigma, point );
 	}
@@ -2390,7 +2390,7 @@ class Manager
 	@param			x_shear		The number of degrees to shear the image.
 	@param			y_shear		The number of degrees to shear the image.
 	*/
-	public function shear( background : Pixel, x : Int, y : Int ) : Bool
+	public function shear( background : ImagickPixel, x : Int, y : Int ) : Bool
 	{
 		return nMagick_shear( __m, untyped background.__d, x, y );
 	}
@@ -2400,7 +2400,7 @@ class Manager
 					composite of a left and right image of a stereo pair.
 	@param			offset_wand		Another image wand.
 	*/
-	public function stereo( offset_wand : Manager ) : Bool
+	public function stereo( offset_wand : Imagick ) : Bool
 	{
 		return nMagick_stereo( __m, untyped offset_wand.__m );
 	}
@@ -2428,7 +2428,7 @@ class Manager
 	@description	Repeatedly tiles the texture image across and down the image canvas.
 	@param			texture_wand	The texture wand.
 	*/
-	public function texture( txtr : Manager ) : Bool
+	public function texture( txtr : Imagick ) : Bool
 	{		
 		return nMagick_texture( __m, untyped txtr.__m );
 	}
@@ -2463,7 +2463,7 @@ class Manager
 	@param			tint	The tint pixel wand.
 	@param			opacity	The opacity pixel wand.
 	*/
-	public function tint( t : Pixel, o : Pixel ) : Bool
+	public function tint( t : ImagickPixel, o : ImagickPixel ) : Bool
 	{
 		return nMagick_tint( __m, untyped t.__d, untyped o.__d );
 	}

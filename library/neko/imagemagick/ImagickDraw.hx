@@ -25,9 +25,9 @@
  * DAMAGE.
  */
 
-package neko.ImageMagick;
+package neko.imagemagick;
 
-class Draw
+class ImagickDraw
 {
 	public var __d : Void;
 	
@@ -46,7 +46,7 @@ class Draw
 		return nMagick_draw_clear( __d );
 	}
 	
-	public function clone() : Draw
+	public function clone() : ImagickDraw
 	{
 		return nMagick_draw_clone( __d );
 	}
