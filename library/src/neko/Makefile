@@ -1,5 +1,5 @@
 OBJS	= nMagick.o PixelWand.o DrawingWand.o
-CC	= gcc
+CC      = gcc
 CFLAGS	= -fPIC -I/usr/lib/neko/include -I/usr/include/ImageMagick
 LDFLAGS = -shared -lneko -lMagickWand
 
