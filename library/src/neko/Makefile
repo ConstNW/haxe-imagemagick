@@ -4,8 +4,8 @@ CFLAGS	= -fPIC -I/usr/lib/neko/include -I/usr/include/ImageMagick
 LDFLAGS = -shared -lneko -lMagickWand
 
 nMagick.ndll: $(OBJS)
-	$(CC) $(LDFLAGS) -o nMagick.ndll $(OBJS)
+	$(CC) $(LDFLAGS) -o ../../ndll/Linux/nMagick.ndll $(OBJS)
 
 clean:
 	rm -f $(OBJS)
-	rm -rf nMagick.ndll
+	rm -rf ../../ndll/Linux/nMagick.ndll
