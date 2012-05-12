@@ -144,21 +144,21 @@ class Imagick
 		#end
 	}
 	
-	public function blackThreshold(color:Dynamic)
+	public function blackThreshold(color:ImagickPixel)
 	{
 		#if php
-		return pimg.blackThresholdImage(color);
+		pimg.blackThresholdImage(color);
 		#elseif neko
-		throw new ImagickUnsupportedMethodException();
+		nimg.blackThresholdImage(color);
 		#end
 	}
 	
-	public function whiteThreshold(color:Dynamic)
+	public function whiteThreshold(color:ImagickPixel)
 	{
 		#if php
-		return pimg.whiteThresholdImage(color);
+		pimg.whiteThresholdImage(color);
 		#elseif neko
-		throw new ImagickUnsupportedMethodException();
+		nimg.whiteThresholdImage(color);
 		#end
 	}
 	
@@ -180,12 +180,12 @@ class Imagick
 		#end
 	}
 	
-	public function newImage(w:Int, h:Int, color:Dynamic)
+	public function newImage(w:Int, h:Int, color:ImagickPixel)
 	{
 		#if php
 		pimg.newImage(w, h, color);
 		#elseif neko
-		throw new ImagickUnsupportedMethodException();
+		nimg.newImage(w, h, color);
 		#end
 	}
 	

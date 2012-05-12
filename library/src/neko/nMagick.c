@@ -323,6 +323,25 @@ value nMagick_black_threshold( value magick, value threshold )
 }
 
 /*
+@description	Like MagickThresholdImage() but forces all pixels below the threshold 
+				into white while leaving all pixels above the threshold unchanged.
+@param			Threshold	The PixelWand.
+*/
+value nMagick_white_threshold( value magick, value threshold )
+{
+	MagickWand *wand;
+	PixelWand *th;
+
+	val_check_kind( magick, k_wand );
+	val_check_kind( threshold, k_pixel );
+	
+	wand = WAND( magick );
+	th = PIXEL( threshold );
+	
+	return alloc_bool( MagickWhiteThresholdImage( wand, th ) );
+}
+
+/*
 @description	blurs an image. We convolve the image with a gaussian operator 
 				of the given radius and standard deviation (sigma). For reasonable 
 				results, the radius should be larger than sigma. Use a radius of 0 
@@ -2961,3 +2980,4 @@ DEFINE_PRIM(nMagick_thumbnail,3);
 DEFINE_PRIM(nMagick_tint,3);
 DEFINE_PRIM(nMagick_wave,3);
 DEFINE_PRIM(set_exception_handler,1);
+DEFINE_PRIM(nMagick_white_threshold,2);

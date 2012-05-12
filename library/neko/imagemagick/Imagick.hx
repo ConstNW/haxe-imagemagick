@@ -236,6 +236,11 @@ class Imagick
 		__m = nMagick_init();
 	}
 	
+	public function newImage(w:Int, h:Int, color:ImagickPixel) : Void
+	{
+		nMagick_new( __m, w, h, color.__d );
+	}
+	
 	public function load( file : String ) : Void
 	{
 		if ( file != "" )
@@ -2486,7 +2491,19 @@ class Imagick
 		return neko.Lib.nekoToHaxe( nMagick_get_palette( __m ) );
 	}
   */
+	
+	public function whiteThreshold( color:ImagickPixel )
+	{
+		nMagick_white_threshold( __m, k );
+	}
 
+	public function blackThreshold( color:ImagickPixel )
+	{
+		nMagick_black_threshold( __m, k );
+	}
+	
+	static var nMagick_white_threshold = neko.Lib.load("nMagick","nMagick_white_threshold",2);
+	static var nMagick_black_threshold = neko.Lib.load("nMagick","nMagick_black_threshold",2);
 	
 	static var nMagick_init = neko.Lib.load("nMagick","nMagick_init",0);
 	static var nMagick_load = neko.Lib.load("nMagick","nMagick_load",2);
