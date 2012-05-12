@@ -29,6 +29,7 @@
 #include <stdlib.h>
 #include <neko.h>
 #include <wand/MagickWand.h>
+#include <wand/deprecate.h>
 
 #ifndef __NMAGICK_H_
 #define __NMAGICK_H_

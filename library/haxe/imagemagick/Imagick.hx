@@ -171,12 +171,12 @@ class Imagick
 		#end
 	}
 	
-	public function matteFloodFill(a:Float, b:Float, color:Dynamic, x:Int, y:Int)
+	public function matteFloodFill(alpha:Float, fuzz:Float, color:ImagickPixel, x:Int, y:Int)
 	{
 		#if php
-		pimg.matteFloodfillImage(a, b, color, x, y);
+		pimg.matteFloodfillImage(alpha, fuzz, color, x, y);
 		#elseif neko
-		throw new ImagickUnsupportedMethodException();
+		nimg.matteFloodFill(alpha, fuzz, color, x, y);
 		#end
 	}
 	

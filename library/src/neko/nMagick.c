@@ -2848,6 +2848,34 @@ value nMagick_wave( value magick, value amplitude, value length )
 	return alloc_bool( MagickWaveImage( wand, val_float( amplitude ), val_float( length ) ) );
 }
 
+
+value nMagick_matte_flood_fill( value *args, int nargs )
+{
+	if (nargs !=6 ) return;
+	
+	value magick	= args[0];
+	value alpha		= args[1];
+	value fuzz		= args[2];
+	value color		= args[3];
+	value x			= args[4];
+	value y			= args[5];
+	
+	MagickWand *wand;
+	PixelWand *c;
+
+	val_check_kind( magick, k_wand );
+	val_check( alpha, float );
+	val_check( fuzz, float );
+	val_check_kind( color, k_pixel );
+	val_check( x, int );
+	val_check( y, int );
+
+	wand = WAND( magick );
+	c = PIXEL( color );
+
+	return alloc_bool( MagickMatteFloodfillImage( wand, val_float( alpha ), val_float( fuzz ), c, val_int( x ), val_int( y ) ) );
+}
+
 DEFINE_PRIM(nMagick_close,1);
 DEFINE_PRIM(nMagick_init,0);
 DEFINE_PRIM(nMagick_load,2);
@@ -2981,3 +3009,4 @@ DEFINE_PRIM(nMagick_tint,3);
 DEFINE_PRIM(nMagick_wave,3);
 DEFINE_PRIM(set_exception_handler,1);
 DEFINE_PRIM(nMagick_white_threshold,2);
+DEFINE_PRIM_MULT(nMagick_matte_flood_fill);

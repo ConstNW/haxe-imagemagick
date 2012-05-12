@@ -2502,6 +2502,11 @@ class Imagick
 		nMagick_black_threshold( __m, k );
 	}
 	
+	public function matteFloodFill( alpha:float, fuzz:Float, color:ImagickPixel, x:Int, y:Int )
+	{
+		nMagick_matte_flood_fill( __m, alpha, fuzz, color.__d, x, y);
+	}
+	
 	static var nMagick_white_threshold = neko.Lib.load("nMagick","nMagick_white_threshold",2);
 	static var nMagick_black_threshold = neko.Lib.load("nMagick","nMagick_black_threshold",2);
 	
@@ -2639,4 +2644,5 @@ class Imagick
 	static var nMagick_wave = neko.Lib.load("nMagick","nMagick_wave",3);
 	static var nMagick_handler = neko.Lib.load("nMagick","set_exception_handler",1);
   /*	static var nMagick_get_palette = neko.Lib.load("nMagick","nMagick_get_palette",1); */
+	static var nMagick_matte_flood_fill = neko.Lib.load("nMagick","nMagick_matte_flood_fill",-1);
 }
