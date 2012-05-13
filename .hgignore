@@ -1,5 +1,7 @@
 syntax: glob
 library.zip
-library/src/neko/nMagick.o
-library/src/neko/PixelWand.o
-library/src/neko/DrawingWand.o
+library/src/neko/*.o
+library/src/neko/Debug
+library/ndll/Windows/*.ilk
+library/src/neko/*.ncb
+library/src/neko/*.suo

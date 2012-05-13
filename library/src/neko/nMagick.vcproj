@@ -19,7 +19,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;C:\Program Files\ImageMagick-6.3.0&quot;;C:\neko\include"
+				AdditionalIncludeDirectories="D:\MyProg\_tools\ImageMagick;D:\MyProg\_tools\motion-twin\neko\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;nMagick_EXPORTS"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -33,9 +33,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="CORE_DB_wand_.lib neko.lib"
-				OutputFile="c:\haxe\nMagick.ndll"
+				OutputFile="..\..\ndll\Windows\nMagick.ndll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;C:\Program Files\ImageMagick-6.3.0\VisualMagick\lib&quot;;c:\neko"
+				AdditionalLibraryDirectories="D:\MyProg\_tools\ImageMagick\VisualMagick\lib;D:\MyProg\_tools\motion-twin\neko"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/nMagick.pdb"
 				SubSystem="2"

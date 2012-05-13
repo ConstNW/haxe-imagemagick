@@ -1582,7 +1582,7 @@ value nMagick_set_gamma( value magick, value gamma )
 @param			number_colors	The number of unique colors in the image and 
 				the number of pixel wands returned.
 */
-value nMagick_get_histogram( value magick, value num_colors )
+/*value nMagick_get_histogram( value magick, value num_colors )
 {
 	MagickWand *wand;
 	value v;
@@ -1595,7 +1595,7 @@ value nMagick_get_histogram( value magick, value num_colors )
 	v = alloc_abstract( k_pixel, MagickGetImageHistogram( wand, val_int( num_colors ) ) );
 	val_gc( v, nMagick_pixel_close );
 	return v;
-}
+}*/
 
 /*
 @description	Gets the image interlace scheme.
@@ -2851,17 +2851,24 @@ value nMagick_wave( value magick, value amplitude, value length )
 
 value nMagick_matte_flood_fill( value *args, int nargs )
 {
-	if (nargs !=6 ) return;
-	
-	value magick	= args[0];
-	value alpha		= args[1];
-	value fuzz		= args[2];
-	value color		= args[3];
-	value x			= args[4];
-	value y			= args[5];
+	value magick;
+	value alpha;
+	value fuzz;
+	value color;
+	value x;
+	value y;
 	
 	MagickWand *wand;
 	PixelWand *c;
+	
+	if (nargs !=6 ) return alloc_bool( false );
+	
+	magick	= args[0];
+	alpha	= args[1];
+	fuzz	= args[2];
+	color	= args[3];
+	x		= args[4];
+	y		= args[5];
 
 	val_check_kind( magick, k_wand );
 	val_check( alpha, float );
