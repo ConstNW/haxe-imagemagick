@@ -7,6 +7,8 @@ private typedef NekoImagick = neko.imagemagick.Imagick;
 import neko.imagemagick.ImagickPoint;
 #end
 
+import haxe.imagemagick.ImagickEnums;
+
 class ImagickUnsupportedMethodException
 {
 	public function new() {}
@@ -14,27 +16,6 @@ class ImagickUnsupportedMethodException
 
 class Imagick 
 {
-	/**
-	 * The parts outside the source replace the target 
-	 */
-	public static inline var COMPOSITE_DSTOUT(COMPOSITE_DSTOUT_getter, null) : Int; private static inline function COMPOSITE_DSTOUT_getter() : Int { return untyped __php__("imagick::COMPOSITE_DSTOUT"); }
-	
-	/**
-	 * The part of the source lying inside of the destination replaces the destination 
-	 */
-	public static inline var COMPOSITE_SRCIN(COMPOSITE_SRCIN_getter, null) : Int; private static inline function COMPOSITE_SRCIN_getter() : Int { return untyped __php__("imagick::COMPOSITE_SRCIN"); }
-	
-	/**
-	 * The default composite operator 
-	 */
-	public static inline var COMPOSITE_DEFAULT(COMPOSITE_DEFAULT_getter, null) : Int; private static inline function COMPOSITE_DEFAULT_getter() : Int { return untyped __php__("imagick::COMPOSITE_DEFAULT"); }
-	
-	/**
-	 * Copies the source image on the target image 
-	 */
-	public static inline var COMPOSITE_COPY(COMPOSITE_COPY_getter, null) : Int; private static inline function COMPOSITE_COPY_getter() : Int { return untyped __php__("imagick::COMPOSITE_COPY"); }
-	
-	
 	#if php
 	var pimg : PhpImagick;
 	#elseif neko
@@ -114,7 +95,7 @@ class Imagick
 		#end
 	}
 	
-	public function colorFloodFill(fill:Dynamic, fuzz:Float, bordercolor:Dynamic, x:Int, y:Int) : Bool
+	public function colorFloodFill(fill:ImagickPixel, fuzz:Float, bordercolor:ImagickPixel, x:Int, y:Int) : Bool
 	{
 		#if php
 		return pimg.colorFloodfillImage(fill, fuzz, bordercolor, x, y);
@@ -139,7 +120,7 @@ class Imagick
 		#elseif neko
 		var r = new Imagick(null, new NekoImagick());
 		r.newImage(nimg.width, nimg.height, new ImagickPixel("black"));
-		r.composite(this, COMPOSITE_COPY, 0, 0);
+		r.composite(this, CompositeOperator.CopyCompositeOp, 0, 0);
 		return r;
 		#end
 	}
@@ -189,25 +170,25 @@ class Imagick
 		#end
 	}
 	
-	public function composite(img:Imagick, op:Int, x:Int, y:Int)
+	public function composite(img:Imagick, op:CompositeOperator, x:Int, y:Int)
 	{
 		#if php
-		return pimg.compositeImage(img.pimg, op, x, y);
+		return pimg.compositeImage(img.pimg, pimg.getCompositeOperator(op), x, y);
 		#elseif neko
 		var oldCompositeMode = nimg.composite;
-		nimg.composite = nimg.getCompositeOperatorEnum(op);
+		nimg.composite = op;
 		var r = nimg.compositeImage(img.nimg, new ImagickPoint(x, y)); 
 		nimg.composite = oldCompositeMode;
 		return r;
 		#end
 	}
 	
-	public function crop(a:Int, b:Int, c:Int, d:Int)
+	public function crop(x:Int, y:Int, w:Int, h:Int)
 	{
 		#if php
-		return pimg.cropImage(a, b, c, d);
+		return pimg.cropImage(x, y, w, h);
 		#elseif neko
-		return nimg.crop(a, b, new ImagickPoint(c, d));
+		return nimg.crop(x, y, new ImagickPoint(w, h));
 		#end
 	}
 }

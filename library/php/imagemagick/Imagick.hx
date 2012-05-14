@@ -1,7 +1,69 @@
 package php.imagemagick;
 
+import haxe.imagemagick.ImagickEnums;
+
 @:native("Imagick") extern class Imagick
 {
+	public function getCompositeOperator(op:CompositeOperator) : Int
+	{
+		return switch (op)
+		{
+			case UndefinedCompositeOp:	COMPOSITE_UNDEFINED;
+			case NoCompositeOp:			COMPOSITE_NO;
+			case AddCompositeOp:		COMPOSITE_ADD;
+			case AtopCompositeOp:		COMPOSITE_ATOP;
+			case BlendCompositeOp:		COMPOSITE_BLEND;
+			case BumpmapCompositeOp:	COMPOSITE_BUMPMAP;
+			case ClearCompositeOp:		COMPOSITE_CLEAR;
+			case ColorBurnCompositeOp:	COMPOSITE_COLORBURN;
+			case ColorDodgeCompositeOp:	COMPOSITE_COLORDODGE;
+			case ColorizeCompositeOp:	COMPOSITE_COLORIZE;
+			case CopyBlackCompositeOp:	COMPOSITE_COPYBLACK;
+			case CopyBlueCompositeOp:	COMPOSITE_COPYBLUE;
+			case CopyCompositeOp:		COMPOSITE_COPY;
+			case CopyCyanCompositeOp:	COMPOSITE_COPYCYAN;
+			case CopyGreenCompositeOp:	COMPOSITE_COPYGREEN;
+			case CopyMagentaCompositeOp:COMPOSITE_COPYMAGENTA;
+			case CopyOpacityCompositeOp:COMPOSITE_COPYOPACITY;
+			case CopyRedCompositeOp:	COMPOSITE_COPYRED;
+			case CopyYellowCompositeOp:	COMPOSITE_COPYYELLOW;
+			case DarkenCompositeOp:		COMPOSITE_DARKEN;
+			case DstAtopCompositeOp:	COMPOSITE_DSTATOP;
+			case DstCompositeOp:		COMPOSITE_DST;
+			case DstInCompositeOp:		COMPOSITE_DSTIN;
+			case DstOutCompositeOp:		COMPOSITE_DSTOUT;
+			case DstOverCompositeOp:	COMPOSITE_DSTOVER;
+			case DifferenceCompositeOp:	COMPOSITE_DIFFERENCE;
+			case DisplaceCompositeOp:	COMPOSITE_DISPLACE;
+			case DissolveCompositeOp:	COMPOSITE_DISSOLVE;
+			case ExclusionCompositeOp:	COMPOSITE_EXCLUSION;
+			case HardLightCompositeOp:	COMPOSITE_HARDLIGHT;
+			case HueCompositeOp:		COMPOSITE_HUE;
+			case InCompositeOp:			COMPOSITE_IN;
+			case LightenCompositeOp:	COMPOSITE_LIGHTEN;
+			case LuminizeCompositeOp:	COMPOSITE_LUMINIZE;
+			case MinusCompositeOp:		COMPOSITE_MINUS;
+			case ModulateCompositeOp:	COMPOSITE_MODULATE;
+			case MultiplyCompositeOp:	COMPOSITE_MULTIPLY;
+			case OutCompositeOp:		COMPOSITE_OUT;
+			case OverCompositeOp:		COMPOSITE_OVER;
+			case OverlayCompositeOp:	COMPOSITE_OVERLAY;
+			case PlusCompositeOp:		COMPOSITE_PLUS;
+			case ReplaceCompositeOp:	COMPOSITE_REPLACE;
+			case SaturateCompositeOp:	COMPOSITE_SATURATE;
+			case ScreenCompositeOp:		COMPOSITE_SCREEN;
+			case SoftLightCompositeOp:	COMPOSITE_SOFTLIGHT;
+			case SrcAtopCompositeOp:	COMPOSITE_SRCATOP;
+			case SrcCompositeOp:		COMPOSITE_SRC;
+			case SrcInCompositeOp:		COMPOSITE_SRCIN;
+			case SrcOutCompositeOp:		COMPOSITE_SRCOUT;
+			case SrcOverCompositeOp:	COMPOSITE_SRCOVER;
+			case SubtractCompositeOp:	COMPOSITE_SUBTRACT;
+			case ThresholdCompositeOp:	COMPOSITE_THRESHOLD;
+			case XorCompositeOp:		COMPOSITE_XOR;
+		}
+	}
+	
 	/**
 	 * Black color 
 	 */
