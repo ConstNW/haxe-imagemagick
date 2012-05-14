@@ -5,3 +5,6 @@ library/src/neko/Debug
 library/ndll/Windows/*.ilk
 library/src/neko/*.ncb
 library/src/neko/*.suo
+library/src/neko/Release
+tests/neko/pic*-out.*
+tests/neko/Main.n

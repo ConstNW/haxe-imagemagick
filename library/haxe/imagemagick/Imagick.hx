@@ -138,7 +138,7 @@ class Imagick
 		return new Imagick(null, pimg.clone());
 		#elseif neko
 		var r = new Imagick(null, new NekoImagick());
-		r.newImage(nimg.width, nimg.height, "black");
+		r.newImage(nimg.width, nimg.height, new ImagickPixel("black"));
 		r.composite(this, COMPOSITE_COPY, 0, 0);
 		return r;
 		#end
@@ -149,7 +149,7 @@ class Imagick
 		#if php
 		pimg.blackThresholdImage(color);
 		#elseif neko
-		nimg.blackThresholdImage(color);
+		nimg.blackThreshold(color);
 		#end
 	}
 	
@@ -158,7 +158,7 @@ class Imagick
 		#if php
 		pimg.whiteThresholdImage(color);
 		#elseif neko
-		nimg.whiteThresholdImage(color);
+		nimg.whiteThreshold(color);
 		#end
 	}
 	

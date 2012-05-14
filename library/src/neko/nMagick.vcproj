@@ -70,7 +70,7 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="C:\neko\include;&quot;C:\Program Files\ImageMagick-6.3.0&quot;"
+				AdditionalIncludeDirectories="D:\MyProg\_tools\ImageMagick;D:\MyProg\_tools\motion-twin\neko\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;nMagick_EXPORTS"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
@@ -81,10 +81,10 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="WSock32.Lib CORE_RL_lcms_.lib CORE_RL_coders_.lib CORE_RL_magick_.lib CORE_RL_zlib_.lib CORE_RL_xlib_.lib CORE_RL_wmf_.lib CORE_RL_ttf_.lib CORE_RL_tiff_.lib CORE_RL_png_.lib CORE_RL_Magick++_.lib CORE_RL_libxml_.lib CORE_RL_jpeg_.lib CORE_RL_jp2_.lib CORE_RL_jbig_.lib CORE_RL_filters_.lib CORE_RL_wand_.lib CORE_RL_bzlib_.lib neko.lib"
-				OutputFile="c:\haxe\nMagick.ndll"
+				AdditionalDependencies="CORE_RL_wand_.lib neko.lib"
+				OutputFile="..\..\ndll\Windows\nMagick.ndll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;C:\Program Files\ImageMagick-6.3.0\VisualMagick\lib&quot;;C:\neko"
+				AdditionalLibraryDirectories="D:\MyProg\_tools\ImageMagick\VisualMagick\lib;D:\MyProg\_tools\motion-twin\neko"
 				IgnoreDefaultLibraryNames="LIBCMTD"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"
@@ -122,7 +122,13 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
+				RelativePath=".\DrawingWand.c">
+			</File>
+			<File
 				RelativePath=".\nMagick.c">
+			</File>
+			<File
+				RelativePath=".\PixelWand.c">
 			</File>
 		</Filter>
 		<Filter

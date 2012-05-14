@@ -2,12 +2,17 @@ package;
 
 import haxe.imagemagick.Imagick;
 
-class CurlTest extends haxe.unit.TestCase
+class ImagickTest extends haxe.unit.TestCase
 {
-    public function testBasic()
+    public function testLoad()
     {
-		var r = new Imagick();
-        
-		this.assertTrue(true);
+		var pic = new Imagick("pic1.jpg");
+		this.assertTrue(pic != null);
     }
+	
+	public function testSave()
+	{
+		var pic = new Imagick("pic1.jpg");
+		pic.save("pic1-out.png");
+	}
 }

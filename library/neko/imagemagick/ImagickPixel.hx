@@ -31,9 +31,14 @@ class ImagickPixel
 {
 	public var __d : Void;
 	
-	public function new()
+	public function new( ?color : String )
 	{
 		__d = nMagick_pixel_new();
+		
+		if (color != null)
+		{
+			setColor(color);
+		}
 	}
 	
 	public function close()
