@@ -16,7 +16,7 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="library" />
-    <class path="tests" />
+    <class path="tests\neko" />
   </classpaths>
   <!-- Build options -->
   <build>

@@ -8,3 +8,4 @@ library/src/neko/*.suo
 library/src/neko/Release
 tests/neko/pic*-out.*
 tests/neko/Main.n
+bin
