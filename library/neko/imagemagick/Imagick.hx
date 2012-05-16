@@ -50,9 +50,18 @@ class Imagick
 	public var width (getWidth,null) : Int;
 	public var height (getHeight,null) : Int;
 	
-	public function new() : Void
+	public function new(?file:String, ?handle:Void) : Void
 	{
-		__m = nMagick_init();
+		if (handle != null)
+		{
+			__m = handle;
+		}
+		else
+		{
+			__m = nMagick_init();
+		}
+		
+		load(file);
 	}
 	
 	public function newImage(w:Int, h:Int, color:ImagickPixel) : Void
@@ -62,14 +71,18 @@ class Imagick
 	
 	public function load( file : String ) : Void
 	{
-		if ( file != "" )
+		if ( file != null && file != "" )
+		{
 			nMagick_load( __m, untyped file.__s );
+		}
 	}
 	
 	public function save( file : String ) : Void
 	{
-		if ( file != "" )
+		if ( file != null && file != "" )
+		{
 			nMagick_save( __m, untyped file.__s );
+		}
 	}
 	
 	public function close() : Void
@@ -705,7 +718,7 @@ class Imagick
 	*/
 	public function adaptiveSharpen( radius : Float, sigma : Float ) : Bool
 	{
-		return nMagick_adaptive_sharpen( __m, radius*10.0*0.1, sigma*10.0*0.1 );
+		return nMagick_adaptive_sharpen( __m, radius, sigma );
 	}
 
 	/*
@@ -828,35 +841,19 @@ class Imagick
 		return nMagick_chop( __m, width, height, point );
 	}
 	
-	public function resize( ?w : Int, ?h : Int ) : Void
+	public function resize( w : Int, h : Int ) : Void
 	{
-		if ( ( w <= 0 || w == null ) && ( h <= 0 || h == null ) )
-			return;
-		if ( w <= 0 || w == null )
-		{
-			var tw = getWidth();
-			var th = getHeight();
-			var percent = Math.ceil( th / h );
-			w = Math.ceil( tw * ( 1 / percent ) );
-		}
-		if ( h <= 0 || h == null )
-		{
-			var tw = getWidth();
-			var th = getHeight();
-			var percent = Math.ceil( tw / w );
-			h = Math.ceil( th * ( 1 / percent ) );
-		}
 		nMagick_resize( __m, w, h );
 	}
 	
 	public function edge( r : Float ) : Void
 	{
-		nMagick_edge( __m, r*10.0*0.1 );
+		nMagick_edge( __m, r );
 	}
 	
 	public function emboss( r : Float, s : Float ) : Void
 	{
-		nMagick_emboss( __m, r*10.0*0.1, s*10.0*0.1 );
+		nMagick_emboss( __m, r, s );
 	}
 	
 	/*
@@ -878,7 +875,7 @@ class Imagick
 	*/
 	public function colorFloodFill( fill : ImagickPixel, fuzz : Float, bordercolor : ImagickPixel, point : ImagickPoint ) : Bool
 	{
-		return nMagick_colorfloodfill( __m, untyped fill.__d, fuzz*10.0*0.1, untyped bordercolor.__d, point );
+		return nMagick_colorfloodfill( __m, untyped fill.__d, fuzz, untyped bordercolor.__d, point );
 	}
 
 	/*
@@ -943,7 +940,7 @@ class Imagick
 	*/
 	public function convolve( order : Int, kernal : Float ) : Bool
 	{
-		return nMagick_convolve( __m, order, kernal*10.0*0.1 );
+		return nMagick_convolve( __m, order, kernal );
 	}
 
 	/*
@@ -1018,7 +1015,7 @@ class Imagick
 	*/
 	public function evaluate( op : Operator, constant : Float )
 	{
-		return nMagick_evaluate( __m, getOperator( op ), constant*10.0*0.1 );
+		return nMagick_evaluate( __m, getOperator( op ), constant );
 	}
 
 	/*
@@ -1059,7 +1056,7 @@ class Imagick
 	*/
 	public function gammaImage( g : Float ) : Bool
 	{
-		return nMagick_gamma( __m, g*10.0*0.1 );
+		return nMagick_gamma( __m, g );
 	}
 
 	/*
@@ -1070,7 +1067,7 @@ class Imagick
 	*/
 	public function gaussianBlur( radius : Float, sigma : Float ) : Bool
 	{
-		return nMagick_gaussian_blur( __m, radius*10.0*0.1, sigma*10.0*0.1 );
+		return nMagick_gaussian_blur( __m, radius, sigma );
 	}
 
 	/*
@@ -1573,7 +1570,7 @@ class Imagick
 	*/
 	public function setGamma( g : Float )
 	{
-		nMagick_set_gamma( __m, g*10.0*0.1 );
+		nMagick_set_gamma( __m, g );
 		return null;
 	}
 
@@ -1778,7 +1775,7 @@ class Imagick
 	*/
 	public function implode( radius : Float ) : Bool
 	{
-		return nMagick_implode( __m, radius*10.0*0.1 );
+		return nMagick_implode( __m, radius );
 	}
 
 	/*
@@ -1805,7 +1802,7 @@ class Imagick
 	*/
 	public function level( blackPoint : Float, gamma : Float, whitePoint : Float ) : Bool
 	{
-		return nMagick_level( __m, blackPoint*10.0*0.1, gamma*10.0*0.1, whitePoint*10.0*0.1 );
+		return nMagick_level( __m, blackPoint, gamma, whitePoint );
 	}
 
 	/*
@@ -1834,7 +1831,7 @@ class Imagick
 	*/
 	public function medianFilter( radius : Float ) : Bool
 	{
-		return nMagick_median_filter( __m, radius*10.0*0.1 );
+		return nMagick_median_filter( __m, radius );
 	}
 
 	/*
@@ -1861,7 +1858,7 @@ class Imagick
 	*/
 	public function modulate( brightness : Float, saturation : Float, hue : Float ) : Bool
 	{
-		return nMagick_modulate( __m, brightness*10.0*0.1, saturation*10.0*0.1, hue*10.0*0.1 );
+		return nMagick_modulate( __m, brightness, saturation, hue );
 	}
 
 	/*
@@ -1877,7 +1874,7 @@ class Imagick
 	*/
 	public function motionBlur( radius : Float, sigma : Float, angle : Float ) : Bool
 	{
-		return nMagick_motion_blur( __m, radius*10.0*0.1, sigma*10.0*0.1, angle*10.0*0.1 );
+		return nMagick_motion_blur( __m, radius, sigma, angle );
 	}
 
 	/*
@@ -1907,7 +1904,7 @@ class Imagick
 	*/
 	public function oilPainting( radius : Float ) : Bool
 	{
-		return nMagick_oil_painting( __m, radius*10.0*0.1 );
+		return nMagick_oil_painting( __m, radius );
 	}
 
 	/*
@@ -1925,7 +1922,7 @@ class Imagick
 	*/
 	public function paintTransparent( target : ImagickPixel, opacity : Float, fuzz : Float ) : Bool
 	{
-		return nMagick_paint_transparent( __m, untyped target.__d, opacity*10.0*0.1, fuzz*10.0*0.1 );
+		return nMagick_paint_transparent( __m, untyped target.__d, opacity, fuzz );
 	}
 
 	/*
@@ -1995,7 +1992,7 @@ class Imagick
 	*/
 	public function radialBlur( angle : Float ) : Bool
 	{
-		return nMagick_radial_blur( __m, angle*10.0*0.1 );
+		return nMagick_radial_blur( __m, angle );
 	}
 
 	/*
@@ -2031,7 +2028,7 @@ class Imagick
 	*/
 	public function reduceNoise( radius : Float ) : Bool
 	{
-		return nMagick_reduce_noise( __m, radius*10.0*0.1 );
+		return nMagick_reduce_noise( __m, radius );
 	}
 
 	/*
@@ -2070,7 +2067,7 @@ class Imagick
 	*/
 	public function resample( x : Int, y : Int, filter : Filter, blur : Float ) : Bool
 	{
-		return nMagick_resample( __m, x, y, getFilterId( filter ), blur*10.0*0.1 );
+		return nMagick_resample( __m, x, y, getFilterId( filter ), blur );
 	}
 
 	/*
@@ -2092,7 +2089,7 @@ class Imagick
 	*/
 	public function rotate( background : ImagickPixel, degrees : Float ) : Bool
 	{
-		return nMagick_rotate( __m, untyped background.__d, degrees*10.0*0.1 );
+		return nMagick_rotate( __m, untyped background.__d, degrees );
 	}
 
 	/*
@@ -2127,7 +2124,7 @@ class Imagick
 	*/
 	public function solarize( threshold : Float ) : Bool
 	{
-		return nMagick_solarize( __m, threshold*10.0*0.1 );
+		return nMagick_solarize( __m, threshold );
 	}
 
 	/*
@@ -2160,7 +2157,7 @@ class Imagick
 	*/
 	public function shine( grey : Bool, azimuth : Float, elevation : Float ) : Bool
 	{
-		return nMagick_shine( __m, grey, azimuth*10.0*0.1, elevation*10.0*0.1 );
+		return nMagick_shine( __m, grey, azimuth, elevation );
 	}
 
 	/*
@@ -2172,7 +2169,7 @@ class Imagick
 	*/
 	public function shadow( radius : Float, sigma : Float, point : ImagickPoint ) : Bool
 	{
-		return nMagick_shadow( __m, radius*10.0*0.1, sigma*10.0*0.1, point );
+		return nMagick_shadow( __m, radius, sigma, point );
 	}
 
 	/*
@@ -2186,7 +2183,7 @@ class Imagick
 	*/
 	public function sharpen( radius : Float, sigma : Float ) : Bool
 	{
-		return nMagick_sharpen( __m, radius*10.0*0.1, sigma*10.0*0.1 );
+		return nMagick_sharpen( __m, radius, sigma );
 	}
 
 	/*
@@ -2245,7 +2242,7 @@ class Imagick
 	*/
 	public function swirl( degrees : Float ) : Bool
 	{
-		return nMagick_swirl( __m, degrees*10.0*0.1 );
+		return nMagick_swirl( __m, degrees );
 	}
 
 	/*
@@ -2265,7 +2262,7 @@ class Imagick
 	*/
 	public function threshold( t : Float ) : Bool
 	{
-		return nMagick_threshold( __m, t*10.0*0.1 );
+		return nMagick_threshold( __m, t );
 	}
 
 	/*
@@ -2301,7 +2298,7 @@ class Imagick
 	*/
 	public function wave( a : Float, l : Float ) : Bool
 	{
-		return nMagick_wave( __m, a*10.0*0.1, l*10.0*0.1 );
+		return nMagick_wave( __m, a, l );
 	}
 	
   /*
@@ -2318,7 +2315,17 @@ class Imagick
 
 	public function matteFloodFill( alpha:Float, fuzz:Float, color:ImagickPixel, x:Int, y:Int )
 	{
-		nMagick_matte_flood_fill( __m, alpha*10.0*0.1, fuzz*10.0*0.1, color.__d, x, y);
+		nMagick_matte_flood_fill( __m, alpha, fuzz, color.__d, x, y);
+	}
+	
+	public function iteratePixels(f:Int->Int->ImagickPixel->Void, x=0, y=0, w=-1, h=-1) : Void
+    {
+        nMagick_iterate_pixels( __m, function( x:Int, y:Int, hPixel:Void ) f(x, y, new neko.imagemagick.ImagickPixel(null, hPixel)), x, y, w, h );
+    }
+	
+	public function clone() : Imagick
+	{
+		return new Imagick(null, nMagick_clone( __m ));
 	}
 	
 	static var nMagick_init = neko.Lib.load("nMagick","nMagick_init",0);
@@ -2454,7 +2461,9 @@ class Imagick
 	static var nMagick_tint = neko.Lib.load("nMagick","nMagick_tint",3);
 	static var nMagick_wave = neko.Lib.load("nMagick","nMagick_wave",3);
 	static var nMagick_handler = neko.Lib.load("nMagick","set_exception_handler",1);
-  /*	static var nMagick_get_palette = neko.Lib.load("nMagick","nMagick_get_palette",1); */
-	static var nMagick_white_threshold = neko.Lib.load("nMagick","nMagick_white_threshold",2);
+	static var nMagick_white_threshold = neko.Lib.load("nMagick","nMagick_white_thres",2);
+	static var nMagick_clone = neko.Lib.load("nMagick","nMagick_clone",1);
+	
 	static var nMagick_matte_flood_fill = neko.Lib.load("nMagick","nMagick_matte_flood_fill",-1);
+	static var nMagick_iterate_pixels = neko.Lib.load("nMagick","nMagick_iterate_pixels",-1);
 }

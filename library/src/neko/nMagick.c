@@ -159,12 +159,13 @@ value nMagick_save( value magick, value file )
 value nMagick_resize( value magick, value w, value h )
 {
 	MagickWand *wand;
+
 	val_check_kind( magick, k_wand );
 	val_check( w, int );
 	val_check( h, int );
 
 	wand = WAND( magick );
-	return alloc_bool( MagickResizeImage( wand , val_int( w ), val_int( h ), LanczosFilter, 1.0) );
+	return alloc_bool( MagickResizeImage( wand, val_int( w ), val_int( h ), CubicFilter, 1.0) );
 }
 
 /*
@@ -184,11 +185,11 @@ value nMagick_adaptive_sharpen( value magick, value radius, value sigma )
 	double r, s;
 
 	val_check_kind( magick, k_wand );
-	val_check( radius, float );
-	val_check( sigma, float );
+	val_check( radius, number );
+	val_check( sigma, number );
 
-	r = (double)val_float( radius );
-	s = (double)val_float( sigma );
+	r = val_number( radius );
+	s = val_number( sigma );
 
 	wand = WAND( magick );
 	return alloc_bool( MagickAdaptiveSharpenImage( wand, r, s ) );
@@ -323,25 +324,6 @@ value nMagick_black_threshold( value magick, value threshold )
 }
 
 /*
-@description	Like MagickThresholdImage() but forces all pixels below the threshold 
-				into white while leaving all pixels above the threshold unchanged.
-@param			Threshold	The PixelWand.
-*/
-value nMagick_white_threshold( value magick, value threshold )
-{
-	MagickWand *wand;
-	PixelWand *th;
-
-	val_check_kind( magick, k_wand );
-	val_check_kind( threshold, k_pixel );
-	
-	wand = WAND( magick );
-	th = PIXEL( threshold );
-	
-	return alloc_bool( MagickWhiteThresholdImage( wand, th ) );
-}
-
-/*
 @description	blurs an image. We convolve the image with a gaussian operator 
 				of the given radius and standard deviation (sigma). For reasonable 
 				results, the radius should be larger than sigma. Use a radius of 0 
@@ -462,13 +444,13 @@ value nMagick_colorfloodfill( value magick, value fill, value fuzz, value border
 	val_check_kind( fill, k_pixel );
 	val_check_kind( bordercolor, k_pixel );
 	val_check( point, object );
-	val_check( fuzz, float );
+	val_check( fuzz, number );
 
 	wand = WAND( magick );
 	fl = PIXEL( fill );
 	border = PIXEL( bordercolor );
 
-	return alloc_bool( MagickColorFloodfillImage( wand, fl, val_float( fuzz ), border, val_int( val_field( point, val_id( "x" ) ) ), val_int( val_field( point, val_id( "y" ) ) ) ) );
+	return alloc_bool( MagickColorFloodfillImage( wand, fl, val_number( fuzz ), border, val_int( val_field( point, val_id( "x" ) ) ), val_int( val_field( point, val_id( "y" ) ) ) ) );
 }
 
 /*
@@ -564,17 +546,19 @@ value nMagick_contrast( value magick, value sharpen )
 
 TODO : write a function to convert an array of values to an array of doubles
 */
-value nMagick_convolve( value magick, value order, value kernal )
+value nMagick_convolve( value magick, value order, value kernel )
 {
 	MagickWand *wand;
+	double kernel_float;
 
 	val_check_kind( magick, k_wand );
 	val_check( order, int );
-	val_check( kernal, float );
+	val_check( kernel, number );
 
 	wand = WAND( magick );
+	kernel_float = val_number( kernel );
 
-	return alloc_bool( MagickConvolveImage( wand, val_int( order ), &val_float( kernal ) ) );
+	return alloc_bool( MagickConvolveImage( wand, val_int( order ), &kernel_float ) );
 }
 
 /*
@@ -641,11 +625,11 @@ value nMagick_edge( value magick, value radius )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( radius, float );
+	val_check( radius, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickEdgeImage( wand, val_float( radius ) ) );
+	return alloc_bool( MagickEdgeImage( wand, val_number( radius ) ) );
 }
 
 /*
@@ -664,11 +648,11 @@ value nMagick_emboss( value magick, value radius, value sigma )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( radius, float );
-	val_check( sigma, float );
+	val_check( radius, number );
+	val_check( sigma, number );
 
 	wand = WAND( magick );
-	return alloc_bool( MagickEmbossImage( wand, val_float( radius ), val_float( sigma ) ) );
+	return alloc_bool( MagickEmbossImage( wand, val_number( radius ), val_number( sigma ) ) );
 }
 
 /*
@@ -730,11 +714,11 @@ value nMagick_evaluate( value magick, value op, value constant )
 
 	val_check_kind( magick, k_wand );
 	val_check( op, int );
-	val_check(	constant, float );
+	val_check(	constant, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickEvaluateImage( wand, val_int( op ), val_float( constant ) ) );
+	return alloc_bool( MagickEvaluateImage( wand, val_int( op ), val_number( constant ) ) );
 }
 
 /*
@@ -799,11 +783,11 @@ value nMagick_gamma( value magick, value gamma )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( gamma, float );
+	val_check( gamma, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickGammaImage( wand, val_float( gamma ) ) );
+	return alloc_bool( MagickGammaImage( wand, val_number( gamma ) ) );
 }
 
 /*
@@ -817,12 +801,12 @@ value nMagick_gaussian_blur( value magick, value radius, value sigma )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( radius, float );
-	val_check( sigma, float );
+	val_check( radius, number );
+	val_check( sigma, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickGaussianBlurImage( wand, val_float( radius ), val_float( sigma ) ) );
+	return alloc_bool( MagickGaussianBlurImage( wand, val_number( radius ), val_number( sigma ) ) );
 }
 
 /*
@@ -1570,11 +1554,11 @@ value nMagick_set_gamma( value magick, value gamma )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( gamma, float );
+	val_check( gamma, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickSetImageGamma( wand, val_float( gamma ) ) );
+	return alloc_bool( MagickSetImageGamma( wand, val_number( gamma ) ) );
 }
 
 /*
@@ -1995,11 +1979,11 @@ value nMagick_implode( value magick, value radius )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( radius, float );
+	val_check( radius, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickImplodeImage( wand, val_float( radius ) ) );
+	return alloc_bool( MagickImplodeImage( wand, val_number( radius ) ) );
 }
 
 /*
@@ -2036,13 +2020,13 @@ value nMagick_level( value magick, value black_point, value gamma, value white_p
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( black_point, float );
-	val_check( gamma, float );
-	val_check( white_point, float );
+	val_check( black_point, number );
+	val_check( gamma, number );
+	val_check( white_point, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickLevelImage( wand, val_float( black_point ), val_float( gamma ), val_float( white_point ) ) );
+	return alloc_bool( MagickLevelImage( wand, val_number( black_point ), val_number( gamma ), val_number( white_point ) ) );
 }
 
 /*
@@ -2090,11 +2074,11 @@ value nMagick_median_filter( value magick, value radius )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( radius, float );
+	val_check( radius, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickMedianFilterImage( wand , val_float( radius ) ) );
+	return alloc_bool( MagickMedianFilterImage( wand , val_number( radius ) ) );
 }
 
 /*
@@ -2130,13 +2114,13 @@ value nMagick_modulate( value magick, value brightness, value saturation, value 
 	MagickWand * wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( brightness, float );
-	val_check( saturation, float );
-	val_check( hue, float );
+	val_check( brightness, number );
+	val_check( saturation, number );
+	val_check( hue, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickModulateImage( wand, val_float( brightness ), val_float( saturation ), val_float( hue ) ) );
+	return alloc_bool( MagickModulateImage( wand, val_number( brightness ), val_number( saturation ), val_number( hue ) ) );
 }
 
 /*
@@ -2155,13 +2139,13 @@ value nMagick_motion_blur( value magick, value radius, value sigma, value angle 
 	MagickWand * wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( radius, float );
-	val_check( sigma, float );
-	val_check( angle, float );
+	val_check( radius, number );
+	val_check( sigma, number );
+	val_check( angle, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickMotionBlurImage( wand, val_float( radius ), val_float( sigma ), val_float( angle ) ) );
+	return alloc_bool( MagickMotionBlurImage( wand, val_number( radius ), val_number( sigma ), val_number( angle ) ) );
 }
 
 /*
@@ -2207,11 +2191,11 @@ value nMagick_oil_painting( value magick, value radius )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( radius, float );
+	val_check( radius, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickOilPaintImage( wand , val_float( radius ) ) );
+	return alloc_bool( MagickOilPaintImage( wand , val_number( radius ) ) );
 }
 
 /*
@@ -2234,16 +2218,16 @@ value nMagick_paint_transparent( value magick, value target, value opacity, valu
 
 	val_check_kind( magick, k_wand );
 	val_check_kind( target, k_pixel );
-	val_check( fuzz, float );
-	val_check( opacity, float );
+	val_check( fuzz, number );
+	val_check( opacity, number );
 
-	if ( val_float( opacity ) > 65535 || val_float( opacity ) < 0 )
+	if ( val_number( opacity ) > 65535 || val_number( opacity ) < 0 )
 		return val_null;
 
 	wand = WAND( magick );
 	t = PIXEL( target );
 
-	return alloc_bool( MagickPaintTransparentImage( wand, t, val_float( opacity ), val_float( fuzz ) ) );
+	return alloc_bool( MagickPaintTransparentImage( wand, t, val_number( opacity ), val_number( fuzz ) ) );
 }
 
 /*
@@ -2333,11 +2317,11 @@ value nMagick_radial_blur( value magick, value angle )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( angle, float );
+	val_check( angle, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickRadialBlurImage( wand, val_float( angle ) ) );
+	return alloc_bool( MagickRadialBlurImage( wand, val_number( angle ) ) );
 }
 
 /*
@@ -2393,11 +2377,11 @@ value nMagick_reduce_noise( value magick, value radius )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( radius, float );
+	val_check( radius, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickReduceNoiseImage( wand , val_float( radius ) ) );
+	return alloc_bool( MagickReduceNoiseImage( wand , val_number( radius ) ) );
 }
 
 /*
@@ -2442,11 +2426,11 @@ value nMagick_resample( value magick, value x, value y, value filter, value blur
 	val_check( x, int );
 	val_check( y, int );
 	val_check( filter, int );
-	val_check( blur, float );
+	val_check( blur, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickResampleImage( wand, val_int( x ), val_int( y ), val_int( filter ), val_float( blur ) ) );
+	return alloc_bool( MagickResampleImage( wand, val_int( x ), val_int( y ), val_int( filter ), val_number( blur ) ) );
 }
 
 /*
@@ -2481,12 +2465,12 @@ value nMagick_rotate( value magick, value background, value degrees )
 
 	val_check_kind( magick, k_wand );
 	val_check_kind( background, k_pixel );
-	val_check( degrees, float );
+	val_check( degrees, number );
 
 	wand = WAND( magick );
 	bg = PIXEL( background );
 
-	return alloc_bool( MagickRotateImage( wand, bg, val_float( degrees ) ) );
+	return alloc_bool( MagickRotateImage( wand, bg, val_number( degrees ) ) );
 }
 
 /*
@@ -2540,11 +2524,11 @@ value nMagick_solarize( value magick, value threshold )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( threshold, float );
+	val_check( threshold, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickSolarizeImage( wand, val_float( threshold ) ) );
+	return alloc_bool( MagickSolarizeImage( wand, val_number( threshold ) ) );
 }
 
 /*
@@ -2594,12 +2578,12 @@ value nMagick_shine( value magick, value gray, value azimuth, value elevation )
 
 	val_check_kind( magick, k_wand );
 	val_check( gray, bool );
-	val_check( azimuth, float );
-	val_check( elevation, float );
+	val_check( azimuth, number );
+	val_check( elevation, number );
 
 	wand = WAND( magick );
 
-	alloc_bool( MagickShadeImage( wand, val_bool( gray ), val_float( azimuth ), val_float( elevation ) ) );
+	alloc_bool( MagickShadeImage( wand, val_bool( gray ), val_number( azimuth ), val_number( elevation ) ) );
 }
 
 /*
@@ -2614,13 +2598,13 @@ value nMagick_shadow( value magick, value radius, value sigma, value point )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( radius, float );
-	val_check( sigma, float );
+	val_check( radius, number );
+	val_check( sigma, number );
 	val_check( point, object );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickShadowImage( wand, val_float( radius ), val_float( sigma ), val_int( val_field( point, val_id( "x" ) ) ), val_int( val_field( point, val_id( "y" ) ) ) ) );
+	return alloc_bool( MagickShadowImage( wand, val_number( radius ), val_number( sigma ), val_int( val_field( point, val_id( "x" ) ) ), val_int( val_field( point, val_id( "y" ) ) ) ) );
 }
 
 /*
@@ -2637,12 +2621,12 @@ value nMagick_sharpen( value magick, value radius, value sigma )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( radius, float );
-	val_check( sigma, float );
+	val_check( radius, number );
+	val_check( sigma, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickSharpenImage( wand, val_float( radius ), val_float( sigma ) ) );
+	return alloc_bool( MagickSharpenImage( wand, val_number( radius ), val_number( sigma ) ) );
 }
 
 /*
@@ -2685,13 +2669,13 @@ value nMagick_shear( value magick, value background, value x, value y )
 
 	val_check_kind( magick, k_wand );
 	val_check_kind( background, k_pixel );
-	val_check( x, int );
-	val_check( y, int );
+	val_check( x, number );
+	val_check( y, number );
 
 	wand = WAND( magick );
 	bg = PIXEL( background );
 
-	return alloc_bool( MagickShearImage( wand,  bg, val_float( x ), val_float( y ) ) );
+	return alloc_bool( MagickShearImage( wand,  bg, val_number( x ), val_number( y ) ) );
 }
 
 /*
@@ -2741,11 +2725,11 @@ value nMagick_swirl( value magick, value degrees )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( degrees, float );
+	val_check( degrees, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickSwirlImage( wand, val_float( degrees ) ) );
+	return alloc_bool( MagickSwirlImage( wand, val_number( degrees ) ) );
 }
 
 /*
@@ -2777,11 +2761,11 @@ value nMagick_threshold( value magick, value threshold )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( threshold, float );
+	val_check( threshold, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickThresholdImage( wand, val_float( threshold ) ) );
+	return alloc_bool( MagickThresholdImage( wand, val_number( threshold ) ) );
 }
 
 /*
@@ -2840,14 +2824,32 @@ value nMagick_wave( value magick, value amplitude, value length )
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
-	val_check( amplitude, float );
-	val_check( length, float );
+	val_check( amplitude, number );
+	val_check( length, number );
 
 	wand = WAND( magick );
 
-	return alloc_bool( MagickWaveImage( wand, val_float( amplitude ), val_float( length ) ) );
+	return alloc_bool( MagickWaveImage( wand, val_number( amplitude ), val_number( length ) ) );
 }
 
+/*
+@description	Like MagickThresholdImage() but forces all pixels below the threshold 
+				into white while leaving all pixels above the threshold unchanged.
+@param			Threshold	The PixelWand.
+*/
+value nMagick_white_thres( value magick, value threshold )
+{
+	MagickWand *wand;
+	PixelWand *th;
+
+	val_check_kind( magick, k_wand );
+	val_check_kind( threshold, k_pixel );
+	
+	wand = WAND( magick );
+	th = PIXEL( threshold );
+	
+	return alloc_bool( MagickWhiteThresholdImage( wand, th ) );
+}
 
 value nMagick_matte_flood_fill( value *args, int nargs )
 {
@@ -2871,8 +2873,8 @@ value nMagick_matte_flood_fill( value *args, int nargs )
 	y		= args[5];
 
 	val_check_kind( magick, k_wand );
-	val_check( alpha, float );
-	val_check( fuzz, float );
+	val_check( alpha, number );
+	val_check( fuzz, number );
 	val_check_kind( color, k_pixel );
 	val_check( x, int );
 	val_check( y, int );
@@ -2880,14 +2882,83 @@ value nMagick_matte_flood_fill( value *args, int nargs )
 	wand = WAND( magick );
 	c = PIXEL( color );
 
-	return alloc_bool( MagickMatteFloodfillImage( wand, val_float( alpha ), val_float( fuzz ), c, val_int( x ), val_int( y ) ) );
+	return alloc_bool( MagickMatteFloodfillImage( wand, val_number( alpha ), val_number( fuzz ), c, val_int( x ), val_int( y ) ) );
+}
+
+#define minValue(a,b) (((a)<(b)) ? (a) : (b))
+value nMagick_iterate_pixels( value *args, int nargs )
+{
+	value magick;
+	value f;
+	value regionX;
+	value regionY;
+	value regionW;
+	value regionH;
+	
+	MagickWand *wand;
+	PixelIterator *iterator;
+	int x, y, w, h, width, rX, rY, rW, rH;
+	MagickPixelPacket pixel;
+	PixelWand **pixels; 
+
+	if (nargs !=6 ) return alloc_bool( false );
+
+	magick	= args[0];
+	f		= args[1];
+	regionX	= args[2];
+	regionY	= args[3];
+	regionW	= args[4];
+	regionH	= args[5];
+
+	val_check_kind( magick, k_wand );
+	val_check_function( f, 3 );
+	val_check( regionX, int );
+	val_check( regionY, int );
+	val_check( regionW, int );
+	val_check( regionH, int );
+
+	wand = WAND( magick );
+	rX = val_int( regionX );
+	rY = val_int( regionY );
+	rW = val_int( regionW );
+	rH = val_int( regionH );
+
+	if (rW < 0) rW = MagickGetImageWidth(wand) - rX;
+	if (rH < 0) rH = MagickGetImageHeight(wand) - rY;
+	
+	iterator = NewPixelIterator(wand);
+	for (y = 0; y < minValue(rY + rH, MagickGetImageHeight(wand)); y++) 
+	{ 
+		pixels = PixelGetNextIteratorRow(iterator, &width); 
+		if (pixels == (PixelWand **)NULL) break; 
+		if (y >= rY)
+		{
+			for (x = rX; x < minValue(rX + rW, width); x++) 
+			{
+				val_call3( f, alloc_float(x), alloc_float(y), alloc_abstract( k_pixel, pixels[x] ) );
+			} 
+		}
+	} 
+	DestroyPixelIterator(iterator);	
+	
+	return alloc_bool( true );
+}
+
+value nMagick_clone( value magick )
+{
+	MagickWand *wand;
+
+	val_check_kind( magick, k_wand );
+
+	wand = WAND( magick );
+
+	return alloc_abstract( k_wand, CloneMagickWand( wand ) );
 }
 
 DEFINE_PRIM(nMagick_close,1);
 DEFINE_PRIM(nMagick_init,0);
 DEFINE_PRIM(nMagick_load,2);
 DEFINE_PRIM(nMagick_save,2);
-
 DEFINE_PRIM(nMagick_resize,3);
 DEFINE_PRIM(nMagick_relinquish_memory,1);
 DEFINE_PRIM(nMagick_adaptive_sharpen,3);
@@ -3015,5 +3086,7 @@ DEFINE_PRIM(nMagick_thumbnail,3);
 DEFINE_PRIM(nMagick_tint,3);
 DEFINE_PRIM(nMagick_wave,3);
 DEFINE_PRIM(set_exception_handler,1);
-DEFINE_PRIM(nMagick_white_threshold,2);
+DEFINE_PRIM(nMagick_white_thres,2);
+DEFINE_PRIM(nMagick_clone,1);
 DEFINE_PRIM_MULT(nMagick_matte_flood_fill);
+DEFINE_PRIM_MULT(nMagick_iterate_pixels);

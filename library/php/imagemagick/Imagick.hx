@@ -4,63 +4,63 @@ import haxe.imagemagick.ImagickEnums;
 
 @:native("Imagick") extern class Imagick
 {
-	public function getCompositeOperator(op:CompositeOperator) : Int
+	public static function getCompositeOperator(op:CompositeOperator) : Int
 	{
 		return switch (op)
 		{
-			case UndefinedCompositeOp:	COMPOSITE_UNDEFINED;
-			case NoCompositeOp:			COMPOSITE_NO;
-			case AddCompositeOp:		COMPOSITE_ADD;
-			case AtopCompositeOp:		COMPOSITE_ATOP;
-			case BlendCompositeOp:		COMPOSITE_BLEND;
-			case BumpmapCompositeOp:	COMPOSITE_BUMPMAP;
-			case ClearCompositeOp:		COMPOSITE_CLEAR;
-			case ColorBurnCompositeOp:	COMPOSITE_COLORBURN;
-			case ColorDodgeCompositeOp:	COMPOSITE_COLORDODGE;
-			case ColorizeCompositeOp:	COMPOSITE_COLORIZE;
-			case CopyBlackCompositeOp:	COMPOSITE_COPYBLACK;
-			case CopyBlueCompositeOp:	COMPOSITE_COPYBLUE;
-			case CopyCompositeOp:		COMPOSITE_COPY;
-			case CopyCyanCompositeOp:	COMPOSITE_COPYCYAN;
-			case CopyGreenCompositeOp:	COMPOSITE_COPYGREEN;
-			case CopyMagentaCompositeOp:COMPOSITE_COPYMAGENTA;
-			case CopyOpacityCompositeOp:COMPOSITE_COPYOPACITY;
-			case CopyRedCompositeOp:	COMPOSITE_COPYRED;
-			case CopyYellowCompositeOp:	COMPOSITE_COPYYELLOW;
-			case DarkenCompositeOp:		COMPOSITE_DARKEN;
-			case DstAtopCompositeOp:	COMPOSITE_DSTATOP;
-			case DstCompositeOp:		COMPOSITE_DST;
-			case DstInCompositeOp:		COMPOSITE_DSTIN;
-			case DstOutCompositeOp:		COMPOSITE_DSTOUT;
-			case DstOverCompositeOp:	COMPOSITE_DSTOVER;
-			case DifferenceCompositeOp:	COMPOSITE_DIFFERENCE;
-			case DisplaceCompositeOp:	COMPOSITE_DISPLACE;
-			case DissolveCompositeOp:	COMPOSITE_DISSOLVE;
-			case ExclusionCompositeOp:	COMPOSITE_EXCLUSION;
-			case HardLightCompositeOp:	COMPOSITE_HARDLIGHT;
-			case HueCompositeOp:		COMPOSITE_HUE;
-			case InCompositeOp:			COMPOSITE_IN;
-			case LightenCompositeOp:	COMPOSITE_LIGHTEN;
-			case LuminizeCompositeOp:	COMPOSITE_LUMINIZE;
-			case MinusCompositeOp:		COMPOSITE_MINUS;
-			case ModulateCompositeOp:	COMPOSITE_MODULATE;
-			case MultiplyCompositeOp:	COMPOSITE_MULTIPLY;
-			case OutCompositeOp:		COMPOSITE_OUT;
-			case OverCompositeOp:		COMPOSITE_OVER;
-			case OverlayCompositeOp:	COMPOSITE_OVERLAY;
-			case PlusCompositeOp:		COMPOSITE_PLUS;
-			case ReplaceCompositeOp:	COMPOSITE_REPLACE;
-			case SaturateCompositeOp:	COMPOSITE_SATURATE;
-			case ScreenCompositeOp:		COMPOSITE_SCREEN;
-			case SoftLightCompositeOp:	COMPOSITE_SOFTLIGHT;
-			case SrcAtopCompositeOp:	COMPOSITE_SRCATOP;
-			case SrcCompositeOp:		COMPOSITE_SRC;
-			case SrcInCompositeOp:		COMPOSITE_SRCIN;
-			case SrcOutCompositeOp:		COMPOSITE_SRCOUT;
-			case SrcOverCompositeOp:	COMPOSITE_SRCOVER;
-			case SubtractCompositeOp:	COMPOSITE_SUBTRACT;
-			case ThresholdCompositeOp:	COMPOSITE_THRESHOLD;
-			case XorCompositeOp:		COMPOSITE_XOR;
+			case UndefinedCompositeOp:	untyped __php__("imagick::COMPOSITE_UNDEFINED");
+			case NoCompositeOp:			untyped __php__("imagick::COMPOSITE_NO");
+			case AddCompositeOp:		untyped __php__("imagick::COMPOSITE_ADD");
+			case AtopCompositeOp:		untyped __php__("imagick::COMPOSITE_ATOP");
+			case BlendCompositeOp:		untyped __php__("imagick::COMPOSITE_BLEND");
+			case BumpmapCompositeOp:	untyped __php__("imagick::COMPOSITE_BUMPMAP");
+			case ClearCompositeOp:		untyped __php__("imagick::COMPOSITE_CLEAR");
+			case ColorBurnCompositeOp:	untyped __php__("imagick::COMPOSITE_COLORBURN");
+			case ColorDodgeCompositeOp:	untyped __php__("imagick::COMPOSITE_COLORDODGE");
+			case ColorizeCompositeOp:	untyped __php__("imagick::COMPOSITE_COLORIZE");
+			case CopyBlackCompositeOp:	untyped __php__("imagick::COMPOSITE_COPYBLACK");
+			case CopyBlueCompositeOp:	untyped __php__("imagick::COMPOSITE_COPYBLUE");
+			case CopyCompositeOp:		untyped __php__("imagick::COMPOSITE_COPY");
+			case CopyCyanCompositeOp:	untyped __php__("imagick::COMPOSITE_COPYCYAN");
+			case CopyGreenCompositeOp:	untyped __php__("imagick::COMPOSITE_COPYGREEN");
+			case CopyMagentaCompositeOp:untyped __php__("imagick::COMPOSITE_COPYMAGENTA");
+			case CopyOpacityCompositeOp:untyped __php__("imagick::COMPOSITE_COPYOPACITY");
+			case CopyRedCompositeOp:	untyped __php__("imagick::COMPOSITE_COPYRED");
+			case CopyYellowCompositeOp:	untyped __php__("imagick::COMPOSITE_COPYYELLOW");
+			case DarkenCompositeOp:		untyped __php__("imagick::COMPOSITE_DARKEN");
+			case DstAtopCompositeOp:	untyped __php__("imagick::COMPOSITE_DSTATOP");
+			case DstCompositeOp:		untyped __php__("imagick::COMPOSITE_DST");
+			case DstInCompositeOp:		untyped __php__("imagick::COMPOSITE_DSTIN");
+			case DstOutCompositeOp:		untyped __php__("imagick::COMPOSITE_DSTOUT");
+			case DstOverCompositeOp:	untyped __php__("imagick::COMPOSITE_DSTOVER");
+			case DifferenceCompositeOp:	untyped __php__("imagick::COMPOSITE_DIFFERENCE");
+			case DisplaceCompositeOp:	untyped __php__("imagick::COMPOSITE_DISPLACE");
+			case DissolveCompositeOp:	untyped __php__("imagick::COMPOSITE_DISSOLVE");
+			case ExclusionCompositeOp:	untyped __php__("imagick::COMPOSITE_EXCLUSION");
+			case HardLightCompositeOp:	untyped __php__("imagick::COMPOSITE_HARDLIGHT");
+			case HueCompositeOp:		untyped __php__("imagick::COMPOSITE_HUE");
+			case InCompositeOp:			untyped __php__("imagick::COMPOSITE_IN");
+			case LightenCompositeOp:	untyped __php__("imagick::COMPOSITE_LIGHTEN");
+			case LuminizeCompositeOp:	untyped __php__("imagick::COMPOSITE_LUMINIZE");
+			case MinusCompositeOp:		untyped __php__("imagick::COMPOSITE_MINUS");
+			case ModulateCompositeOp:	untyped __php__("imagick::COMPOSITE_MODULATE");
+			case MultiplyCompositeOp:	untyped __php__("imagick::COMPOSITE_MULTIPLY");
+			case OutCompositeOp:		untyped __php__("imagick::COMPOSITE_OUT");
+			case OverCompositeOp:		untyped __php__("imagick::COMPOSITE_OVER");
+			case OverlayCompositeOp:	untyped __php__("imagick::COMPOSITE_OVERLAY");
+			case PlusCompositeOp:		untyped __php__("imagick::COMPOSITE_PLUS");
+			case ReplaceCompositeOp:	untyped __php__("imagick::COMPOSITE_REPLACE");
+			case SaturateCompositeOp:	untyped __php__("imagick::COMPOSITE_SATURATE");
+			case ScreenCompositeOp:		untyped __php__("imagick::COMPOSITE_SCREEN");
+			case SoftLightCompositeOp:	untyped __php__("imagick::COMPOSITE_SOFTLIGHT");
+			case SrcAtopCompositeOp:	untyped __php__("imagick::COMPOSITE_SRCATOP");
+			case SrcCompositeOp:		untyped __php__("imagick::COMPOSITE_SRC");
+			case SrcInCompositeOp:		untyped __php__("imagick::COMPOSITE_SRCIN");
+			case SrcOutCompositeOp:		untyped __php__("imagick::COMPOSITE_SRCOUT");
+			case SrcOverCompositeOp:	untyped __php__("imagick::COMPOSITE_SRCOVER");
+			case SubtractCompositeOp:	untyped __php__("imagick::COMPOSITE_SUBTRACT");
+			case ThresholdCompositeOp:	untyped __php__("imagick::COMPOSITE_THRESHOLD");
+			case XorCompositeOp:		untyped __php__("imagick::COMPOSITE_XOR");
 		}
 	}
 	
@@ -139,275 +139,6 @@ import haxe.imagemagick.ImagickEnums;
 	 */
 	public static inline var DISPOSE_PREVIOUS(DISPOSE_PREVIOUS_getter, null) : Int; private static inline function DISPOSE_PREVIOUS_getter() : Int { return untyped __php__("imagick::DISPOSE_PREVIOUS"); }
 
-	/**
-	 * The default composite operator 
-	 */
-	public static inline var COMPOSITE_DEFAULT(COMPOSITE_DEFAULT_getter, null) : Int; private static inline function COMPOSITE_DEFAULT_getter() : Int { return untyped __php__("imagick::COMPOSITE_DEFAULT"); }
-
-	/**
-	 * Undefined composite operator 
-	 */
-	public static inline var COMPOSITE_UNDEFINED(COMPOSITE_UNDEFINED_getter, null) : Int; private static inline function COMPOSITE_UNDEFINED_getter() : Int { return untyped __php__("imagick::COMPOSITE_UNDEFINED"); }
-
-	/**
-	 * No composite operator defined 
-	 */
-	public static inline var COMPOSITE_NO(COMPOSITE_NO_getter, null) : Int; private static inline function COMPOSITE_NO_getter() : Int { return untyped __php__("imagick::COMPOSITE_NO"); }
-
-	/**
-	 * The result of image + image 
-	 */
-	public static inline var COMPOSITE_ADD(COMPOSITE_ADD_getter, null) : Int; private static inline function COMPOSITE_ADD_getter() : Int { return untyped __php__("imagick::COMPOSITE_ADD"); }
-
-	/**
-	 * The result is the same shape as image, with composite image obscuring image where the image shapes overlap 
-	 */
-	public static inline var COMPOSITE_ATOP(COMPOSITE_ATOP_getter, null) : Int; private static inline function COMPOSITE_ATOP_getter() : Int { return untyped __php__("imagick::COMPOSITE_ATOP"); }
-
-	/**
-	 * Blends the image 
-	 */
-	public static inline var COMPOSITE_BLEND(COMPOSITE_BLEND_getter, null) : Int; private static inline function COMPOSITE_BLEND_getter() : Int { return untyped __php__("imagick::COMPOSITE_BLEND"); }
-
-	/**
-	 * The same as COMPOSITE_MULTIPLY, except the source is converted to grayscale first. 
-	 */
-	public static inline var COMPOSITE_BUMPMAP(COMPOSITE_BUMPMAP_getter, null) : Int; private static inline function COMPOSITE_BUMPMAP_getter() : Int { return untyped __php__("imagick::COMPOSITE_BUMPMAP"); }
-
-	/**
-	 * Makes the target image transparent 
-	 */
-	public static inline var COMPOSITE_CLEAR(COMPOSITE_CLEAR_getter, null) : Int; private static inline function COMPOSITE_CLEAR_getter() : Int { return untyped __php__("imagick::COMPOSITE_CLEAR"); }
-
-	/**
-	 * Darkens the destination image to reflect the source image 
-	 */
-	public static inline var COMPOSITE_COLORBURN(COMPOSITE_COLORBURN_getter, null) : Int; private static inline function COMPOSITE_COLORBURN_getter() : Int { return untyped __php__("imagick::COMPOSITE_COLORBURN"); }
-
-	/**
-	 * Brightens the destination image to reflect the source image 
-	 */
-	public static inline var COMPOSITE_COLORDODGE(COMPOSITE_COLORDODGE_getter, null) : Int; private static inline function COMPOSITE_COLORDODGE_getter() : Int { return untyped __php__("imagick::COMPOSITE_COLORDODGE"); }
-
-	/**
-	 * Colorizes the target image using the composite image 
-	 */
-	public static inline var COMPOSITE_COLORIZE(COMPOSITE_COLORIZE_getter, null) : Int; private static inline function COMPOSITE_COLORIZE_getter() : Int { return untyped __php__("imagick::COMPOSITE_COLORIZE"); }
-
-	/**
-	 * Copies black from the source to target 
-	 */
-	public static inline var COMPOSITE_COPYBLACK(COMPOSITE_COPYBLACK_getter, null) : Int; private static inline function COMPOSITE_COPYBLACK_getter() : Int { return untyped __php__("imagick::COMPOSITE_COPYBLACK"); }
-
-	/**
-	 * Copies blue from the source to target 
-	 */
-	public static inline var COMPOSITE_COPYBLUE(COMPOSITE_COPYBLUE_getter, null) : Int; private static inline function COMPOSITE_COPYBLUE_getter() : Int { return untyped __php__("imagick::COMPOSITE_COPYBLUE"); }
-
-	/**
-	 * Copies the source image on the target image 
-	 */
-	public static inline var COMPOSITE_COPY(COMPOSITE_COPY_getter, null) : Int; private static inline function COMPOSITE_COPY_getter() : Int { return untyped __php__("imagick::COMPOSITE_COPY"); }
-
-	/**
-	 * Copies cyan from the source to target 
-	 */
-	public static inline var COMPOSITE_COPYCYAN(COMPOSITE_COPYCYAN_getter, null) : Int; private static inline function COMPOSITE_COPYCYAN_getter() : Int { return untyped __php__("imagick::COMPOSITE_COPYCYAN"); }
-
-	/**
-	 * Copies green from the source to target 
-	 */
-	public static inline var COMPOSITE_COPYGREEN(COMPOSITE_COPYGREEN_getter, null) : Int; private static inline function COMPOSITE_COPYGREEN_getter() : Int { return untyped __php__("imagick::COMPOSITE_COPYGREEN"); }
-
-	/**
-	 * Copies magenta from the source to target 
-	 */
-	public static inline var COMPOSITE_COPYMAGENTA(COMPOSITE_COPYMAGENTA_getter, null) : Int; private static inline function COMPOSITE_COPYMAGENTA_getter() : Int { return untyped __php__("imagick::COMPOSITE_COPYMAGENTA"); }
-
-	/**
-	 * Copies opacity from the source to target 
-	 */
-	public static inline var COMPOSITE_COPYOPACITY(COMPOSITE_COPYOPACITY_getter, null) : Int; private static inline function COMPOSITE_COPYOPACITY_getter() : Int { return untyped __php__("imagick::COMPOSITE_COPYOPACITY"); }
-
-	/**
-	 * Copies red from the source to target 
-	 */
-	public static inline var COMPOSITE_COPYRED(COMPOSITE_COPYRED_getter, null) : Int; private static inline function COMPOSITE_COPYRED_getter() : Int { return untyped __php__("imagick::COMPOSITE_COPYRED"); }
-
-	/**
-	 * Copies yellow from the source to target 
-	 */
-	public static inline var COMPOSITE_COPYYELLOW(COMPOSITE_COPYYELLOW_getter, null) : Int; private static inline function COMPOSITE_COPYYELLOW_getter() : Int { return untyped __php__("imagick::COMPOSITE_COPYYELLOW"); }
-
-	/**
-	 * Darkens the target image 
-	 */
-	public static inline var COMPOSITE_DARKEN(COMPOSITE_DARKEN_getter, null) : Int; private static inline function COMPOSITE_DARKEN_getter() : Int { return untyped __php__("imagick::COMPOSITE_DARKEN"); }
-
-	/**
-	 * The part of the destination lying inside of the source is composited over the source and replaces the destination 
-	 */
-	public static inline var COMPOSITE_DSTATOP(COMPOSITE_DSTATOP_getter, null) : Int; private static inline function COMPOSITE_DSTATOP_getter() : Int { return untyped __php__("imagick::COMPOSITE_DSTATOP"); }
-
-	/**
-	 * The target is left untouched 
-	 */
-	public static inline var COMPOSITE_DST(COMPOSITE_DST_getter, null) : Int; private static inline function COMPOSITE_DST_getter() : Int { return untyped __php__("imagick::COMPOSITE_DST"); }
-
-	/**
-	 * The parts inside the source replace the target 
-	 */
-	public static inline var COMPOSITE_DSTIN(COMPOSITE_DSTIN_getter, null) : Int; private static inline function COMPOSITE_DSTIN_getter() : Int { return untyped __php__("imagick::COMPOSITE_DSTIN"); }
-
-	/**
-	 * The parts outside the source replace the target 
-	 */
-	public static inline var COMPOSITE_DSTOUT(COMPOSITE_DSTOUT_getter, null) : Int; private static inline function COMPOSITE_DSTOUT_getter() : Int { return untyped __php__("imagick::COMPOSITE_DSTOUT"); }
-
-	/**
-	 * Target replaces the source 
-	 */
-	public static inline var COMPOSITE_DSTOVER(COMPOSITE_DSTOVER_getter, null) : Int; private static inline function COMPOSITE_DSTOVER_getter() : Int { return untyped __php__("imagick::COMPOSITE_DSTOVER"); }
-
-	/**
-	 * Subtracts the darker of the two constituent colors from the lighter 
-	 */
-	public static inline var COMPOSITE_DIFFERENCE(COMPOSITE_DIFFERENCE_getter, null) : Int; private static inline function COMPOSITE_DIFFERENCE_getter() : Int { return untyped __php__("imagick::COMPOSITE_DIFFERENCE"); }
-
-	/**
-	 * Shifts target image pixels as defined by the source 
-	 */
-	public static inline var COMPOSITE_DISPLACE(COMPOSITE_DISPLACE_getter, null) : Int; private static inline function COMPOSITE_DISPLACE_getter() : Int { return untyped __php__("imagick::COMPOSITE_DISPLACE"); }
-
-	/**
-	 * Dissolves the source in to the target 
-	 */
-	public static inline var COMPOSITE_DISSOLVE(COMPOSITE_DISSOLVE_getter, null) : Int; private static inline function COMPOSITE_DISSOLVE_getter() : Int { return untyped __php__("imagick::COMPOSITE_DISSOLVE"); }
-
-	/**
-	 * Produces an effect similar to that of imagick::COMPOSITE_DIFFERENCE, but appears as lower contrast 
-	 */
-	public static inline var COMPOSITE_EXCLUSION(COMPOSITE_EXCLUSION_getter, null) : Int; private static inline function COMPOSITE_EXCLUSION_getter() : Int { return untyped __php__("imagick::COMPOSITE_EXCLUSION"); }
-
-	/**
-	 * Multiplies or screens the colors, dependent on the source color value 
-	 */
-	public static inline var COMPOSITE_HARDLIGHT(COMPOSITE_HARDLIGHT_getter, null) : Int; private static inline function COMPOSITE_HARDLIGHT_getter() : Int { return untyped __php__("imagick::COMPOSITE_HARDLIGHT"); }
-
-	/**
-	 * Modifies the hue of the target as defined by source 
-	 */
-	public static inline var COMPOSITE_HUE(COMPOSITE_HUE_getter, null) : Int; private static inline function COMPOSITE_HUE_getter() : Int { return untyped __php__("imagick::COMPOSITE_HUE"); }
-
-	/**
-	 * Composites source into the target 
-	 */
-	public static inline var COMPOSITE_IN(COMPOSITE_IN_getter, null) : Int; private static inline function COMPOSITE_IN_getter() : Int { return untyped __php__("imagick::COMPOSITE_IN"); }
-
-	/**
-	 * Lightens the target as defined by source 
-	 */
-	public static inline var COMPOSITE_LIGHTEN(COMPOSITE_LIGHTEN_getter, null) : Int; private static inline function COMPOSITE_LIGHTEN_getter() : Int { return untyped __php__("imagick::COMPOSITE_LIGHTEN"); }
-
-	/**
-	 * Luminizes the target as defined by source 
-	 */
-	public static inline var COMPOSITE_LUMINIZE(COMPOSITE_LUMINIZE_getter, null) : Int; private static inline function COMPOSITE_LUMINIZE_getter() : Int { return untyped __php__("imagick::COMPOSITE_LUMINIZE"); }
-
-	/**
-	 * Substracts the source from the target 
-	 */
-	public static inline var COMPOSITE_MINUS(COMPOSITE_MINUS_getter, null) : Int; private static inline function COMPOSITE_MINUS_getter() : Int { return untyped __php__("imagick::COMPOSITE_MINUS"); }
-
-	/**
-	 * Modulates the target brightness, saturation and hue as defined by source 
-	 */
-	public static inline var COMPOSITE_MODULATE(COMPOSITE_MODULATE_getter, null) : Int; private static inline function COMPOSITE_MODULATE_getter() : Int { return untyped __php__("imagick::COMPOSITE_MODULATE"); }
-
-	/**
-	 * Multiplies the target to the source 
-	 */
-	public static inline var COMPOSITE_MULTIPLY(COMPOSITE_MULTIPLY_getter, null) : Int; private static inline function COMPOSITE_MULTIPLY_getter() : Int { return untyped __php__("imagick::COMPOSITE_MULTIPLY"); }
-
-	/**
-	 * Composites outer parts of the source on the target 
-	 */
-	public static inline var COMPOSITE_OUT(COMPOSITE_OUT_getter, null) : Int; private static inline function COMPOSITE_OUT_getter() : Int { return untyped __php__("imagick::COMPOSITE_OUT"); }
-
-	/**
-	 * Composites source over the target 
-	 */
-	public static inline var COMPOSITE_OVER(COMPOSITE_OVER_getter, null) : Int; private static inline function COMPOSITE_OVER_getter() : Int { return untyped __php__("imagick::COMPOSITE_OVER"); }
-
-	/**
-	 * Overlays the source on the target 
-	 */
-	public static inline var COMPOSITE_OVERLAY(COMPOSITE_OVERLAY_getter, null) : Int; private static inline function COMPOSITE_OVERLAY_getter() : Int { return untyped __php__("imagick::COMPOSITE_OVERLAY"); }
-
-	/**
-	 * Adds the source to the target 
-	 */
-	public static inline var COMPOSITE_PLUS(COMPOSITE_PLUS_getter, null) : Int; private static inline function COMPOSITE_PLUS_getter() : Int { return untyped __php__("imagick::COMPOSITE_PLUS"); }
-
-	/**
-	 * Replaces the target with the source 
-	 */
-	public static inline var COMPOSITE_REPLACE(COMPOSITE_REPLACE_getter, null) : Int; private static inline function COMPOSITE_REPLACE_getter() : Int { return untyped __php__("imagick::COMPOSITE_REPLACE"); }
-
-	/**
-	 * Saturates the target as defined by the source 
-	 */
-	public static inline var COMPOSITE_SATURATE(COMPOSITE_SATURATE_getter, null) : Int; private static inline function COMPOSITE_SATURATE_getter() : Int { return untyped __php__("imagick::COMPOSITE_SATURATE"); }
-
-	/**
-	 * The source and destination are complemented and then multiplied and then replace the destination 
-	 */
-	public static inline var COMPOSITE_SCREEN(COMPOSITE_SCREEN_getter, null) : Int; private static inline function COMPOSITE_SCREEN_getter() : Int { return untyped __php__("imagick::COMPOSITE_SCREEN"); }
-
-	/**
-	 * Darkens or lightens the colors, dependent on the source 
-	 */
-	public static inline var COMPOSITE_SOFTLIGHT(COMPOSITE_SOFTLIGHT_getter, null) : Int; private static inline function COMPOSITE_SOFTLIGHT_getter() : Int { return untyped __php__("imagick::COMPOSITE_SOFTLIGHT"); }
-
-	/**
-	 * The part of the source lying inside of the destination is composited onto the destination 
-	 */
-	public static inline var COMPOSITE_SRCATOP(COMPOSITE_SRCATOP_getter, null) : Int; private static inline function COMPOSITE_SRCATOP_getter() : Int { return untyped __php__("imagick::COMPOSITE_SRCATOP"); }
-
-	/**
-	 * The source is copied to the destination 
-	 */
-	public static inline var COMPOSITE_SRC(COMPOSITE_SRC_getter, null) : Int; private static inline function COMPOSITE_SRC_getter() : Int { return untyped __php__("imagick::COMPOSITE_SRC"); }
-
-	/**
-	 * The part of the source lying inside of the destination replaces the destination 
-	 */
-	public static inline var COMPOSITE_SRCIN(COMPOSITE_SRCIN_getter, null) : Int; private static inline function COMPOSITE_SRCIN_getter() : Int { return untyped __php__("imagick::COMPOSITE_SRCIN"); }
-
-	/**
-	 * The part of the source lying outside of the destination replaces the destination 
-	 */
-	public static inline var COMPOSITE_SRCOUT(COMPOSITE_SRCOUT_getter, null) : Int; private static inline function COMPOSITE_SRCOUT_getter() : Int { return untyped __php__("imagick::COMPOSITE_SRCOUT"); }
-
-	/**
-	 * The source replaces the destination 
-	 */
-	public static inline var COMPOSITE_SRCOVER(COMPOSITE_SRCOVER_getter, null) : Int; private static inline function COMPOSITE_SRCOVER_getter() : Int { return untyped __php__("imagick::COMPOSITE_SRCOVER"); }
-
-	/**
-	 * Subtract the colors in the source image from the destination image 
-	 */
-	public static inline var COMPOSITE_SUBTRACT(COMPOSITE_SUBTRACT_getter, null) : Int; private static inline function COMPOSITE_SUBTRACT_getter() : Int { return untyped __php__("imagick::COMPOSITE_SUBTRACT"); }
-
-	/**
-	 * The source is composited on the target as defined by source threshold 
-	 */
-	public static inline var COMPOSITE_THRESHOLD(COMPOSITE_THRESHOLD_getter, null) : Int; private static inline function COMPOSITE_THRESHOLD_getter() : Int { return untyped __php__("imagick::COMPOSITE_THRESHOLD"); }
-
-	/**
-	 * The part of the source that lies outside of the destination is combined with the part of the destination that lies outside of the source 
-	 */
-	public static inline var COMPOSITE_XOR(COMPOSITE_XOR_getter, null) : Int; private static inline function COMPOSITE_XOR_getter() : Int { return untyped __php__("imagick::COMPOSITE_XOR"); }
 	public static inline var MONTAGEMODE_FRAME(MONTAGEMODE_FRAME_getter, null) : Int; private static inline function MONTAGEMODE_FRAME_getter() : Int { return untyped __php__("imagick::MONTAGEMODE_FRAME"); }
 	public static inline var MONTAGEMODE_UNFRAME(MONTAGEMODE_UNFRAME_getter, null) : Int; private static inline function MONTAGEMODE_UNFRAME_getter() : Int { return untyped __php__("imagick::MONTAGEMODE_UNFRAME"); }
 	public static inline var MONTAGEMODE_CONCATENATE(MONTAGEMODE_CONCATENATE_getter, null) : Int; private static inline function MONTAGEMODE_CONCATENATE_getter() : Int { return untyped __php__("imagick::MONTAGEMODE_CONCATENATE"); }
@@ -1440,4 +1171,35 @@ import haxe.imagemagick.ImagickEnums;
 	public function writeImageFile(filehandle:Int/*resource*/) : Bool;
 	public function writeImages(filename:String, adjoin:Bool) : Bool;
 	public function writeImagesFile(filehandle:Int/*resource*/) : Bool;
+	
+	public function iteratePixels(f:Int->Int->ImagickPixel->Void, rx=0, ry=0, rw=-1, rh=-1) : Void
+    {
+        if (rw < 0) rw = getImageWidth() - rx;
+        if (rh < 0) rh = getImageHeight() - ry;
+		
+		var it = getPixelIterator();
+		var y = 0;
+		
+		untyped __php__("
+            foreach ($it as $row => $pixels)
+            {
+                if ($y >= $ry + $rh) break;
+				if ($y >= $ry)
+				{
+					$x = 0;
+					foreach ($pixels as $column => $pixel)
+					{
+						if ($x >= $rx + $rw) break;
+						if ($x >= $rx)
+						{
+							call_user_func_array($f, array($x, $y, $pixel));
+						}
+						$x++;
+					}
+				}
+                $it->syncIterator();
+                $y++;
+            }        
+        ");
+    }	
 }

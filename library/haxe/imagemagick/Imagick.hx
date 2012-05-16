@@ -22,26 +22,24 @@ class Imagick
 	var nimg : NekoImagick;
 	#end
 
-	public function new(?path:String, ?img : #if php PhpImagick #elseif neko NekoImagick #end)
+	public function new(?file:String, ?img : #if php PhpImagick #elseif neko NekoImagick #end)
 	{
 		if (img != null)
 		{
 			#if php
 			pimg = img;
+			if (file != null ) pimg.load(file);
 			#elseif neko
 			nimg = img;
+			if (file != null ) nimg.load(file);
 			#end
 		}
 		else
 		{
 			#if php
-			pimg = new PhpImagick(path);
+			pimg = new PhpImagick(file);
 			#elseif neko
-			nimg = new NekoImagick();
-			if (path != null)
-			{
-				nimg.load(path);
-			}
+			nimg = new NekoImagick(file);
 			#end
 		}
 	}
@@ -52,8 +50,8 @@ class Imagick
 		pimg.clear();
 		pimg.destroy();
 		#elseif neko
-		nimg.close();
-		nimg.Dispose();
+		//nimg.close();
+		//nimg.Dispose();
 		#end
 	}
 	
@@ -118,10 +116,7 @@ class Imagick
 		#if php
 		return new Imagick(null, pimg.clone());
 		#elseif neko
-		var r = new Imagick(null, new NekoImagick());
-		r.newImage(nimg.width, nimg.height, new ImagickPixel("black"));
-		r.composite(this, CompositeOperator.CopyCompositeOp, 0, 0);
-		return r;
+		return new Imagick(null, nimg.clone());
 		#end
 	}
 	
@@ -183,12 +178,21 @@ class Imagick
 		#end
 	}
 	
-	public function crop(x:Int, y:Int, w:Int, h:Int)
+	public function crop(w:Int, h:Int, x:Int, y:Int)
 	{
 		#if php
-		return pimg.cropImage(x, y, w, h);
+		return pimg.cropImage(w, h, x, y);
 		#elseif neko
-		return nimg.crop(x, y, new ImagickPoint(w, h));
+		return nimg.crop(w, h, new ImagickPoint(x, y));
 		#end
 	}
+	
+	public function iteratePixels(f:Int->Int->ImagickPixel->Void, x=0, y=0, w=-1, h=-1)
+    {
+        #if php
+		pimg.iteratePixels(f, x, y, w, h);
+		#elseif neko
+		nimg.iteratePixels(f, x, y, w, h);
+		#end
+    }	
 }
