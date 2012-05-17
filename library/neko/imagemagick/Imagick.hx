@@ -27,7 +27,203 @@
 
 package neko.imagemagick;
 
-import haxe.imagemagick.ImagickEnums;
+enum ImagickNoiseType
+{
+	Uniform;
+	Gaussian;
+	MultiplicativeGaussian;
+	Impulse;
+	Laplacian;
+	Poisson;
+}
+
+enum ImagickEvaluateOperator 
+{
+	Undefined;
+	Add;
+	And;
+	Divide;
+	LeftShift;
+	Max;
+	Min;
+	Multiply;
+	Or;
+	RightShift;
+	Set;
+	Subtract;
+	Xor;
+}
+
+enum ImagickColorSpace
+{	
+	Undefined;
+	RGB;
+	GRAY;
+	Transparent;
+	OHTA;
+	LAB;
+	XYZ;
+	YCbCr;
+	YCC;
+	YIQ;
+	YPbPr;
+	YUV;
+	CMYK;
+	sRGB;
+	HSB;
+	HSL;
+	HWB;
+}
+
+enum ImagickCompositeOperator
+{
+    Undefined;
+    No;
+    ModulusAdd;
+    Atop;
+    Blend;
+    Bumpmap;
+    ChangeMask;
+    Clear;
+    ColorBurn;
+    ColorDodge;
+    Colorize;
+    CopyBlack;
+    CopyBlue;
+    Copy;
+    CopyCyan;
+    CopyGreen;
+    CopyMagenta;
+    CopyOpacity;
+    CopyRed;
+    CopyYellow;
+    Darken;
+    DstAtop;
+    Dst;
+    DstIn;
+    DstOut;
+    DstOver;
+    Difference;
+    Displace;
+    Dissolve;
+    Exclusion;
+    HardLight;
+    Hue;
+    In;
+    Lighten;
+    LinearLight;
+    Luminize;
+    MinusDst;
+    Modulate;
+    Multiply;
+    Out;
+    Over;
+    Overlay;
+    Plus;
+    Replace;
+    Saturate;
+    Screen;
+    SoftLight;
+    SrcAtop;
+    Src;
+    SrcIn;
+    SrcOut;
+    SrcOver;
+    ModulusSubtract;
+    Threshold;
+    Xor;
+    /* These are new operators;added after the above was last sorted.
+     * The list should be re-sorted only when a new library version is
+     * created.
+     */
+    DivideDst;
+    Distort;
+    Blur;
+    PegtopLight;
+    VividLight;
+    PinLight;
+    LinearDodge;
+    LinearBurn;
+    Mathematics;
+    DivideSrc;
+    MinusSrc;
+    DarkenIntensity;
+    LightenIntensity;
+}
+
+enum ImagickCompression
+{
+	Undefined;
+	No;
+	BZip;
+	Fax;
+	Group4;
+	JPEG;
+	LosslessJPEG;
+	LZW;
+	RLE;
+	Zip;
+}
+
+enum ImagickMetric
+{
+	Undefined;
+	MeanAbsoluteError;
+	MeanSquaredError;
+	PeakAbsoluteError;
+	PeakSignalToNoiseRatio;
+	RootMeanSquaredError;
+}
+
+enum ImagickDisposalMethod
+{
+	Unrecognized;
+	None;
+	Background;
+	Previous;
+}
+
+enum ImagickImageType
+{
+	Undefined;
+	Bilevel;
+	Grayscale;
+	GrayscaleMatte;
+	Palette;
+	PaletteMatte;
+	TrueColor;
+	TrueColorMatte;
+	ColorSeparation;
+	ColorSeparationMatte;
+	Optimize;
+}
+
+enum ImagickResolutionUnits
+{
+	Undefined;
+	PixelsPerInch;
+	PixelsPerCentimeter;
+}
+
+enum ImagickFilter
+{
+	Undefined;
+	Point;
+	Box;
+	Triangle;
+	Hermite;
+	Hanning;
+	Hamming;
+	Blackman;
+	Gaussian;
+	Quadratic;
+	Cubic;
+	Catrom;
+	Mitchell;
+	Lanczos;
+	Bessel;
+	Sinc;
+}
 
 class Imagick
 {
@@ -38,14 +234,14 @@ class Imagick
 	public var greenPrimary (getGreenPrimary,setGreenPrimary) : ImagickPoint;
 	public var bluePrimary (getBluePrimary,setBluePrimary) : ImagickPoint;
 	public var borderColor (getBorderColor,setBorderColor) : ImagickPixel;
-	public var composite (getComposite,setComposite) : CompositeOperator;
-	public var compression (getCompression,setCompression) : Compression;
+	public var composite (getComposite,setComposite) : ImagickCompositeOperator;
+	public var compression (getCompression,setCompression) : ImagickCompression;
 	public var depth (getDepth,setDepth) : Int;
 	public var format (getFormat,setFormat) : String;
 	public var gamma (getGamma,setGamma) : Float;
 	public var matte (getMatte,setMatte) : Bool;
 	public var matteColor (getMatteColor,setMatteColor) : ImagickPixel;
-	public var units (getUnits,setUnits) : Units;
+	public var units (getUnits,setUnits) : ImagickResolutionUnits;
 	public var whitePoint (getWhitePoint,setWhitePoint) : ImagickPoint;
 	public var width (getWidth,null) : Int;
 	public var height (getHeight,null) : Int;
@@ -95,613 +291,244 @@ class Imagick
 		nMagick_relinquish_memory( __m );
 	}
 	
-	public function getNoiseType( noiseType : NoiseType ) : Int
+	public static function getNoiseType(noiseType:ImagickNoiseType) : Int
 	{
-		switch ( noiseType )
+		return switch (noiseType)
 		{
-			case UniformNoise:
-				return 1;
-			case GaussianNoise:
-				return 2;
-			case MultiplicativeGaussianNoise:
-				return 3;
-			case ImpulseNoise:
-				return 4;
-			case LaplacianNoise:
-				return 5;
-			default:
-				return 6;
+			case Uniform:					1;
+			case Gaussian:					2;
+			case MultiplicativeGaussian:	3;
+			case Impulse:					4;
+			case Laplacian:					5;
+			default:						6;
 		}
 	}
 	
-	public function getOperator( op : Operator ) : Int
+	public static function getEvaluateOperator(op:ImagickEvaluateOperator) : Int
 	{
-		return switch ( op )
+		return switch (op)
 		{
-			case UndefinedEvaluateOperator:
-				0;
-			case AddEvaluateOperator:
-				1;
-			case AndEvaluateOperator:
-				2;
-			case DivideEvaluateOperator:
-				3;
-			case LeftShiftEvaluateOperator:
-				4;
-			case MaxEvaluateOperator:
-				5;
-			case MinEvaluateOperator:
-				6;
-			case MultiplyEvaluateOperator:
-				7;
-			case OrEvaluateOperator:
-				8;
-			case RightShiftEvaluateOperator:
-				9;
-			case SetEvaluateOperator:
-				10;
-			case SubtractEvaluateOperator:
-				11;
-			default:
-				12;
+			case Undefined:		0;
+			case Add:			1;
+			case And:			2;
+			case Divide:		3;
+			case LeftShift:		4;
+			case Max:			5;
+			case Min:			6;
+			case Multiply:		7;
+			case Or:			8;
+			case RightShift:	9;
+			case Set:			10;
+			case Subtract:		11;
+			default:			12;
 		}
 	}
 	
-	public function getCompositeOperator( op : CompositeOperator ) : Int
+	public static function getColorSpaceInt(cs:ImagickColorSpace) : Int
 	{
-		return switch ( op )
-		{
-			case UndefinedCompositeOp:
-				0;
-			case NoCompositeOp:
-				1;
-			case AddCompositeOp:
-				2;
-			case AtopCompositeOp:
-				3;
-			case BlendCompositeOp:
-				4;
-			case BumpmapCompositeOp:
-				5;
-			case ClearCompositeOp:
-				6;
-			case ColorBurnCompositeOp:
-				7;
-			case ColorDodgeCompositeOp:
-				8;
-			case ColorizeCompositeOp:
-				9;
-			case CopyBlackCompositeOp:
-				10;
-			case CopyBlueCompositeOp:
-				11;
-			case CopyCompositeOp:
-				12;
-			case CopyCyanCompositeOp:
-				13;
-			case CopyGreenCompositeOp:
-				14;
-			case CopyMagentaCompositeOp:
-				15;
-			case CopyOpacityCompositeOp:
-				16;
-			case CopyRedCompositeOp:
-				17;
-			case CopyYellowCompositeOp:
-				18;
-			case DarkenCompositeOp:
-				19;
-			case DstAtopCompositeOp:
-				20;
-			case DstCompositeOp:
-				21;
-			case DstInCompositeOp:
-				22;
-			case DstOutCompositeOp:
-				23;
-			case DstOverCompositeOp:
-				24;
-			case DifferenceCompositeOp:
-				25;
-			case DisplaceCompositeOp:
-				26;
-			case DissolveCompositeOp:
-				27;
-			case ExclusionCompositeOp:
-				28;
-			case HardLightCompositeOp:
-				29;
-			case HueCompositeOp:
-				30;
-			case InCompositeOp:
-				31;
-			case LightenCompositeOp:
-				32;
-			case LuminizeCompositeOp:
-				33;
-			case MinusCompositeOp:
-				34;
-			case ModulateCompositeOp:
-				35;
-			case MultiplyCompositeOp:
-				36;
-			case OutCompositeOp:
-				37;
-			case OverCompositeOp:
-				38;
-			case OverlayCompositeOp:
-				39;
-			case PlusCompositeOp:
-				40;
-			case ReplaceCompositeOp:
-				41;
-			case SaturateCompositeOp:
-				42;
-			case ScreenCompositeOp:
-				43;
-			case SoftLightCompositeOp:
-				44;
-			case SrcAtopCompositeOp:
-				45;
-			case SrcCompositeOp:
-				46;
-			case SrcInCompositeOp:
-				47;
-			case SrcOutCompositeOp:
-				48;
-			case SrcOverCompositeOp:
-				49;
-			case SubtractCompositeOp:
-				50;
-			case ThresholdCompositeOp:
-				51;
-			default:
-				52;
-		}
-	}
-	
-	public function getCompositeOperatorEnum( op : Int ) : CompositeOperator
-	{
-		return switch ( op )
-		{
-			case 0:
-				UndefinedCompositeOp;
-			case 1:
-				NoCompositeOp;
-			case 2:
-				AddCompositeOp;
-			case 3:
-				AtopCompositeOp;
-			case 4:
-				BlendCompositeOp;
-			case 5:
-				BumpmapCompositeOp;
-			case 6:
-				ClearCompositeOp;
-			case 7:
-				ColorBurnCompositeOp;
-			case 8:
-				ColorDodgeCompositeOp;
-			case 9:
-				ColorizeCompositeOp;
-			case 10:
-				CopyBlackCompositeOp;
-			case 11:
-				CopyBlueCompositeOp;
-			case 12:
-				CopyCompositeOp;
-			case 13:
-				CopyCyanCompositeOp;
-			case 14:
-				CopyGreenCompositeOp;
-			case 15:
-				CopyMagentaCompositeOp;
-			case 16:
-				CopyOpacityCompositeOp;
-			case 17:
-				CopyRedCompositeOp;
-			case 18:
-				CopyYellowCompositeOp;
-			case 19:
-				DarkenCompositeOp;
-			case 20:
-				DstAtopCompositeOp;
-			case 21:
-				DstCompositeOp;
-			case 22:
-				DstInCompositeOp;
-			case 23:
-				DstOutCompositeOp;
-			case 24:
-				DstOverCompositeOp;
-			case 25:
-				DifferenceCompositeOp;
-			case 26:
-				DisplaceCompositeOp;
-			case 27:
-				DissolveCompositeOp;
-			case 28:
-				ExclusionCompositeOp;
-			case 29:
-				HardLightCompositeOp;
-			case 30:
-				HueCompositeOp;
-			case 31:
-				InCompositeOp;
-			case 32:
-				LightenCompositeOp;
-			case 33:
-				LuminizeCompositeOp;
-			case 34:
-				MinusCompositeOp;
-			case 35:
-				ModulateCompositeOp;
-			case 36:
-				MultiplyCompositeOp;
-			case 37:
-				OutCompositeOp;
-			case 38:
-				OverCompositeOp;
-			case 39:
-				OverlayCompositeOp;
-			case 40:
-				PlusCompositeOp;
-			case 41:
-				ReplaceCompositeOp;
-			case 42:
-				SaturateCompositeOp;
-			case 43:
-				ScreenCompositeOp;
-			case 44:
-				SoftLightCompositeOp;
-			case 45:
-				SrcAtopCompositeOp;
-			case 46:
-				SrcCompositeOp;
-			case 47:
-				SrcInCompositeOp;
-			case 48:
-				SrcOutCompositeOp;
-			case 49:
-				SrcOverCompositeOp;
-			case 50:
-				SubtractCompositeOp;
-			case 51:
-				ThresholdCompositeOp;
-			default:
-				XorCompositeOp;
-		}
-	}
-	
-	public function getColorSpaceInt( cs : ColorSpace ) : Int
-	{
-		return switch( cs )
+		return switch(cs)
 		{			
-			case RGBColorspace:
-				1;
-			case GRAYColorspace:
-				2;
-			case TransparentColorspace:
-				3;
-			case OHTAColorspace:
-				4;
-			case LABColorspace:
-				5;
-			case XYZColorspace:
-				6;
-			case YCbCrColorspace:
-				7;
-			case YCCColorspace:
-				8;
-			case YIQColorspace:
-				9;
-			case YPbPrColorspace:
-				10;
-			case YUVColorspace:
-				11;
-			case CMYKColorspace:
-				12;
-			case sRGBColorspace:
-				13;
-			case HSBColorspace:
-				14;
-			case HSLColorspace:
-				15;
-			case HWBColorspace:
-				16;
-			default:
-				0;
+			case RGB:				1;
+			case GRAY:				2;
+			case Transparent:		3;
+			case OHTA:				4;
+			case LAB:				5;
+			case XYZ:				6;
+			case YCbCr:				7;
+			case YCC:				8;
+			case YIQ:				9;
+			case YPbPr:				10;
+			case YUV:				11;
+			case CMYK:				12;
+			case sRGB:				13;
+			case HSB:				14;
+			case HSL:				15;
+			case HWB:				16;
+			default:				0;
 		}
 	}
 	
-	public function getColorSpaceEnum( cs : Int ) : ColorSpace
+	public static function getColorSpaceEnum(cs:Int) : ImagickColorSpace
 	{
-		return switch( cs )
+		return switch(cs)
 		{
-			case 1:
-				RGBColorspace;
-			case 2:
-				GRAYColorspace;
-			case 3:
-				TransparentColorspace;
-			case 4:
-				OHTAColorspace;
-			case 5:
-				LABColorspace;
-			case 6:
-				XYZColorspace;
-			case 7:
-				YCbCrColorspace;
-			case 8:
-				YCCColorspace;
-			case 9:
-				YIQColorspace;
-			case 10:
-				YPbPrColorspace;
-			case 11:
-				YUVColorspace;
-			case 12:
-				CMYKColorspace;
-			case 13:
-				sRGBColorspace;
-			case 14:
-				HSBColorspace;
-			case 15:
-				HSLColorspace;
-			case 16:
-				HWBColorspace;
-			default:
-				UndefinedColorspace;
+			case 1:		ImagickColorSpace.RGB;
+			case 2:		ImagickColorSpace.GRAY;
+			case 3:		ImagickColorSpace.Transparent;
+			case 4:		ImagickColorSpace.OHTA;
+			case 5:		ImagickColorSpace.LAB;
+			case 6:		ImagickColorSpace.XYZ;
+			case 7:		ImagickColorSpace.YCbCr;
+			case 8:		ImagickColorSpace.YCC;
+			case 9:		ImagickColorSpace.YIQ;
+			case 10:	ImagickColorSpace.YPbPr;
+			case 11:	ImagickColorSpace.YUV;
+			case 12:	ImagickColorSpace.CMYK;
+			case 13:	ImagickColorSpace.sRGB;
+			case 14:	ImagickColorSpace.HSB;
+			case 15:	ImagickColorSpace.HSL;
+			case 16:	ImagickColorSpace.HWB;
+			default:	ImagickColorSpace.Undefined;
 		}
 	}
 	
-	public function getCompressionId( c : Compression ) : Int
+	public static function getCompressionId(c:ImagickCompression) : Int
 	{
-		return switch( c )
+		return switch(c)
 		{
-			case UndefinedCompression:
-				0;
-			case NoCompression:
-				1;
-			case BZipCompression:
-				2;
-			case FaxCompression:
-				3;
-			case Group4Compression:
-				4;
-			case JPEGCompression:
-				5;
-			case LosslessJPEGCompression:
-				7;
-			case LZWCompression:
-				8;
-			case RLECompression:
-				9;
-			default:
-				10;
+			case Undefined:		0;
+			case No:			1;
+			case BZip:			2;
+			case Fax:			3;
+			case Group4:		4;
+			case JPEG:			5;
+			case LosslessJPEG:	7;
+			case LZW:			8;
+			case RLE:			9;
+			default:			10;
 		}
 	}
 	
-	public function getCompressionEnum( c : Int ) : Compression
+	public static function getCompressionEnum(c:Int) : ImagickCompression
 	{
-		return switch( c )
+		return switch(c)
 		{
-			case 0:
-				UndefinedCompression;
-			case 1:
-				NoCompression;
-			case 2:
-				BZipCompression;
-			case 3:
-				FaxCompression;
-			case 4:
-				Group4Compression;
-			case 5:
-				JPEGCompression;
-			case 7:
-				LosslessJPEGCompression;
-			case 8:
-				LZWCompression;
-			case 9:
-				RLECompression;
-			default:
-				ZipCompression;
+			case 0:	ImagickCompression.Undefined;
+			case 1:	ImagickCompression.No;
+			case 2:	ImagickCompression.BZip;
+			case 3:	ImagickCompression.Fax;
+			case 4:	ImagickCompression.Group4;
+			case 5:	ImagickCompression.JPEG;
+			case 7:	ImagickCompression.LosslessJPEG;
+			case 8:	ImagickCompression.LZW;
+			case 9:	ImagickCompression.RLE;
+			default:ImagickCompression.Zip;
 		}
 	}
 	
-	public function getMetricId( c : Metric ) : Int
+	public static function getMetricId(c:ImagickMetric) : Int
 	{
-		return switch( c )
+		return switch(c)
 		{
-			case UndefinedMetric:
-				0;
-			case MeanAbsoluteErrorMetric:
-				1;
-			case MeanSquaredErrorMetric:
-				2;
-			case PeakAbsoluteErrorMetric:
-				3;
-			case PeakSignalToNoiseRatioMetric:
-				4;
-			default:
-				5;
+			case Undefined:				0;
+			case MeanAbsoluteError:		1;
+			case MeanSquaredError:		2;
+			case PeakAbsoluteError:		3;
+			case PeakSignalToNoiseRatio:4;
+			default:					5;
 		}
 	}
 	
-	public function getDisposalMethodEnum( d : Int ) : DisposalMethod
+	public static function getDisposalMethodEnum(d:Int) : ImagickDisposalMethod
 	{
-		return switch( d )
+		return switch(d)
 		{
-			case 1:
-				NoneDispose;
-			case 2:
-				BackgroundDispose;
-			case 3:
-				PreviousDispose;
-			default:
-				UnrecognizedDispose;
+			case 1:		ImagickDisposalMethod.None;
+			case 2:		ImagickDisposalMethod.Background;
+			case 3:		ImagickDisposalMethod.Previous;
+			default:	ImagickDisposalMethod.Unrecognized;
 		}
 	}
 	
-	public function getImageTypeId( t : ImageType ) : Int
+	public static function getImageTypeId(t:ImagickImageType) : Int
 	{
-		return switch( t )
+		return switch(t)
 		{
-			case BilevelType:
-				1;
-			case GrayscaleType:
-				2;
-			case GrayscaleMatteType:
-				3;
-			case PaletteType:
-				4;
-			case PaletteMatteType:
-				5;
-			case TrueColorType:
-				6;
-			case TrueColorMatteType:
-				7;
-			case ColorSeparationType:
-				8;
-			case ColorSeparationMatteType:
-				9;
-			case OptimizeType:
-				10;
-			default:
-				0;
+			case Bilevel:				1;
+			case Grayscale:				2;
+			case GrayscaleMatte:		3;
+			case Palette:				4;
+			case PaletteMatte:			5;
+			case TrueColor:				6;
+			case TrueColorMatte:		7;
+			case ColorSeparation:		8;
+			case ColorSeparationMatte:	9;
+			case Optimize:				10;
+			default:					0;
 		}
 	}
 	
-	public function getImageTypeEnum( t : Int ) : ImageType
+	public static function getImageTypeEnum(t:Int) : ImagickImageType
 	{
-		return switch( t )
+		return switch(t)
 		{
-			case 1:
-				BilevelType;
-			case 2:
-				GrayscaleType;
-			case 3:
-				GrayscaleMatteType;
-			case 4:
-				PaletteType;
-			case 5:
-				PaletteMatteType;
-			case 6:
-				TrueColorType;
-			case 7:
-				TrueColorMatteType;
-			case 8:
-				ColorSeparationType;
-			case 9:
-				ColorSeparationMatteType;
-			case 10:
-				OptimizeType;
-			default:
-				UndefinedType;
+			case 1:	ImagickImageType.Bilevel;
+			case 2:	ImagickImageType.Grayscale;
+			case 3:	ImagickImageType.GrayscaleMatte;
+			case 4:	ImagickImageType.Palette;
+			case 5:	ImagickImageType.PaletteMatte;
+			case 6:	ImagickImageType.TrueColor;
+			case 7:	ImagickImageType.TrueColorMatte;
+			case 8:	ImagickImageType.ColorSeparation;
+			case 9:	ImagickImageType.ColorSeparationMatte;
+			case 10:ImagickImageType.Optimize;
+			default:ImagickImageType.Undefined;
 		}
 	}
 	
-	public function getUnitsId( u : Units ) : Int
+	public static function getResolutionUnitsId(u:ImagickResolutionUnits) : Int
 	{
-		return switch( u )
+		return switch(u)
 		{
-			case PixelsPerInchResolution:
-				1;
-			case PixelsPerCentimeterResolution:
-				2;
-			default:
-				0;
+			case PixelsPerInch:			1;
+			case PixelsPerCentimeter:	2;
+			default:					0;
 		}
 	}
 	
-	public function getUnitsEnum( u : Int ) : Units
+	public static function getResolutionUnitsEnum(u:Int) : ImagickResolutionUnits
 	{
-		return switch( u )
+		return switch(u)
 		{
-			case 1:
-				PixelsPerInchResolution;
-			case 2:
-				PixelsPerCentimeterResolution;
-			default:
-				UndefinedResolution;
+			case 1:		ImagickResolutionUnits.PixelsPerInch;
+			case 2:		ImagickResolutionUnits.PixelsPerCentimeter;
+			default:	ImagickResolutionUnits.Undefined;
 		}
 	}
 	
-	public function getFilterId( f : Filter ) : Int
+	public static function getFilterId(f:ImagickFilter) : Int
 	{
-		return switch( f )
+		return switch(f)
 		{
-			case PointFilter:
-				1;
-			case BoxFilter:
-				2;
-			case TriangleFilter:
-				3;
-			case HermiteFilter:
-				4;
-			case HanningFilter:
-				5;
-			case HammingFilter:
-				6;
-			case BlackmanFilter:
-				7;
-			case GaussianFilter:
-				8;
-			case QuadraticFilter:
-				9;
-			case CubicFilter:
-				10;
-			case CatromFilter:
-				11;
-			case MitchellFilter:
-				12;
-			case LanczosFilter:
-				13;
-			case BesselFilter:
-				14;
-			case SincFilter:
-				15;
-			default:
-				0;
+			case Point:		1;
+			case Box:		2;
+			case Triangle:	3;
+			case Hermite:	4;
+			case Hanning:	5;
+			case Hamming:	6;
+			case Blackman:	7;
+			case Gaussian:	8;
+			case Quadratic:	9;
+			case Cubic:		0;
+			case Catrom:	11;
+			case Mitchell:	12;
+			case Lanczos:	13;
+			case Bessel:	14;
+			case Sinc:		15;
+			default:		0;
 		}
 	}
 	
-	public function getFilterEnum( f : Int ) : Filter
+	public static function getFilterEnum(f:Int) : ImagickFilter
 	{
-		return switch( f )
+		return switch(f)
 		{
-			case 1:
-				PointFilter;
-			case 2:
-				BoxFilter;
-			case 3:
-				TriangleFilter;
-			case 4:
-				HermiteFilter;
-			case 5:
-				HanningFilter;
-			case 6:
-				HammingFilter;
-			case 7:
-				BlackmanFilter;
-			case 8:
-				GaussianFilter;
-			case 9:
-				QuadraticFilter;
-			case 10:
-				CubicFilter;
-			case 11:
-				CatromFilter;
-			case 12:
-				MitchellFilter;
-			case 13:
-				LanczosFilter;
-			case 14:
-				BesselFilter;
-			case 15:
-				SincFilter;
-			default:
-				UndefinedFilter;
+			case 1:		ImagickFilter.Point;
+			case 2:		ImagickFilter.Box;
+			case 3:		ImagickFilter.Triangle;
+			case 4:		ImagickFilter.Hermite;
+			case 5:		ImagickFilter.Hanning;
+			case 6:		ImagickFilter.Hamming;
+			case 7:		ImagickFilter.Blackman;
+			case 8:		ImagickFilter.Gaussian;
+			case 9:		ImagickFilter.Quadratic;
+			case 10:	ImagickFilter.Cubic;
+			case 11:	ImagickFilter.Catrom;
+			case 12:	ImagickFilter.Mitchell;
+			case 13:	ImagickFilter.Lanczos;
+			case 14:	ImagickFilter.Bessel;
+			case 15:	ImagickFilter.Sinc;
+			default:	ImagickFilter.Undefined;
 		}
 	}
 	
@@ -751,7 +578,7 @@ class Imagick
 
 	@param			noise_type	The type of noise: UniformNoise = 1, GaussianNoise = 2, MultiplicativeGaussianNoise = 3, ImpulseNoise = 4, LaplacianNoise = 5, or PoissonNoise = 6.
 	*/
-	public function addNoise( noise_type : NoiseType ) : Bool
+	public function addNoise( noise_type : ImagickNoiseType ) : Bool
 	{
 		return nMagick_add_noise( __m, getNoiseType( noise_type ) );
 	}
@@ -914,9 +741,9 @@ class Imagick
 
 	@param			point			The column and row offset of the composited image.
 	*/
-	public function compositeImage( composite_wand : Imagick, point : ImagickPoint ) : Bool
+	public function compositeImage( composite_wand : Imagick, composite : ImagickCompositeOperator, point : ImagickPoint ) : Bool
 	{
-		return nMagick_composite( __m, untyped composite_wand.__m, point );
+		return nMagick_composite( __m, untyped composite_wand.__m, Type.enumIndex(composite), point );
 	}
 
 	/*
@@ -1013,9 +840,9 @@ class Imagick
 		11 = SubtractEvaluateOperator
 		12 = XorEvaluateOperator
 	*/
-	public function evaluate( op : Operator, constant : Float )
+	public function evaluate( op : ImagickEvaluateOperator, constant : Float )
 	{
-		return nMagick_evaluate( __m, getOperator( op ), constant );
+		return nMagick_evaluate( __m, getEvaluateOperator( op ), constant );
 	}
 
 	/*
@@ -1245,7 +1072,7 @@ class Imagick
 		HSLColorspace = 15
 		HWBColorspace = 16
 	*/
-	public function getColorSpace() : ColorSpace
+	public function getColorSpace() : ImagickColorSpace
 	{
 		return getColorSpaceEnum( nMagick_get_colorspace( __m ) );
 	}
@@ -1272,136 +1099,20 @@ class Imagick
 		HSLColorspace = 15
 		HWBColorspace = 16
 	*/
-	public function setColorSpace( colorspace : ColorSpace )
+	public function setColorSpace( colorspace : ImagickColorSpace )
 	{
 		nMagick_set_colorspace( __m, getColorSpaceInt( colorspace ) );
 		return null;
 	}
 
-	/*
-	@description	Returns the composite operator associated with the image.
-	@return			Composite Operator of type int
-
-		UndefinedCompositeOp = 0
-		NoCompositeOp = 1
-		AddCompositeOp = 2
-		AtopCompositeOp = 3
-		BlendCompositeOp = 4
-		BumpmapCompositeOp = 5
-		ClearCompositeOp = 6 
-		ColorBurnCompositeOp = 7
-		ColorDodgeCompositeOp = 8
-		ColorizeCompositeOp = 9
-		CopyBlackCompositeOp = 10
-		CopyBlueCompositeOp = 11
-		CopyCompositeOp = 12 
-		CopyCyanCompositeOp = 13
-		CopyGreenCompositeOp = 14
-		CopyMagentaCompositeOp = 15
-		CopyOpacityCompositeOp = 16
-		CopyRedCompositeOp = 17
-		CopyYellowCompositeOp = 18
-		DarkenCompositeOp = 19
-		DstAtopCompositeOp = 20
-		DstCompositeOp = 21
-		DstInCompositeOp = 22
-		DstOutCompositeOp = 23
-		DstOverCompositeOp = 24
-		DifferenceCompositeOp = 25
-		DisplaceCompositeOp = 26
-		DissolveCompositeOp = 27
-		ExclusionCompositeOp = 28
-		HardLightCompositeOp = 29
-		HueCompositeOp = 30
-		InCompositeOp = 31
-		LightenCompositeOp = 32
-		LuminizeCompositeOp = 33
-		MinusCompositeOp = 34
-		ModulateCompositeOp = 35
-		MultiplyCompositeOp = 36
-		OutCompositeOp = 37
-		OverCompositeOp = 38
-		OverlayCompositeOp = 39
-		PlusCompositeOp = 40
-		ReplaceCompositeOp = 41
-		SaturateCompositeOp = 42
-		ScreenCompositeOp = 43
-		SoftLightCompositeOp = 44
-		SrcAtopCompositeOp = 45
-		SrcCompositeOp = 46
-		SrcInCompositeOp = 47
-		SrcOutCompositeOp = 48
-		SrcOverCompositeOp = 49
-		SubtractCompositeOp = 50
-		ThresholdCompositeOp = 51
-		XorCompositeOp = 52
-	*/
-	public function getComposite() : CompositeOperator
+	public function getComposite() : ImagickCompositeOperator
 	{
-		return getCompositeOperatorEnum( nMagick_get_composite( __m ) );
+		return Type.createEnumIndex(ImagickCompositeOperator, nMagick_get_composite( __m ));
 	}
 
-	/*
-	@description	Returns the composite operator associated with the image.
-	@param			composite	Operator of type int
-
-		UndefinedCompositeOp = 0
-		NoCompositeOp = 1
-		AddCompositeOp = 2
-		AtopCompositeOp = 3
-		BlendCompositeOp = 4
-		BumpmapCompositeOp = 5
-		ClearCompositeOp = 6 
-		ColorBurnCompositeOp = 7
-		ColorDodgeCompositeOp = 8
-		ColorizeCompositeOp = 9
-		CopyBlackCompositeOp = 10
-		CopyBlueCompositeOp = 11
-		CopyCompositeOp = 12 
-		CopyCyanCompositeOp = 13
-		CopyGreenCompositeOp = 14
-		CopyMagentaCompositeOp = 15
-		CopyOpacityCompositeOp = 16
-		CopyRedCompositeOp = 17
-		CopyYellowCompositeOp = 18
-		DarkenCompositeOp = 19
-		DstAtopCompositeOp = 20
-		DstCompositeOp = 21
-		DstInCompositeOp = 22
-		DstOutCompositeOp = 23
-		DstOverCompositeOp = 24
-		DifferenceCompositeOp = 25
-		DisplaceCompositeOp = 26
-		DissolveCompositeOp = 27
-		ExclusionCompositeOp = 28
-		HardLightCompositeOp = 29
-		HueCompositeOp = 30
-		InCompositeOp = 31
-		LightenCompositeOp = 32
-		LuminizeCompositeOp = 33
-		MinusCompositeOp = 34
-		ModulateCompositeOp = 35
-		MultiplyCompositeOp = 36
-		OutCompositeOp = 37
-		OverCompositeOp = 38
-		OverlayCompositeOp = 39
-		PlusCompositeOp = 40
-		ReplaceCompositeOp = 41
-		SaturateCompositeOp = 42
-		ScreenCompositeOp = 43
-		SoftLightCompositeOp = 44
-		SrcAtopCompositeOp = 45
-		SrcCompositeOp = 46
-		SrcInCompositeOp = 47
-		SrcOutCompositeOp = 48
-		SrcOverCompositeOp = 49
-		SubtractCompositeOp = 50
-		ThresholdCompositeOp = 51
-		XorCompositeOp = 52
-	*/
-	public function setComposite( comp : CompositeOperator )
+	public function setComposite(comp:ImagickCompositeOperator)
 	{
-		nMagick_set_composite( __m, getCompositeOperator( comp ) );
+		nMagick_set_composite(__m, Type.enumIndex(comp));
 		return null;
 	}
 
@@ -1421,7 +1132,7 @@ class Imagick
 		ZipCompression = 10
 
 	*/
-	public function getCompression() : Compression
+	public function getCompression() : ImagickCompression
 	{
 		return getCompressionEnum( nMagick_get_compression( __m ) );
 	}
@@ -1442,7 +1153,7 @@ class Imagick
 		ZipCompression = 10
 
 	*/
-	public function setCompression( c : Compression )
+	public function setCompression( c : ImagickCompression )
 	{
 		nMagick_set_compression( __m, getCompressionId( c ) );
 		return null;
@@ -1489,7 +1200,7 @@ class Imagick
 
 	@param			distortion	The computed distortion between the images.
 	*/
-	public function getDistortion( ref : Imagick, metric : Metric ) : Float
+	public function getDistortion( ref : Imagick, metric : ImagickMetric ) : Float
 	{
 		return nMagick_get_distortion( __m, untyped ref.__m, getMetricId( metric ) );
 	}
@@ -1676,7 +1387,7 @@ class Imagick
 		ColorSeparationMatteType = 9
 		OptimizeType = 10
 	*/
-	public function getType() : ImageType
+	public function getType() : ImagickImageType
 	{
 		return getImageTypeEnum( nMagick_get_type( __m ) );
 	}
@@ -1701,7 +1412,7 @@ class Imagick
 		ColorSeparationMatteType = 9
 		OptimizeType = 10
 	*/
-	public function setType( t : ImageType )
+	public function setType( t : ImagickImageType )
 	{
 		nMagick_set_type( __m, getImageTypeId( t ) );
 		return null;
@@ -1715,9 +1426,9 @@ class Imagick
 		PixelsPerInchResolution = 1
 		PixelsPerCentimeterResolution = 2
 	*/
-	public function getUnits() : Units
+	public function getUnits() : ImagickResolutionUnits
 	{
-		return getUnitsEnum( nMagick_get_units( __m ) );
+		return getResolutionUnitsEnum( nMagick_get_units( __m ) );
 	}
 
 	/*
@@ -1728,9 +1439,9 @@ class Imagick
 		PixelsPerInchResolution = 1
 		PixelsPerCentimeterResolution = 2
 	*/
-	public function setUnits( u : Units )
+	public function setUnits( u : ImagickResolutionUnits )
 	{
-		nMagick_set_units( __m, getUnitsId( u ) );
+		nMagick_set_units( __m, getResolutionUnitsId( u ) );
 		return null;
 	}
 
@@ -1981,7 +1692,7 @@ class Imagick
 					pixels in an image the distance squared in RGB space between each 
 					reference pixel value and its quantized value.
 	*/
-	public function quantize( numColors : Int, colorspace : ColorSpace, dither : Bool ) : Bool
+	public function quantize( numColors : Int, colorspace : ImagickColorSpace, dither : Bool ) : Bool
 	{
 		return nMagick_quantize( __m, numColors, getColorSpaceInt( colorspace ), dither );
 	}
@@ -2065,7 +1776,7 @@ class Imagick
 
 	@param			blur			The blur factor where > 1 is blurry, < 1 is sharp.
 	*/
-	public function resample( x : Int, y : Int, filter : Filter, blur : Float ) : Bool
+	public function resample( x : Int, y : Int, filter : ImagickFilter, blur : Float ) : Bool
 	{
 		return nMagick_resample( __m, x, y, getFilterId( filter ), blur );
 	}
@@ -2353,7 +2064,7 @@ class Imagick
 	static var nMagick_colorfloodfill = neko.Lib.load("nMagick","nMagick_colorfloodfill",5);
 	static var nMagick_colorize = neko.Lib.load("nMagick","nMagick_colorize",3);
 	static var nMagick_comment = neko.Lib.load("nMagick","nMagick_comment",2);
-	static var nMagick_composite = neko.Lib.load("nMagick","nMagick_composite",3);
+	static var nMagick_composite = neko.Lib.load("nMagick","nMagick_composite",4);
 	static var nMagick_contrast = neko.Lib.load("nMagick","nMagick_contrast",2);
 	static var nMagick_convolve = neko.Lib.load("nMagick","nMagick_convolve",3);
 	static var nMagick_crop = neko.Lib.load("nMagick","nMagick_crop",4);

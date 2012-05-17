@@ -93,4 +93,31 @@ class ImagickTest extends haxe.unit.TestCase
 		var pic2 = pic.clone();
 		pic2.save("pic6-out.jpg");
 	}
+	
+	public function testComposite()
+	{
+		var picA = new Imagick("pic7-A.png");
+		this.assertTrue(picA != null);
+		
+		var picB = new Imagick("pic7-B.png");
+		this.assertTrue(picB != null);
+		
+		var pic : Imagick;
+		
+		pic = picA.clone();
+		pic.composite(picB, ImagickCompositeOperator.Copy, 0, 0);
+		pic.save("pic7-copy-out.png");
+		
+		pic = picA.clone();
+		pic.composite(picB, ImagickCompositeOperator.Over, 0, 0);
+		pic.save("pic7-over-out.png");
+		
+		pic = picA.clone();
+		pic.composite(picB, ImagickCompositeOperator.Overlay, 0, 0);
+		pic.save("pic7-overlay-out.png");
+		
+		pic = picA.clone();
+		pic.composite(picB, ImagickCompositeOperator.Replace, 0, 0);
+		pic.save("pic7-replace-out.png");
+	}
 }

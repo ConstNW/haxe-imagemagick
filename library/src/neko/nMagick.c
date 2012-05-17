@@ -507,17 +507,18 @@ value nMagick_comment( value magick, value comment )
 
 @param			point			The column and row offset of the composited image.
 */
-value nMagick_composite( value magick, value composite_wand, value point )
+value nMagick_composite( value magick, value composite_wand, value compositeOp, value point )
 {
 	MagickWand *wand;
 	MagickWand *wand2;
 
 	val_check_kind( magick, k_wand );
 	val_check_kind( composite_wand, k_wand );
+	val_check( compositeOp, int );
 
 	wand = WAND( magick );
 	wand2 = WAND( composite_wand );
-	return alloc_bool( MagickCompositeImage( wand, wand2, OverCompositeOp, val_int( val_field( point, val_id( "x" ) ) ), val_int( val_field( point, val_id( "y" ) ) ) ) );
+	return alloc_bool( MagickCompositeImage( wand, wand2, val_int( compositeOp ), val_int( val_field( point, val_id( "x" ) ) ), val_int( val_field( point, val_id( "y" ) ) ) ) );
 }
 
 /*
@@ -2975,7 +2976,7 @@ DEFINE_PRIM(nMagick_chop,4);
 DEFINE_PRIM(nMagick_colorfloodfill,5);
 DEFINE_PRIM(nMagick_colorize,3);
 DEFINE_PRIM(nMagick_comment,2);
-DEFINE_PRIM(nMagick_composite,3);
+DEFINE_PRIM(nMagick_composite,4);
 DEFINE_PRIM(nMagick_contrast,2);
 DEFINE_PRIM(nMagick_convolve,3);
 DEFINE_PRIM(nMagick_crop,4);

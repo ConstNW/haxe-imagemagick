@@ -1,69 +1,7 @@
 package php.imagemagick;
 
-import haxe.imagemagick.ImagickEnums;
-
 @:native("Imagick") extern class Imagick
 {
-	public static function getCompositeOperator(op:CompositeOperator) : Int
-	{
-		return switch (op)
-		{
-			case UndefinedCompositeOp:	untyped __php__("imagick::COMPOSITE_UNDEFINED");
-			case NoCompositeOp:			untyped __php__("imagick::COMPOSITE_NO");
-			case AddCompositeOp:		untyped __php__("imagick::COMPOSITE_ADD");
-			case AtopCompositeOp:		untyped __php__("imagick::COMPOSITE_ATOP");
-			case BlendCompositeOp:		untyped __php__("imagick::COMPOSITE_BLEND");
-			case BumpmapCompositeOp:	untyped __php__("imagick::COMPOSITE_BUMPMAP");
-			case ClearCompositeOp:		untyped __php__("imagick::COMPOSITE_CLEAR");
-			case ColorBurnCompositeOp:	untyped __php__("imagick::COMPOSITE_COLORBURN");
-			case ColorDodgeCompositeOp:	untyped __php__("imagick::COMPOSITE_COLORDODGE");
-			case ColorizeCompositeOp:	untyped __php__("imagick::COMPOSITE_COLORIZE");
-			case CopyBlackCompositeOp:	untyped __php__("imagick::COMPOSITE_COPYBLACK");
-			case CopyBlueCompositeOp:	untyped __php__("imagick::COMPOSITE_COPYBLUE");
-			case CopyCompositeOp:		untyped __php__("imagick::COMPOSITE_COPY");
-			case CopyCyanCompositeOp:	untyped __php__("imagick::COMPOSITE_COPYCYAN");
-			case CopyGreenCompositeOp:	untyped __php__("imagick::COMPOSITE_COPYGREEN");
-			case CopyMagentaCompositeOp:untyped __php__("imagick::COMPOSITE_COPYMAGENTA");
-			case CopyOpacityCompositeOp:untyped __php__("imagick::COMPOSITE_COPYOPACITY");
-			case CopyRedCompositeOp:	untyped __php__("imagick::COMPOSITE_COPYRED");
-			case CopyYellowCompositeOp:	untyped __php__("imagick::COMPOSITE_COPYYELLOW");
-			case DarkenCompositeOp:		untyped __php__("imagick::COMPOSITE_DARKEN");
-			case DstAtopCompositeOp:	untyped __php__("imagick::COMPOSITE_DSTATOP");
-			case DstCompositeOp:		untyped __php__("imagick::COMPOSITE_DST");
-			case DstInCompositeOp:		untyped __php__("imagick::COMPOSITE_DSTIN");
-			case DstOutCompositeOp:		untyped __php__("imagick::COMPOSITE_DSTOUT");
-			case DstOverCompositeOp:	untyped __php__("imagick::COMPOSITE_DSTOVER");
-			case DifferenceCompositeOp:	untyped __php__("imagick::COMPOSITE_DIFFERENCE");
-			case DisplaceCompositeOp:	untyped __php__("imagick::COMPOSITE_DISPLACE");
-			case DissolveCompositeOp:	untyped __php__("imagick::COMPOSITE_DISSOLVE");
-			case ExclusionCompositeOp:	untyped __php__("imagick::COMPOSITE_EXCLUSION");
-			case HardLightCompositeOp:	untyped __php__("imagick::COMPOSITE_HARDLIGHT");
-			case HueCompositeOp:		untyped __php__("imagick::COMPOSITE_HUE");
-			case InCompositeOp:			untyped __php__("imagick::COMPOSITE_IN");
-			case LightenCompositeOp:	untyped __php__("imagick::COMPOSITE_LIGHTEN");
-			case LuminizeCompositeOp:	untyped __php__("imagick::COMPOSITE_LUMINIZE");
-			case MinusCompositeOp:		untyped __php__("imagick::COMPOSITE_MINUS");
-			case ModulateCompositeOp:	untyped __php__("imagick::COMPOSITE_MODULATE");
-			case MultiplyCompositeOp:	untyped __php__("imagick::COMPOSITE_MULTIPLY");
-			case OutCompositeOp:		untyped __php__("imagick::COMPOSITE_OUT");
-			case OverCompositeOp:		untyped __php__("imagick::COMPOSITE_OVER");
-			case OverlayCompositeOp:	untyped __php__("imagick::COMPOSITE_OVERLAY");
-			case PlusCompositeOp:		untyped __php__("imagick::COMPOSITE_PLUS");
-			case ReplaceCompositeOp:	untyped __php__("imagick::COMPOSITE_REPLACE");
-			case SaturateCompositeOp:	untyped __php__("imagick::COMPOSITE_SATURATE");
-			case ScreenCompositeOp:		untyped __php__("imagick::COMPOSITE_SCREEN");
-			case SoftLightCompositeOp:	untyped __php__("imagick::COMPOSITE_SOFTLIGHT");
-			case SrcAtopCompositeOp:	untyped __php__("imagick::COMPOSITE_SRCATOP");
-			case SrcCompositeOp:		untyped __php__("imagick::COMPOSITE_SRC");
-			case SrcInCompositeOp:		untyped __php__("imagick::COMPOSITE_SRCIN");
-			case SrcOutCompositeOp:		untyped __php__("imagick::COMPOSITE_SRCOUT");
-			case SrcOverCompositeOp:	untyped __php__("imagick::COMPOSITE_SRCOVER");
-			case SubtractCompositeOp:	untyped __php__("imagick::COMPOSITE_SUBTRACT");
-			case ThresholdCompositeOp:	untyped __php__("imagick::COMPOSITE_THRESHOLD");
-			case XorCompositeOp:		untyped __php__("imagick::COMPOSITE_XOR");
-		}
-	}
-	
 	/**
 	 * Black color 
 	 */
@@ -1171,35 +1109,4 @@ import haxe.imagemagick.ImagickEnums;
 	public function writeImageFile(filehandle:Int/*resource*/) : Bool;
 	public function writeImages(filename:String, adjoin:Bool) : Bool;
 	public function writeImagesFile(filehandle:Int/*resource*/) : Bool;
-	
-	public function iteratePixels(f:Int->Int->ImagickPixel->Void, rx=0, ry=0, rw=-1, rh=-1) : Void
-    {
-        if (rw < 0) rw = getImageWidth() - rx;
-        if (rh < 0) rh = getImageHeight() - ry;
-		
-		var it = getPixelIterator();
-		var y = 0;
-		
-		untyped __php__("
-            foreach ($it as $row => $pixels)
-            {
-                if ($y >= $ry + $rh) break;
-				if ($y >= $ry)
-				{
-					$x = 0;
-					foreach ($pixels as $column => $pixel)
-					{
-						if ($x >= $rx + $rw) break;
-						if ($x >= $rx)
-						{
-							call_user_func_array($f, array($x, $y, $pixel));
-						}
-						$x++;
-					}
-				}
-                $it->syncIterator();
-                $y++;
-            }        
-        ");
-    }	
 }
