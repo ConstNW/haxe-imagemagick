@@ -5,8 +5,9 @@ private typedef PhpImagick = php.imagemagick.Imagick;
 #elseif neko
 private typedef NekoImagick = neko.imagemagick.Imagick;
 import neko.imagemagick.ImagickPoint;
-typedef ImagickCompositeOperator = neko.imagemagick.Imagick.ImagickCompositeOperator;
 #end
+
+typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOperator;
 
 class Imagick 
 {
@@ -217,59 +218,60 @@ class Imagick
 	{
 		return switch (op)
 		{
-			case Undefined:	untyped __php__("imagick::COMPOSITE_UNDEFINED");
-			case No:		untyped __php__("imagick::COMPOSITE_NO");
-			case Add:		untyped __php__("imagick::COMPOSITE_ADD");
-			case Atop:		untyped __php__("imagick::COMPOSITE_ATOP");
-			case Blend:		untyped __php__("imagick::COMPOSITE_BLEND");
-			case Bumpmap:	untyped __php__("imagick::COMPOSITE_BUMPMAP");
-			case Clear:		untyped __php__("imagick::COMPOSITE_CLEAR");
-			case ColorBurn:	untyped __php__("imagick::COMPOSITE_COLORBURN");
-			case ColorDodge:untyped __php__("imagick::COMPOSITE_COLORDODGE");
-			case Colorize:	untyped __php__("imagick::COMPOSITE_COLORIZE");
-			case CopyBlack:	untyped __php__("imagick::COMPOSITE_COPYBLACK");
-			case CopyBlue:	untyped __php__("imagick::COMPOSITE_COPYBLUE");
-			case Copy:		untyped __php__("imagick::COMPOSITE_COPY");
-			case CopyCyan:	untyped __php__("imagick::COMPOSITE_COPYCYAN");
-			case CopyGreen:	untyped __php__("imagick::COMPOSITE_COPYGREEN");
-			case CopyMagenta:untyped __php__("imagick::COMPOSITE_COPYMAGENTA");
-			case CopyOpacity:untyped __php__("imagick::COMPOSITE_COPYOPACITY");
-			case CopyRed:	untyped __php__("imagick::COMPOSITE_COPYRED");
-			case CopyYellow:untyped __php__("imagick::COMPOSITE_COPYYELLOW");
-			case Darken:	untyped __php__("imagick::COMPOSITE_DARKEN");
-			case DstAtop:	untyped __php__("imagick::COMPOSITE_DSTATOP");
-			case Dst:		untyped __php__("imagick::COMPOSITE_DST");
-			case DstIn:		untyped __php__("imagick::COMPOSITE_DSTIN");
-			case DstOut:	untyped __php__("imagick::COMPOSITE_DSTOUT");
-			case DstOver:	untyped __php__("imagick::COMPOSITE_DSTOVER");
-			case Difference:untyped __php__("imagick::COMPOSITE_DIFFERENCE");
-			case Displace:	untyped __php__("imagick::COMPOSITE_DISPLACE");
-			case Dissolve:	untyped __php__("imagick::COMPOSITE_DISSOLVE");
-			case Exclusion:	untyped __php__("imagick::COMPOSITE_EXCLUSION");
-			case HardLight:	untyped __php__("imagick::COMPOSITE_HARDLIGHT");
-			case Hue:		untyped __php__("imagick::COMPOSITE_HUE");
-			case In:		untyped __php__("imagick::COMPOSITE_IN");
-			case Lighten:	untyped __php__("imagick::COMPOSITE_LIGHTEN");
-			case Luminize:	untyped __php__("imagick::COMPOSITE_LUMINIZE");
-			case Minus:		untyped __php__("imagick::COMPOSITE_MINUS");
-			case Modulate:	untyped __php__("imagick::COMPOSITE_MODULATE");
-			case Multiply:	untyped __php__("imagick::COMPOSITE_MULTIPLY");
-			case Out:		untyped __php__("imagick::COMPOSITE_OUT");
-			case Over:		untyped __php__("imagick::COMPOSITE_OVER");
-			case Overlay:	untyped __php__("imagick::COMPOSITE_OVERLAY");
-			case Plus:		untyped __php__("imagick::COMPOSITE_PLUS");
-			case Replace:	untyped __php__("imagick::COMPOSITE_REPLACE");
-			case Saturate:	untyped __php__("imagick::COMPOSITE_SATURATE");
-			case Screen:	untyped __php__("imagick::COMPOSITE_SCREEN");
-			case SoftLight:	untyped __php__("imagick::COMPOSITE_SOFTLIGHT");
-			case SrcAtop:	untyped __php__("imagick::COMPOSITE_SRCATOP");
-			case Src:		untyped __php__("imagick::COMPOSITE_SRC");
-			case SrcIn:		untyped __php__("imagick::COMPOSITE_SRCIN");
-			case SrcOut:	untyped __php__("imagick::COMPOSITE_SRCOUT");
-			case SrcOver:	untyped __php__("imagick::COMPOSITE_SRCOVER");
-			case Subtract:	untyped __php__("imagick::COMPOSITE_SUBTRACT");
-			case Threshold:	untyped __php__("imagick::COMPOSITE_THRESHOLD");
-			case Xor:		untyped __php__("imagick::COMPOSITE_XOR");
+			case Undefined:			untyped __php__("imagick::COMPOSITE_UNDEFINED");
+			case No:				untyped __php__("imagick::COMPOSITE_NO");
+			case ModulusAdd:		untyped __php__("imagick::COMPOSITE_ADD");
+			case Atop:				untyped __php__("imagick::COMPOSITE_ATOP");
+			case Blend:				untyped __php__("imagick::COMPOSITE_BLEND");
+			case Bumpmap:			untyped __php__("imagick::COMPOSITE_BUMPMAP");
+			case Clear:				untyped __php__("imagick::COMPOSITE_CLEAR");
+			case ColorBurn:			untyped __php__("imagick::COMPOSITE_COLORBURN");
+			case ColorDodge:		untyped __php__("imagick::COMPOSITE_COLORDODGE");
+			case Colorize:			untyped __php__("imagick::COMPOSITE_COLORIZE");
+			case CopyBlack:			untyped __php__("imagick::COMPOSITE_COPYBLACK");
+			case CopyBlue:			untyped __php__("imagick::COMPOSITE_COPYBLUE");
+			case Copy:				untyped __php__("imagick::COMPOSITE_COPY");
+			case CopyCyan:			untyped __php__("imagick::COMPOSITE_COPYCYAN");
+			case CopyGreen:			untyped __php__("imagick::COMPOSITE_COPYGREEN");
+			case CopyMagenta:		untyped __php__("imagick::COMPOSITE_COPYMAGENTA");
+			case CopyOpacity:		untyped __php__("imagick::COMPOSITE_COPYOPACITY");
+			case CopyRed:			untyped __php__("imagick::COMPOSITE_COPYRED");
+			case CopyYellow:		untyped __php__("imagick::COMPOSITE_COPYYELLOW");
+			case Darken:			untyped __php__("imagick::COMPOSITE_DARKEN");
+			case DstAtop:			untyped __php__("imagick::COMPOSITE_DSTATOP");
+			case Dst:				untyped __php__("imagick::COMPOSITE_DST");
+			case DstIn:				untyped __php__("imagick::COMPOSITE_DSTIN");
+			case DstOut:			untyped __php__("imagick::COMPOSITE_DSTOUT");
+			case DstOver:			untyped __php__("imagick::COMPOSITE_DSTOVER");
+			case Difference:		untyped __php__("imagick::COMPOSITE_DIFFERENCE");
+			case Displace:			untyped __php__("imagick::COMPOSITE_DISPLACE");
+			case Dissolve:			untyped __php__("imagick::COMPOSITE_DISSOLVE");
+			case Exclusion:			untyped __php__("imagick::COMPOSITE_EXCLUSION");
+			case HardLight:			untyped __php__("imagick::COMPOSITE_HARDLIGHT");
+			case Hue:				untyped __php__("imagick::COMPOSITE_HUE");
+			case In:				untyped __php__("imagick::COMPOSITE_IN");
+			case Lighten:			untyped __php__("imagick::COMPOSITE_LIGHTEN");
+			case Luminize:			untyped __php__("imagick::COMPOSITE_LUMINIZE");
+			case MinusDst:			untyped __php__("imagick::COMPOSITE_MINUS");
+			case Modulate:			untyped __php__("imagick::COMPOSITE_MODULATE");
+			case Multiply:			untyped __php__("imagick::COMPOSITE_MULTIPLY");
+			case Out:				untyped __php__("imagick::COMPOSITE_OUT");
+			case Over:				untyped __php__("imagick::COMPOSITE_OVER");
+			case Overlay:			untyped __php__("imagick::COMPOSITE_OVERLAY");
+			case Plus:				untyped __php__("imagick::COMPOSITE_PLUS");
+			case Replace:			untyped __php__("imagick::COMPOSITE_REPLACE");
+			case Saturate:			untyped __php__("imagick::COMPOSITE_SATURATE");
+			case Screen:			untyped __php__("imagick::COMPOSITE_SCREEN");
+			case SoftLight:			untyped __php__("imagick::COMPOSITE_SOFTLIGHT");
+			case SrcAtop:			untyped __php__("imagick::COMPOSITE_SRCATOP");
+			case Src:				untyped __php__("imagick::COMPOSITE_SRC");
+			case SrcIn:				untyped __php__("imagick::COMPOSITE_SRCIN");
+			case SrcOut:			untyped __php__("imagick::COMPOSITE_SRCOUT");
+			case SrcOver:			untyped __php__("imagick::COMPOSITE_SRCOVER");
+			case ModulusSubtract:	untyped __php__("imagick::COMPOSITE_SUBTRACT");
+			case Threshold:			untyped __php__("imagick::COMPOSITE_THRESHOLD");
+			case Xor:				untyped __php__("imagick::COMPOSITE_XOR");
+			default:				throw "CompositeOperator " + op + " is not supported.";
 		}
 	}
 	#end
