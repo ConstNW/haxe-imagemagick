@@ -80,9 +80,17 @@ class Imagick
 	
 	public function load( file : String ) : Void
 	{
-		if ( file != null && file != "" )
+		if ( file != null && file != "")
 		{
-			nMagick_load( __m, untyped file.__s );
+			if (neko.FileSystem.exists(file))
+			{
+				nMagick_load( __m, untyped file.__s );
+			}
+			else
+			{
+				throw "Image file '" + file + "' is not found.";
+			}
+
 		}
 	}
 	
