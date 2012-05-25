@@ -1,5 +1,7 @@
 package php.imagemagick;
 
+typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOperator;
+
 @:native("Imagick") extern class Imagick
 {
 	/**
