@@ -1798,18 +1798,6 @@ class Imagick
 	}
 
 	/*
-	@description	changes the size of an image to the given dimensions and removes 
-					any associated profiles. The goal is to produce small low cost 
-					thumbnail images suited for display on the Web.
-	@param			cols	The width of the thumb
-	@param			rows	The height of the thumb
-	*/
-	public function thumbnail( w : Int, h : Int ) : Bool
-	{
-		return nMagick_thumbnail( __m, w, h );
-	}
-
-	/*
 	@description	applies a color vector to each pixel in the image. The length of the 
 					vector is 0 for black and white and at its maximum for the midtones. 
 					The vector weighting function is f(x)=(1-(4.0*((x-0.5)*(x-0.5)))).
@@ -1989,7 +1977,6 @@ class Imagick
 	static var nMagick_swirl = neko.Lib.load("nMagick","nMagick_swirl",2);
 	static var nMagick_texture = neko.Lib.load("nMagick","nMagick_texture",2);
 	static var nMagick_threshold = neko.Lib.load("nMagick","nMagick_threshold",2);
-	static var nMagick_thumbnail = neko.Lib.load("nMagick","nMagick_thumbnail",3);
 	static var nMagick_tint = neko.Lib.load("nMagick","nMagick_tint",3);
 	static var nMagick_wave = neko.Lib.load("nMagick","nMagick_wave",3);
 	static var nMagick_handler = neko.Lib.load("nMagick","set_exception_handler",1);

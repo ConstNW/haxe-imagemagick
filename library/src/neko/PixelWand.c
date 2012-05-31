@@ -44,10 +44,6 @@ value nMagick_pixel_close( value pixel )
 	pw = PIXEL( pixel );
 
 	DestroyPixelWand( pw );
-
-	if (objCount==1)
-		MagickWandTerminus();
-	objCount--;
 }
 
 /*
@@ -71,10 +67,6 @@ value nMagick_pixel_new()
 {
 	value v;
 	PixelWand  *pix;
-
-	if (objCount==0)
-		MagickWandGenesis();
-	objCount++;
 
 	pix = NewPixelWand();
 

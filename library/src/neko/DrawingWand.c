@@ -45,10 +45,6 @@ value nMagick_draw_close( value draw )
 	drw = DRAW( draw );
 
 	DestroyDrawingWand( drw );
-
-	if (objCount==1)
-		MagickWandTerminus();
-	objCount--;
 }
 
 /*
@@ -58,10 +54,6 @@ value nMagick_draw_new()
 {
 	value v;
 	DrawingWand *draw;
-
-	if (objCount==0)
-		MagickWandGenesis();
-	objCount++;
 
 	draw = NewDrawingWand();
 

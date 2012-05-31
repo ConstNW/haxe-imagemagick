@@ -25,6 +25,10 @@
  * DAMAGE.
  */
 
+#if _WINDOWS
+	#include <windows.h>
+#endif
+
 #include "nMagick.h"
 
 DEFINE_KIND( k_wand );
@@ -32,7 +36,6 @@ DEFINE_KIND( k_draw );
 DEFINE_KIND( k_pixel );
 
 value *exception_handler = NULL;
-int objCount = 0;
 
 static value set_exception_handler( value f )
 {
@@ -73,6 +76,8 @@ value nMagick_clear( value magick )
 	wand = WAND( magick );
 
 	ClearMagickWand( wand );
+	
+	return val_true;
 }
 
 
@@ -85,22 +90,16 @@ value nMagick_destroy( value magick )
 	wand = WAND( magick );
 	
 	val_gc( magick, NULL );
-
+	
 	DestroyMagickWand( wand );
-
-	if (objCount==1)
-		MagickWandTerminus();
-	objCount--;
+	
+	return val_true;
 }
 
 value nMagick_init()
 {
 	value v;
 	MagickWand *magick_wand;
-
-	if (objCount==0)
-		MagickWandGenesis();
-	objCount++;
 
 	magick_wand = NewMagickWand();
 
@@ -144,6 +143,8 @@ value nMagick_load( value magick, value image )
 	status = MagickReadImage( wand, val_string( image ) );
 	if ( status == MagickFalse )
 		throwWandException( wand );
+
+	return val_true;
 }
 
 value nMagick_save( value magick, value file )
@@ -159,6 +160,8 @@ value nMagick_save( value magick, value file )
 	status = MagickWriteImages( wand, val_string( file ), MagickTrue );
 	if ( status == MagickFalse )
 		throwWandException( wand );
+
+	return val_true;
 }
 
 value nMagick_resize( value magick, value w, value h )
@@ -2590,6 +2593,8 @@ value nMagick_shine( value magick, value gray, value azimuth, value elevation )
 	wand = WAND( magick );
 
 	alloc_bool( MagickShadeImage( wand, val_bool( gray ), val_number( azimuth ), val_number( elevation ) ) );
+
+	return val_true;
 }
 
 /*
@@ -2775,26 +2780,6 @@ value nMagick_threshold( value magick, value threshold )
 }
 
 /*
-@description	changes the size of an image to the given dimensions and removes 
-				any associated profiles. The goal is to produce small low cost 
-				thumbnail images suited for display on the Web.
-@param			cols	The width of the thumb
-@param			rows	The height of the thumb
-*/
-value nMagick_thumbnail( value magick, value cols, value rows )
-{
-	MagickWand *wand;
-
-	val_check_kind( magick, k_wand );
-	val_check( cols, int );
-	val_check( rows, int );
-
-	wand = WAND( magick );
-
-	//return alloc_bool( MagickThumbnail( wand, val_int( cols ), val_int( rows ) ) );
-}
-
-/*
 @description	applies a color vector to each pixel in the image. The length of the 
 				vector is 0 for black and white and at its maximum for the midtones. 
 				The vector weighting function is f(x)=(1-(4.0*((x-0.5)*(x-0.5)))).
@@ -2961,6 +2946,37 @@ value nMagick_clone( value magick )
 	return alloc_abstract( k_wand, CloneMagickWand( wand ) );
 }
 
+
+#if _WINDOWS
+	BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpReserved)
+	{
+		switch (fdwReason)
+		{
+			case DLL_PROCESS_ATTACH:
+				MagickWandGenesis();
+				break;
+			case DLL_PROCESS_DETACH:
+				MagickWandTerminus();
+				break;
+		}
+
+		return TRUE;
+	}
+#else
+	void __attribute__ ((constructor)) library_load(void);
+	void __attribute__ ((destructor)) library_unload(void);
+
+	void library_load(void)
+	{
+		MagickWandGenesis();
+	}
+
+	void library_unload(void)
+	{
+		MagickWandTerminus();
+	}
+#endif
+
 DEFINE_PRIM(nMagick_destroy,1);
 DEFINE_PRIM(nMagick_init,0);
 DEFINE_PRIM(nMagick_load,2);
@@ -3088,7 +3104,6 @@ DEFINE_PRIM(nMagick_strip,1);
 DEFINE_PRIM(nMagick_swirl,2);
 DEFINE_PRIM(nMagick_texture,2);
 DEFINE_PRIM(nMagick_threshold,2);
-DEFINE_PRIM(nMagick_thumbnail,3);
 DEFINE_PRIM(nMagick_tint,3);
 DEFINE_PRIM(nMagick_wave,3);
 DEFINE_PRIM(set_exception_handler,1);
