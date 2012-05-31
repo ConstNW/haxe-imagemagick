@@ -64,22 +64,27 @@ value throwWandException( MagickWand* wand )
 Magick wand methods
 */
 
-value nMagick_relinquish_memory( value magick )
+value nMagick_clear( value magick )
 {
-	val_gc( magick, NULL );
-	MagickRelinquishMemory( val_string( magick ) );
+	MagickWand *wand;
+
+	val_check_kind( magick, k_wand );
+	
+	wand = WAND( magick );
+
+	ClearMagickWand( wand );
 }
 
 
-value nMagick_close( value magick )
+value nMagick_destroy( value magick )
 {
 	MagickWand *wand;
 
 	val_check_kind( magick, k_wand );
 
-	val_gc( magick, NULL );
-
 	wand = WAND( magick );
+	
+	val_gc( magick, NULL );
 
 	DestroyMagickWand( wand );
 
@@ -100,7 +105,7 @@ value nMagick_init()
 	magick_wand = NewMagickWand();
 
 	v = alloc_abstract( k_wand, magick_wand );
-	val_gc( v, nMagick_close );
+	val_gc( v, nMagick_destroy );
 	return v;
 }
 
@@ -736,7 +741,7 @@ value nMagick_flatten( value magick )
 	wand = WAND( magick );
 
 	v = alloc_abstract( k_wand, MagickFlattenImages( wand ) );
-	val_gc( v, nMagick_close );
+	val_gc( v, nMagick_destroy );
 	return v;
 }
 
@@ -2697,7 +2702,7 @@ value nMagick_stereo( value magick, value offset_wand )
 	offset = WAND( offset_wand );
 
 	v = alloc_abstract( k_wand, MagickStereoImage( wand, offset_wand ) );
-	val_gc( v, nMagick_close );
+	val_gc( v, nMagick_destroy );
 	return v;
 }
 
@@ -2956,12 +2961,12 @@ value nMagick_clone( value magick )
 	return alloc_abstract( k_wand, CloneMagickWand( wand ) );
 }
 
-DEFINE_PRIM(nMagick_close,1);
+DEFINE_PRIM(nMagick_destroy,1);
 DEFINE_PRIM(nMagick_init,0);
 DEFINE_PRIM(nMagick_load,2);
 DEFINE_PRIM(nMagick_save,2);
 DEFINE_PRIM(nMagick_resize,3);
-DEFINE_PRIM(nMagick_relinquish_memory,1);
+DEFINE_PRIM(nMagick_clear,1);
 DEFINE_PRIM(nMagick_adaptive_sharpen,3);
 DEFINE_PRIM(nMagick_adaptive_threshold,4);
 DEFINE_PRIM(nMagick_add_image,2);

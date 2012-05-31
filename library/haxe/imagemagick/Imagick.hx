@@ -42,11 +42,9 @@ class Imagick
 	public function dispose()
 	{
 		#if php
-		pimg.clear();
 		pimg.destroy();
 		#elseif neko
-		//nimg.close();
-		//nimg.Dispose();
+		nimg.destroy();
 		#end
 	}
 	

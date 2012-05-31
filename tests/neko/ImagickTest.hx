@@ -120,4 +120,13 @@ class ImagickTest extends haxe.unit.TestCase
 		pic.composite(picB, ImagickCompositeOperator.Replace, 0, 0);
 		pic.save("pic7-replace-out.png");
 	}
+	
+	public function testDispose()
+	{
+		var pic = new Imagick();
+		pic.newImage(200, 100, new ImagickPixel("green"));
+		pic.dispose();
+		
+		this.assertTrue(true);
+	}
 }

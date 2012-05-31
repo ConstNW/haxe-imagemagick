@@ -102,14 +102,14 @@ class Imagick
 		}
 	}
 	
-	public function close() : Void
+	public function destroy() : Void
 	{
-		nMagick_close();
+		nMagick_destroy( __m );
 	}
 
-	public function Dispose() : Void
+	public function clear() : Void
 	{
-		nMagick_relinquish_memory( __m );
+		nMagick_clear( __m );
 	}
 	
 	public static function getNoiseType(noiseType:ImagickNoiseType) : Int
@@ -1862,10 +1862,10 @@ class Imagick
 	
 	static var nMagick_init = neko.Lib.load("nMagick","nMagick_init",0);
 	static var nMagick_load = neko.Lib.load("nMagick","nMagick_load",2);
-	static var nMagick_close = neko.Lib.load("nMagick","nMagick_close",1);
 	static var nMagick_save = neko.Lib.load("nMagick","nMagick_save",2);
+	static var nMagick_clear = neko.Lib.load("nMagick","nMagick_clear",1);
+	static var nMagick_destroy = neko.Lib.load("nMagick","nMagick_destroy",1);
 	
-	static var nMagick_relinquish_memory = neko.Lib.load("nMagick","nMagick_relinquish_memory",1);
 	static var nMagick_adaptive_sharpen = neko.Lib.load("nMagick","nMagick_adaptive_sharpen",3);
 	static var nMagick_adaptive_threshold = neko.Lib.load("nMagick","nMagick_adaptive_threshold",4);
 	static var nMagick_affine_transform = neko.Lib.load("nMagick","nMagick_affine_transform",2);
