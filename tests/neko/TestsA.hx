@@ -3,7 +3,7 @@ package;
 import haxe.imagemagick.Imagick;
 import haxe.imagemagick.ImagickPixel;
 
-class ImagickTest extends haxe.unit.TestCase
+class TestsA extends haxe.unit.TestCase
 {
     public function testNew()
 	{

@@ -47,7 +47,7 @@
   <options>
     <option showHiddenPaths="False" />
     <option testMovie="OpenDocument" />
-    <option testMovieCommand="http://htmlparser/" />
+    <option testMovieCommand="" />
   </options>
   <!-- Plugin storage -->
   <storage />
