@@ -129,19 +129,19 @@ class Imagick
 	{
 		return switch (op)
 		{
-			case Undefined:		0;
-			case Add:			1;
-			case And:			2;
-			case Divide:		3;
-			case LeftShift:		4;
-			case Max:			5;
-			case Min:			6;
-			case Multiply:		7;
-			case Or:			8;
-			case RightShift:	9;
-			case Set:			10;
-			case Subtract:		11;
-			default:			12;
+			case ImagickEvaluateOperator.Undefined:		0;
+			case ImagickEvaluateOperator.Add:			1;
+			case ImagickEvaluateOperator.And:			2;
+			case ImagickEvaluateOperator.Divide:		3;
+			case ImagickEvaluateOperator.LeftShift:		4;
+			case ImagickEvaluateOperator.Max:			5;
+			case ImagickEvaluateOperator.Min:			6;
+			case ImagickEvaluateOperator.Multiply:		7;
+			case ImagickEvaluateOperator.Or:			8;
+			case ImagickEvaluateOperator.RightShift:	9;
+			case ImagickEvaluateOperator.Set:			10;
+			case ImagickEvaluateOperator.Subtract:		11;
+			default:									12;
 		}
 	}
 	
@@ -197,16 +197,16 @@ class Imagick
 	{
 		return switch(c)
 		{
-			case Undefined:		0;
-			case No:			1;
-			case BZip:			2;
-			case Fax:			3;
-			case Group4:		4;
-			case JPEG:			5;
-			case LosslessJPEG:	7;
-			case LZW:			8;
-			case RLE:			9;
-			default:			10;
+			case ImagickCompression.Undefined:		0;
+			case ImagickCompression.No:				1;
+			case ImagickCompression.BZip:			2;
+			case ImagickCompression.Fax:			3;
+			case ImagickCompression.Group4:			4;
+			case ImagickCompression.JPEG:			5;
+			case ImagickCompression.LosslessJPEG:	7;
+			case ImagickCompression.LZW:			8;
+			case ImagickCompression.RLE:			9;
+			default:								10;
 		}
 	}
 	
@@ -231,12 +231,12 @@ class Imagick
 	{
 		return switch(c)
 		{
-			case Undefined:				0;
-			case MeanAbsoluteError:		1;
-			case MeanSquaredError:		2;
-			case PeakAbsoluteError:		3;
-			case PeakSignalToNoiseRatio:4;
-			default:					5;
+			case ImagickMetric.Undefined:				0;
+			case ImagickMetric.MeanAbsoluteError:		1;
+			case ImagickMetric.MeanSquaredError:		2;
+			case ImagickMetric.PeakAbsoluteError:		3;
+			case ImagickMetric.PeakSignalToNoiseRatio:	4;
+			default:									5;
 		}
 	}
 	
@@ -255,17 +255,17 @@ class Imagick
 	{
 		return switch(t)
 		{
-			case Bilevel:				1;
-			case Grayscale:				2;
-			case GrayscaleMatte:		3;
-			case Palette:				4;
-			case PaletteMatte:			5;
-			case TrueColor:				6;
-			case TrueColorMatte:		7;
-			case ColorSeparation:		8;
-			case ColorSeparationMatte:	9;
-			case Optimize:				10;
-			default:					0;
+			case ImagickImageType.Bilevel:				1;
+			case ImagickImageType.Grayscale:			2;
+			case ImagickImageType.GrayscaleMatte:		3;
+			case ImagickImageType.Palette:				4;
+			case ImagickImageType.PaletteMatte:			5;
+			case ImagickImageType.TrueColor:			6;
+			case ImagickImageType.TrueColorMatte:		7;
+			case ImagickImageType.ColorSeparation:		8;
+			case ImagickImageType.ColorSeparationMatte:	9;
+			case ImagickImageType.Optimize:				10;
+			default:									0;
 		}
 	}
 	
@@ -291,9 +291,9 @@ class Imagick
 	{
 		return switch(u)
 		{
-			case PixelsPerInch:			1;
-			case PixelsPerCentimeter:	2;
-			default:					0;
+			case ImagickResolutionUnits.PixelsPerInch:			1;
+			case ImagickResolutionUnits.PixelsPerCentimeter:	2;
+			default:											0;
 		}
 	}
 	
@@ -311,22 +311,22 @@ class Imagick
 	{
 		return switch(f)
 		{
-			case Point:		1;
-			case Box:		2;
-			case Triangle:	3;
-			case Hermite:	4;
-			case Hanning:	5;
-			case Hamming:	6;
-			case Blackman:	7;
-			case Gaussian:	8;
-			case Quadratic:	9;
-			case Cubic:		0;
-			case Catrom:	11;
-			case Mitchell:	12;
-			case Lanczos:	13;
-			case Bessel:	14;
-			case Sinc:		15;
-			default:		0;
+			case ImagickFilter.Point:		1;
+			case ImagickFilter.Box:			2;
+			case ImagickFilter.Triangle:	3;
+			case ImagickFilter.Hermite:		4;
+			case ImagickFilter.Hanning:		5;
+			case ImagickFilter.Hamming:		6;
+			case ImagickFilter.Blackman:	7;
+			case ImagickFilter.Gaussian:	8;
+			case ImagickFilter.Quadratic:	9;
+			case ImagickFilter.Cubic:		0;
+			case ImagickFilter.Catrom:		11;
+			case ImagickFilter.Mitchell:	12;
+			case ImagickFilter.Lanczos:		13;
+			case ImagickFilter.Bessel:		14;
+			case ImagickFilter.Sinc:		15;
+			default:						0;
 		}
 	}
 	
