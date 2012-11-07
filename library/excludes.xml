@@ -1,5 +1,0 @@
-<excludes>
-	<local>
-        <regexp pattern="src" />
-    </local>
-</excludes>
