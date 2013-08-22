@@ -27,6 +27,7 @@
 
 package neko.imagemagick;
 
+import neko.imagemagick.ImagickPixel;
 typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOperator;
 typedef ImagickNoiseType = haxe.imagemagick.internal.ImagickNoiseType;
 typedef ImagickEvaluateOperator = haxe.imagemagick.internal.ImagickEvaluateOperator;
@@ -38,10 +39,13 @@ typedef ImagickImageType = haxe.imagemagick.internal.ImagickImageType;
 typedef ImagickResolutionUnits = haxe.imagemagick.internal.ImagickResolutionUnits;
 typedef ImagickFilter = haxe.imagemagick.internal.ImagickFilter;
 
+private typedef ImagickHandle = { __ImagickHandle : Dynamic }
+
 class Imagick
 {
-	private var __m : Void;
+	private var __m : ImagickHandle;
 	
+	/*
 	public var backgroundColor (getBackgroundColor,setBackgroundColor) : ImagickPixel;
 	public var redPrimary (getRedPrimary,setRedPrimary) : ImagickPoint;
 	public var greenPrimary (getGreenPrimary,setGreenPrimary) : ImagickPoint;
@@ -54,12 +58,13 @@ class Imagick
 	public var gamma (getGamma,setGamma) : Float;
 	public var matte (getMatte,setMatte) : Bool;
 	public var matteColor (getMatteColor,setMatteColor) : ImagickPixel;
-	public var units (getUnits,setUnits) : ImagickResolutionUnits;
-	public var whitePoint (getWhitePoint,setWhitePoint) : ImagickPoint;
-	public var width (getWidth,null) : Int;
-	public var height (getHeight,null) : Int;
+	public var units (get_units,set_units) : ImagickResolutionUnits;
+	public var whitePoint (get_whitePoint,set_whitePoint) : ImagickPoint;
+	public var width (get_width,null) : Int;
+	public var height (get_height,null) : Int;
+	*/
 	
-	public function new(?file:String, ?handle:Void) : Void
+	public function new(?file:String, ?handle:ImagickHandle) : Void
 	{
 		if (handle != null)
 		{
@@ -82,7 +87,7 @@ class Imagick
 	{
 		if ( file != null && file != "")
 		{
-			if (neko.FileSystem.exists(file))
+			if (sys.FileSystem.exists(file))
 			{
 				nMagick_load( __m, untyped file.__s );
 			}
@@ -1840,7 +1845,7 @@ class Imagick
 	
 	public function iteratePixels(f:Int->Int->ImagickPixel->Void, x=0, y=0, w=-1, h=-1) : Void
     {
-        nMagick_iterate_pixels( __m, function( x:Int, y:Int, hPixel:Void ) f(x, y, new neko.imagemagick.ImagickPixel(null, hPixel)), x, y, w, h );
+        nMagick_iterate_pixels( __m, function( x:Int, y:Int, hPixel:ImagickPixelHandle ) f(x, y, new neko.imagemagick.ImagickPixel(null, hPixel)), x, y, w, h );
     }
 	
 	public function clone() : Imagick

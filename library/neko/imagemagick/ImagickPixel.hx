@@ -27,11 +27,13 @@
 
 package neko.imagemagick;
 
+typedef ImagickPixelHandle = { __ImagickPixelHandle : Dynamic }
+
 class ImagickPixel
 {
-	public var __d : Void;
+	public var __d : ImagickPixelHandle;
 	
-	public function new( ?color : String, ?handle : Void )
+	public function new( ?color : String, ?handle : ImagickPixelHandle )
 	{
 		__d = handle != null ? handle : nMagick_pixel_new();
 		

@@ -27,9 +27,11 @@
 
 package neko.imagemagick;
 
+typedef ImagickDrawHandle = { __ImagickDrawHandle : Dynamic }
+
 class ImagickDraw
 {
-	public var __d : Void;
+	public var __d : ImagickDrawHandle;
 	
 	public function new()
 	{

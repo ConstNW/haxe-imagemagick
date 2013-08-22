@@ -48,8 +48,8 @@ class Imagick
 		#end
 	}
 	
-	public var width(width_getter, null) : Int;
-	function width_getter() : Int
+	public var width(get_width, null) : Int;
+	function get_width() : Int
 	{
 		#if php
 		return pimg.getImageWidth();
@@ -58,8 +58,8 @@ class Imagick
 		#end
 	}
 	
-	public var height(height_getter, null) : Int;
-	function height_getter() : Int
+	public var height(get_height, null) : Int;
+	function get_height() : Int
 	{
 		#if php
 		return pimg.getImageHeight();
