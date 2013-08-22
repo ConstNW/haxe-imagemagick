@@ -3,8 +3,8 @@ package haxe.imagemagick;
 #if php
 private typedef PhpImagick = php.imagemagick.Imagick;
 #elseif neko
-private typedef NekoImagick = neko.imagemagick.Imagick;
 import neko.imagemagick.ImagickPoint;
+private typedef NekoImagick = neko.imagemagick.Imagick;
 #end
 
 typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOperator;
