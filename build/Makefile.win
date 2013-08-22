@@ -1,0 +1,30 @@
+SRC_DIR=src
+OBJ_DIR=obj
+
+OBJS=$(OBJ_DIR)/nMagick.o $(OBJ_DIR)/DrawingWand.o $(OBJ_DIR)/PixelWand.o
+
+INCLUDE_NEKO=D:/MyProg/_tools/motion-twin/neko/include
+LIBRARY_NEKO=D:/MyProg/_tools/motion-twin/neko
+
+INCLUDE_IMAGICK=D:/MyProg/_tools/ImageMagick
+LIBRARY_IMAGICK=D:/MyProg/_tools/ImageMagick/VisualMagick/lib
+
+
+OUT=../library/ndll/Windows/nMagick.ndll
+
+CCFLAGS=-I$(INCLUDE_NEKO) -I$(INCLUDE_IMAGICK) -nologo -W3 -WX- -Od -Oy- -D "WIN32" -D "_WINDOWS" -D "_USRDLL" -D "_WINDLL" -D "_MBCS" -Gm- -EHsc -RTC1 -GS -Zc:wchar_t -Zc:forScope -Gd -MTd
+
+LDFLAGS=-NOLOGO -LIBPATH:$(LIBRARY_NEKO) -LIBPATH:$(LIBRARY_IMAGICK) -DLL neko.lib
+LDFLAGS+=CORE_RL_wand_.lib 
+
+build: $(OBJS)
+	link $(LDFLAGS) -OUT:$(OUT) $(OBJS)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	cl $(CCFLAGS) -c -Fo$@ $<
+
+clean:
+	rm -f $(OUT)
+	rm -f $(OBJS)
+
+all: clean build
