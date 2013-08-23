@@ -1,12 +1,29 @@
-OUT=../library/ndll/Linux/nMagick.ndll
-OBJS=nMagick.o PixelWand.o DrawingWand.o
+ifeq ($(shell getconf LONG_BIT),64)
+	PLATFORM=Linux64
+else
+	PLATFORM=Linux
+endif
+
+SRC_DIR=src
+OBJ_DIR=obj
+
+OBJS=$(OBJ_DIR)/nMagick.o $(OBJ_DIR)/PixelWand.o $(OBJ_DIR)/DrawingWand.o
+
+OUT=../library/ndll/$(PLATFORM)/nMagick.ndll
+
 CC=gcc
-CFLAGS=-shared -fPIC -I/usr/lib/neko/include -I/usr/include/ImageMagick
+
+CCFLAGS=-shared -fPIC -I/usr/include/ImageMagick
 LDFLAGS=-shared -lneko -lMagickWand
 
-nMagick.ndll: $(OBJS)
-	$(CC) $(LDFLAGS) -o $(OUT) $(OBJS)
+build: $(OBJS)
+	$(CC) $(OBJS) -o $(OUT) $(LDFLAGS)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CCFLAGS) -c -o $@ $<
 
 clean:
 	rm -f $(OBJS)
-	rm -rf $(OUT)
+	rm -f $(OUT)
+
+all: clean build
