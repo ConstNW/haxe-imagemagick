@@ -1,29 +1,13 @@
-ifeq ($(shell getconf LONG_BIT),64)
-	PLATFORM=Linux64
+include Makefile.platform
+include Makefile.ndll
+
+PROJECT=nMagick
+
+ifeq ($(PLATFORM),Windows)
+	CCFLAGS+= -I D:\MyProg\_tools\ImageMagick
+	LDFLAGS+= D:\MyProg\_tools\ImageMagick\VisualMagick\lib\CORE_RL_wand_.lib 
 else
-	PLATFORM=Linux
-endif
+	CCFLAGS+= -I/usr/include/ImageMagick
+	LDFLAGS+= -lMagickWand
+endif 
 
-SRC_DIR=src
-OBJ_DIR=obj
-
-OBJS=$(OBJ_DIR)/nMagick.o $(OBJ_DIR)/PixelWand.o $(OBJ_DIR)/DrawingWand.o
-
-OUT=../library/ndll/$(PLATFORM)/nMagick.ndll
-
-CC=gcc
-
-CCFLAGS=-shared -fPIC -I/usr/include/ImageMagick
-LDFLAGS=-shared -lneko -lMagickWand
-
-build: $(OBJS)
-	$(CC) $(OBJS) -o $(OUT) $(LDFLAGS)
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CCFLAGS) -c -o $@ $<
-
-clean:
-	rm -f $(OBJS)
-	rm -f $(OUT)
-
-all: clean build
