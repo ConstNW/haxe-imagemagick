@@ -48,7 +48,7 @@ class Imagick
 		#end
 	}
 	
-	public var width(get_width, null) : Int;
+	public var width(get, null) : Int;
 	function get_width() : Int
 	{
 		#if php
@@ -58,7 +58,7 @@ class Imagick
 		#end
 	}
 	
-	public var height(get_height, null) : Int;
+	public var height(get, null) : Int;
 	function get_height() : Int
 	{
 		#if php

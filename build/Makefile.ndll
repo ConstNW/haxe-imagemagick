@@ -29,9 +29,7 @@ ifeq ($(PLATFORM), $(filter $(PLATFORM), Windows Windows64))
 	CCFLAGS+= -I$(NEKOPATH)\include
 	LDFLAGS+= $(NEKOPATH)\neko.dll
 else
-	ifeq ($(PLATFORM), Linux64)
-		CCFLAGS+= -fPIC
-	endif
+	CCFLAGS+= -fPIC
 	LDFLAGS+= -lneko
 endif
 

@@ -1,54 +1,55 @@
-package;
+import utest.Test;
+import utest.Assert;
 
 import haxe.imagemagick.Imagick;
 import haxe.imagemagick.ImagickPixel;
 
-class IMagickTest extends haxe.unit.TestCase
+class IMagickTest extends Test
 {
     public function testNew()
 	{
 		var pic = new Imagick();
-		this.assertTrue(pic != null);
+		Assert.notNull(pic);
 		
 		pic.newImage(200, 100, new ImagickPixel("green"));
 		pic.save("pic0-out.png");
-		this.assertTrue(pic != null);
+		Assert.notNull(pic);
 		
 	}
 	
 	public function testLoad()
     {
-		var pic = new Imagick("pic1.jpg");
-		this.assertTrue(pic != null);
+		var pic = new Imagick("../assets/pic1.jpg");
+		Assert.notNull(pic);
     }
 	
 	public function testSave()
 	{
-		var pic = new Imagick("pic1.jpg");
-		this.assertTrue(pic != null);
+		var pic = new Imagick("../assets/pic1.jpg");
+		Assert.notNull(pic);
 		pic.save("pic1-out.png");
 	}
 	
 	public function testMatteFloodFill()
 	{
-		var pic : Imagick = new Imagick("pic2.png");
-		this.assertTrue(pic != null);
+		var pic : Imagick = new Imagick("../assets/pic2.png");
+		Assert.notNull(pic);
 		pic.matteFloodFill(0, 10, new ImagickPixel("black"), 100, 50);
 		pic.save("png32:pic2-out.png");
 	}
 	
 	public function testResize()
 	{
-		var pic : Imagick = new Imagick("pic2.png");
-		this.assertTrue(pic != null);
+		var pic : Imagick = new Imagick("../assets/pic2.png");
+		Assert.notNull(pic);
 		pic.resize(30, 15);
 		pic.save("pic3-out.png");
 	}
 	
 	public function testIteratorFull()
 	{
-		var pic : Imagick = new Imagick("pic4.png");
-		this.assertTrue(pic != null);
+		var pic : Imagick = new Imagick("../assets/pic4.png");
+		Assert.notNull(pic);
 		trace("\ntestIteratorFull");
 		pic.iteratePixels(function(x:Int, y:Int, p:ImagickPixel)
 		{
@@ -58,8 +59,8 @@ class IMagickTest extends haxe.unit.TestCase
 	
 	public function testIteratorRegion1()
 	{
-		var pic : Imagick = new Imagick("pic4.png");
-		this.assertTrue(pic != null);
+		var pic : Imagick = new Imagick("../assets/pic4.png");
+		Assert.notNull(pic);
 		trace("\ntestIteratorRegion1");
 		pic.iteratePixels(function(x:Int, y:Int, p:ImagickPixel)
 		{
@@ -69,8 +70,8 @@ class IMagickTest extends haxe.unit.TestCase
 	
 	public function testIteratorRegion2()
 	{
-		var pic : Imagick = new Imagick("pic4.png");
-		this.assertTrue(pic != null);
+		var pic : Imagick = new Imagick("../assets/pic4.png");
+		Assert.notNull(pic);
 		trace("\ntestIteratorRegion2");
 		pic.iteratePixels(function(x:Int, y:Int, p:ImagickPixel)
 		{
@@ -80,27 +81,27 @@ class IMagickTest extends haxe.unit.TestCase
 	
 	public function testWhiteThreshold()
 	{
-		var pic : Imagick = new Imagick("pic1.jpg");
-		this.assertTrue(pic != null);
+		var pic : Imagick = new Imagick("../assets/pic1.jpg");
+		Assert.notNull(pic);
 		pic.whiteThreshold(new ImagickPixel("gray"));
 		pic.save("pic5-out.jpg");
 	}
 	
 	public function testClone()
 	{
-		var pic : Imagick = new Imagick("pic1.jpg");
-		this.assertTrue(pic != null);
+		var pic : Imagick = new Imagick("../assets/pic1.jpg");
+		Assert.notNull(pic);
 		var pic2 = pic.clone();
 		pic2.save("pic6-out.jpg");
 	}
 	
 	public function testComposite()
 	{
-		var picA = new Imagick("pic7-A.png");
-		this.assertTrue(picA != null);
+		var picA = new Imagick("../assets/pic7-A.png");
+		Assert.notNull(picA);
 		
-		var picB = new Imagick("pic7-B.png");
-		this.assertTrue(picB != null);
+		var picB = new Imagick("../assets/pic7-B.png");
+		Assert.notNull(picB);
 		
 		var pic : Imagick;
 		
@@ -127,6 +128,6 @@ class IMagickTest extends haxe.unit.TestCase
 		pic.newImage(200, 100, new ImagickPixel("green"));
 		pic.dispose();
 		
-		this.assertTrue(true);
+		Assert.isTrue(true);
 	}
 }

@@ -1,0 +1,7 @@
+-cp src
+-cp ../library
+-lib utest
+-main Main
+-neko bin/test.n
+-cmd cd bin
+-cmd neko test.n

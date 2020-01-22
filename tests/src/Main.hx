@@ -1,11 +1,15 @@
-package ;
+import utest.Runner;
+import utest.ui.Report;
 
 class Main
 {
     static function main()
 	{
-		var r = new haxe.unit.TestRunner();
-		r.add(new IMagickTest());
-		r.run();
+        var runner = new Runner();
+
+        runner.addCase(new IMagickTest());
+
+        Report.create(runner);
+		runner.run();
 	}
 }
