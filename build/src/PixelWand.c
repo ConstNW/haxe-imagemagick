@@ -27,245 +27,133 @@
 
 #include "nMagick.h"
 
-/* =========================================================================
-Pixel wand methods
-*/
+// ============================================================================
 
-/*
-@description	Deallocates resources associated with a PixelWand.
-*/
-value nMagick_pixel_close( value pixel )
+void nMagick_pixel_finalize(value pixel)
 {
-	PixelWand *pw;
-
-	val_check_kind( pixel, k_pixel );
-	val_gc( pixel, NULL );
-
-	pw = PIXEL( pixel );
-
-	DestroyPixelWand( pw );
+	DestroyPixelWand(PIXEL(pixel));
 }
 
-/*
-@description	Clears resources associated with the wand.
-*/
-value nMagick_pixel_clear( value pixel )
+value nMagick_pixel_close(value pixel)
 {
-	PixelWand *pix;
-
-	val_check_kind( pixel, k_pixel );
-
-	pix = PIXEL( pixel );
-
-	ClearPixelWand( pix );
+	val_check_kind(pixel, k_pixel);
+	val_gc(pixel, NULL);
+	nMagick_pixel_finalize(pixel);
+	return val_null;
 }
 
-/*
-@description	Returns a new pixel wand.
-*/
+value nMagick_pixel_clear(value pixel)
+{
+	val_check_kind(pixel, k_pixel);
+	ClearPixelWand(PIXEL(pixel));
+}
+
 value nMagick_pixel_new()
 {
-	value v;
-	PixelWand  *pix;
-
-	pix = NewPixelWand();
-
-	v = alloc_abstract( k_pixel, pix );
-	val_gc( v, nMagick_pixel_close );
+	PixelWand *pix = NewPixelWand();
+	value v = alloc_abstract(k_pixel, pix);
+	val_gc(v, nMagick_pixel_finalize);
 	return v;
 }
 
-/*
-@description	Returns the normalized alpha color of the pixel wand.
-*/
-value nMagick_pixel_get_alpha( value pixel )
+value nMagick_pixel_get_alpha(value pixel)
 {
-	PixelWand *pix;
-
-	val_check_kind( pixel, k_pixel );
-
-	pix = PIXEL( pixel );
-
-	return alloc_float( PixelGetAlpha( pix ) );
+	val_check_kind(pixel, k_pixel);
+	return alloc_float(PixelGetAlpha(PIXEL(pixel)));
 }
 
-/*
-@description	Sets the normalized alpha color of the pixel wand.
-*/
-value nMagick_pixel_set_alpha( value pixel, value alpha )
+value nMagick_pixel_set_alpha(value pixel, value alpha)
 {
-	PixelWand *pix;
+	val_check_kind(pixel, k_pixel);
+	val_check(alpha, float);
 
-	val_check_kind( pixel, k_pixel );
-	val_check( alpha, float );
-
-	pix = PIXEL( pixel );
-
-	PixelSetAlpha( pix, val_float( alpha ) );
+	PixelSetAlpha(PIXEL(pixel), val_float(alpha));
 }
 
-/*
-@description	Returns the normalized black color of the pixel wand.
-*/
-value nMagick_pixel_get_black( value pixel )
+value nMagick_pixel_get_black(value pixel)
 {
-	PixelWand *pix;
-
-	val_check_kind( pixel, k_pixel );
-
-	pix = PIXEL( pixel );
-
-	return alloc_float( PixelGetBlack( pix ) );
+	val_check_kind(pixel, k_pixel);
+	return alloc_float(PixelGetBlack(PIXEL(pixel)));
 }
 
-/*
-@description	Sets the normalized black color of the pixel wand.
-*/
-value nMagick_pixel_set_black( value pixel, value black )
+value nMagick_pixel_set_black(value pixel, value black)
 {
-	PixelWand *pix;
+	val_check_kind(pixel, k_pixel);
+	val_check(black, float);
 
-	val_check_kind( pixel, k_pixel );
-	val_check( black, float );
-
-	pix = PIXEL( pixel );
-
-	PixelSetBlack( pix, val_float( black ) );
+	PixelSetBlack(PIXEL(pixel), val_float(black));
 }
 
-/*
-@description	Returns the normalized black color of the pixel wand.
-*/
-value nMagick_pixel_get_red( value pixel )
+value nMagick_pixel_get_red(value pixel)
 {
-	PixelWand *pix;
-
-	val_check_kind( pixel, k_pixel );
-
-	pix = PIXEL( pixel );
-
-	return alloc_float( PixelGetRed( pix ) );
+	val_check_kind(pixel, k_pixel);
+	return alloc_float(PixelGetRed(PIXEL(pixel)));
 }
 
-/*
-@description	Sets the normalized black color of the pixel wand.
-*/
-value nMagick_pixel_set_red( value pixel, value red )
+value nMagick_pixel_set_red(value pixel, value red)
 {
-	PixelWand *pix;
+	val_check_kind(pixel, k_pixel);
+	val_check(red, float);
 
-	val_check_kind( pixel, k_pixel );
-	val_check( red, float );
-
-	pix = PIXEL( pixel );
-
-	PixelSetRed( pix, val_float( red ) );
+	PixelSetRed(PIXEL(pixel), val_float(red));
 }
 
-/*
-@description	Returns the normalized green color of the pixel wand.
-*/
-value nMagick_pixel_get_green( value pixel )
+value nMagick_pixel_get_green(value pixel)
 {
-	PixelWand *pix;
-
-	val_check_kind( pixel, k_pixel );
-
-	pix = PIXEL( pixel );
-
-	return alloc_float( PixelGetGreen( pix ) );
+	val_check_kind(pixel, k_pixel);
+	return alloc_float(PixelGetGreen(PIXEL(pixel)));
 }
 
-/*
-@description	Sets the normalized green color of the pixel wand.
-*/
-value nMagick_pixel_set_green( value pixel, value green )
+value nMagick_pixel_set_green(value pixel, value green)
 {
-	PixelWand *pix;
+	val_check_kind(pixel, k_pixel);
+	val_check(green, float);
 
-	val_check_kind( pixel, k_pixel );
-	val_check( green, float );
-
-	pix = PIXEL( pixel );
-
-	PixelSetGreen( pix, val_float( green ) );
+	PixelSetGreen(PIXEL(pixel), val_float(green));
 }
 
-/*
-@description	Returns the normalized blue color of the pixel wand.
-*/
-value nMagick_pixel_get_blue( value pixel )
+value nMagick_pixel_get_blue(value pixel)
 {
-	PixelWand *pix;
-
-	val_check_kind( pixel, k_pixel );
-
-	pix = PIXEL( pixel );
-
-	return alloc_float( PixelGetBlue( pix ) );
+	val_check_kind(pixel, k_pixel);
+	return alloc_float(PixelGetBlue(PIXEL(pixel)));
 }
 
-/*
-@description	Sets the normalized blue color of the pixel wand.
-*/
-value nMagick_pixel_set_blue( value pixel, value blue )
+value nMagick_pixel_set_blue(value pixel, value blue)
 {
-	PixelWand *pix;
-
-	val_check_kind( pixel, k_pixel );
-	val_check( blue, float );
-
-	pix = PIXEL( pixel );
-
-	PixelSetBlue( pix, val_float( blue ) );
+	val_check_kind(pixel, k_pixel);
+	val_check(blue, float);
+	
+	PixelSetBlue(PIXEL(pixel), val_float(blue));
 }
 
-/*
-@description	Sets the color of the pixel wand with a string 
-				(e.g. "blue", "#0000ff", "rgb(0,0,255)", "cmyk(100,100,100,10)", 
-				etc.).
-@param			color	The string to convert.
-*/
-value nMagick_pixel_set_color( value pixel, value color )
+value nMagick_pixel_set_color(value pixel, value color)
 {
-	PixelWand *pix;
-
-	val_check_kind( pixel, k_pixel );
-	val_check( color, string );
-
-	pix = PIXEL( pixel );
-
-	return alloc_bool( PixelSetColor( pix, val_string( color ) ) );
+	val_check_kind(pixel, k_pixel);
+	val_check(color, string);
+	
+	return alloc_bool(PixelSetColor(PIXEL(pixel), val_string(color)));
 }
 
-/*
-@description	Sets the color count of the pixel wand.
-@param			count	The number of colors required
-*/
-void nMagick_pixel_set_color_count( value pixel, value count )
+value nMagick_pixel_set_color_count(value pixel, value count)
 {
-	PixelWand *pix;
-
-	val_check_kind( pixel, k_pixel );
-	val_check( count, int );
-
-	pix = PIXEL( pixel );
-
-	PixelSetColorCount( pix, val_int( count ) );
+	val_check_kind(pixel, k_pixel);
+	val_check(count, int);
+	PixelSetColorCount(PIXEL(pixel), val_int(count));
+	return val_null;
 }
 
-DEFINE_PRIM(nMagick_pixel_close,1);
-DEFINE_PRIM(nMagick_pixel_clear,1);
-DEFINE_PRIM(nMagick_pixel_new,0);
-DEFINE_PRIM(nMagick_pixel_get_alpha,1);
-DEFINE_PRIM(nMagick_pixel_set_alpha,2);
-DEFINE_PRIM(nMagick_pixel_get_black,1);
-DEFINE_PRIM(nMagick_pixel_set_black,2);
-DEFINE_PRIM(nMagick_pixel_get_red,1);
-DEFINE_PRIM(nMagick_pixel_set_red,2);
-DEFINE_PRIM(nMagick_pixel_get_green,1);
-DEFINE_PRIM(nMagick_pixel_set_green,2);
-DEFINE_PRIM(nMagick_pixel_get_blue,1);
-DEFINE_PRIM(nMagick_pixel_set_blue,2);
-DEFINE_PRIM(nMagick_pixel_set_color,2);
-DEFINE_PRIM(nMagick_pixel_set_color_count,2);
+DEFINE_PRIM(nMagick_pixel_close, 1);
+DEFINE_PRIM(nMagick_pixel_clear, 1);
+DEFINE_PRIM(nMagick_pixel_new, 0);
+DEFINE_PRIM(nMagick_pixel_get_alpha, 1);
+DEFINE_PRIM(nMagick_pixel_set_alpha, 2);
+DEFINE_PRIM(nMagick_pixel_get_black, 1);
+DEFINE_PRIM(nMagick_pixel_set_black, 2);
+DEFINE_PRIM(nMagick_pixel_get_red, 1);
+DEFINE_PRIM(nMagick_pixel_set_red, 2);
+DEFINE_PRIM(nMagick_pixel_get_green, 1);
+DEFINE_PRIM(nMagick_pixel_set_green, 2);
+DEFINE_PRIM(nMagick_pixel_get_blue, 1);
+DEFINE_PRIM(nMagick_pixel_set_blue, 2);
+DEFINE_PRIM(nMagick_pixel_set_color, 2);
+DEFINE_PRIM(nMagick_pixel_set_color_count, 2);

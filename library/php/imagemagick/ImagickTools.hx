@@ -7,7 +7,7 @@ class ImagickTools
         if (img == null) return;
         
         untyped __php__("
-            $it = $img->getPixelIterator();    
+            $it = $img->getPixelIterator();
             $y = 0;
             foreach ($it as $row => $pixels)
             {
@@ -22,11 +22,11 @@ class ImagickTools
 				}
                 $it->syncIterator();
                 $y++;
-            }        
+            }
         ");
     }
 	
-	public static function pixel2color(p:ImagickPixel) : { r:Int, g:Int, b:Int, a:Int}
+	public static function pixel2color(p:ImagickPixel) : { r:Int, g:Int, b:Int, a:Int }
     {
         var c = p.getColor(true);
         return { r:c[untyped 'r'], g:c[untyped 'g'], b:c[untyped 'b'], a:c[untyped 'a'] };

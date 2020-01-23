@@ -1,7 +1,7 @@
 package haxe.imagemagick.internal;
 
 enum ImagickColorSpace
-{	
+{
 	Undefined;
 	RGB;
 	GRAY;

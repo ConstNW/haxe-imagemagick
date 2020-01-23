@@ -9,7 +9,7 @@ private typedef NekoImagick = neko.imagemagick.Imagick;
 
 typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOperator;
 
-class Imagick 
+class Imagick
 {
 	#if php
 	var pimg : PhpImagick;
@@ -23,10 +23,10 @@ class Imagick
 		{
 			#if php
 			pimg = img;
-			if (file != null ) pimg.readImage(file);
+			if (file != null) pimg.readImage(file);
 			#elseif neko
 			nimg = img;
-			if (file != null ) nimg.load(file);
+			if (file != null) nimg.load(file);
 			#end
 		}
 		else
@@ -73,7 +73,7 @@ class Imagick
 		#if php
 		pimg.resizeImage(w, h, php.imagemagick.Imagick.FILTER_LANCZOS, 1.0);
 		#elseif neko
-		nimg.resize(w, h); 
+		nimg.resize(w, h, neko.imagemagick.Imagick.ImagickFilter.Lanczos, 1.0);
 		#end
 	}
 	
@@ -163,7 +163,7 @@ class Imagick
 		#if php
 		return pimg.compositeImage(img.pimg, getCompositeOperator(op), x, y);
 		#elseif neko
-		return nimg.compositeImage(img.nimg, op, new ImagickPoint(x, y)); 
+		return nimg.compositeImage(img.nimg, op, new ImagickPoint(x, y));
 		#end
 	}
 	
@@ -173,6 +173,15 @@ class Imagick
 		return pimg.cropImage(w, h, x, y);
 		#elseif neko
 		return nimg.crop(w, h, new ImagickPoint(x, y));
+		#end
+	}
+	
+	public function setCompressionQuality(quality:Int)
+	{
+		#if php
+		return pimg.setImageCompressionQuality(quality);
+		#elseif neko
+		return nimg.setCompressionQuality(quality);
 		#end
 	}
 	
@@ -204,7 +213,7 @@ class Imagick
 				}
                 $it->syncIterator();
                 $py++;
-            }        
+            }
         ");
 		#elseif neko
 		nimg.iteratePixels(f, x, y, w, h);

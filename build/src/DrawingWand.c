@@ -27,91 +27,58 @@
 
 #include "nMagick.h"
 
-/* =========================================================================
-Drawing wand methods
-*/
+// ============================================================================
 
-
-/*
-@description	Deallocates resources associated with a PixelWand.
-*/
-value nMagick_draw_close( value draw )
+void nMagick_draw_finalize(value draw)
 {
-	DrawingWand *drw;
-
-	val_check_kind( draw, k_pixel );
-	val_gc( draw, NULL );
-
-	drw = DRAW( draw );
-
-	DestroyDrawingWand( drw );
+	DestroyDrawingWand(DRAW(draw));
 }
 
-/*
-@description	Returns a new pixel wand.
-*/
+value nMagick_draw_close(value draw)
+{
+	val_check_kind(draw, k_pixel);
+	val_gc(draw, NULL);
+	
+	nMagick_draw_finalize(draw);
+}
+
 value nMagick_draw_new()
 {
-	value v;
-	DrawingWand *draw;
-
-	draw = NewDrawingWand();
-
-	v = alloc_abstract( k_draw, draw );
-	val_gc( v, nMagick_draw_close );
+	DrawingWand *draw = NewDrawingWand();
+	value v = alloc_abstract(k_draw, draw);
+	val_gc(v, nMagick_draw_finalize);
 	return v;
 }
 
-/*
-@description	Clears all resources associated with the DrawingWand.
-*/
-value nMagick_draw_clear( value draw )
+value nMagick_draw_clear(value draw)
 {
-	DrawingWand *drw;
-
-	val_check_kind( draw, k_draw );
-
-	drw = DRAW( draw );
-
-	ClearDrawingWand( drw );
+	val_check_kind(draw, k_draw);
+	ClearDrawingWand(DRAW(draw));
 }
 
-/*
-@description	Destroys the DrawingWand from memory.
-*/
-value nMagick_draw_destroy( value draw )
+value nMagick_draw_destroy(value draw)
 {
-	DrawingWand *drw;
-
-	val_check_kind( draw, k_draw );
-
-	drw = DRAW( draw );
-
-	DestroyDrawingWand( drw );
+	val_check_kind(draw, k_draw);
+	DestroyDrawingWand(DRAW(draw));
 }
 
 /*
 @description	Returns an identical copy of the DrawingWand.
 */
-value nMagick_draw_clone( value draw )
+value nMagick_draw_clone(value draw)
 {
-	value v;
-	DrawingWand *drw;
-
-	val_check_kind( draw, k_draw );
-
-	drw = DRAW( draw );
-
-	v = alloc_abstract( k_draw, CloneDrawingWand( drw ) );
-	val_gc( v, nMagick_draw_close );
+	val_check_kind(draw, k_draw);
+	DrawingWand *drw = DRAW(draw);
+	value v = alloc_abstract(k_draw, CloneDrawingWand(drw));
+	val_gc(v, nMagick_draw_finalize);
 	return v;
 }
 
 
 
 
-DEFINE_PRIM(nMagick_draw_close,1);
-DEFINE_PRIM(nMagick_draw_new,0);
-DEFINE_PRIM(nMagick_draw_clear,1);
-DEFINE_PRIM(nMagick_draw_destroy,1);
-DEFINE_PRIM(nMagick_draw_clone,1);
+DEFINE_PRIM(nMagick_draw_close, 1);
+DEFINE_PRIM(nMagick_draw_new, 0);
+DEFINE_PRIM(nMagick_draw_clear, 1);
+DEFINE_PRIM(nMagick_draw_destroy, 1);
+DEFINE_PRIM(nMagick_draw_clone, 1);

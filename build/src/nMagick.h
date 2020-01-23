@@ -34,16 +34,20 @@
 #ifndef __NMAGICK_H_
 #define __NMAGICK_H_
 
- #define		WAND( o )		(MagickWand*)val_data( o );
- #define		DRAW( o )		(DrawingWand*)val_data( o );
- #define		PIXEL( o )		(PixelWand*)val_data( o );
+ #define WAND(o)	(MagickWand*)val_data(o)
+ #define DRAW(o)	(DrawingWand*)val_data(o)
+ #define PIXEL(o)	(PixelWand*)val_data(o)
 
- DECLARE_KIND( k_wand );
- DECLARE_KIND( k_draw );
- DECLARE_KIND( k_pixel );
+ DECLARE_KIND(k_wand);
+ DECLARE_KIND(k_draw);
+ DECLARE_KIND(k_pixel);
 
- value nMagick_pixel_close( value pixel );
+ value nMagick_pixel_close(value pixel);
 
  extern int objCount;
+
+ #ifndef BOOL
+  #define BOOL int
+ #endif
 
 #endif

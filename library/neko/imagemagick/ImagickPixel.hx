@@ -33,7 +33,7 @@ class ImagickPixel
 {
 	public var __d : ImagickPixelHandle;
 	
-	public function new( ?color : String, ?handle : ImagickPixelHandle )
+	public function new(?color:String, ?handle:ImagickPixelHandle)
 	{
 		__d = handle != null ? handle : nMagick_pixel_new();
 		
@@ -45,12 +45,12 @@ class ImagickPixel
 	
 	public function close()
 	{
-		nMagick_pixel_close( __d );
+		nMagick_pixel_close(__d);
 	}
 	
 	public function clear() : Bool
 	{
-		return nMagick_pixel_clear( __d );
+		return nMagick_pixel_clear(__d);
 	}
 
 	/*
@@ -58,15 +58,15 @@ class ImagickPixel
 	*/
 	public function getAlpha() : Float
 	{
-		return nMagick_pixel_get_alpha( __d );
+		return nMagick_pixel_get_alpha(__d);
 	}
 
 	/*
 	@description	Sets the normalized alpha value of the pixel wand.
 	*/
-	public function setAlpha( alpha : Float ) : Void
+	public function setAlpha(alpha:Float) : Void
 	{
-		nMagick_pixel_set_alpha( __d, alpha );
+		nMagick_pixel_set_alpha(__d, alpha);
 	}
 
 	/*
@@ -74,15 +74,15 @@ class ImagickPixel
 	*/
 	public function getBlack() : Float
 	{
-		return nMagick_pixel_get_black( __d );
+		return nMagick_pixel_get_black(__d);
 	}
 
 	/*
 	@description	Sets the normalized black color of the pixel wand.
 	*/
-	public function setBlack( black : Float ) : Void
+	public function setBlack(black:Float) : Void
 	{
-		nMagick_pixel_set_black( __d, black );
+		nMagick_pixel_set_black(__d, black);
 	}
 
 	/*
@@ -90,15 +90,15 @@ class ImagickPixel
 	*/
 	public function getRed() : Float
 	{
-		return nMagick_pixel_get_red( __d );
+		return nMagick_pixel_get_red(__d);
 	}
 
 	/*
 	@description	Sets the normalized red color of the pixel wand.
 	*/
-	public function setRed( red : Float ) : Void
+	public function setRed(red:Float) : Void
 	{
-		nMagick_pixel_set_red( __d, red );
+		nMagick_pixel_set_red(__d, red);
 	}
 
 	/*
@@ -106,15 +106,15 @@ class ImagickPixel
 	*/
 	public function getGreen() : Float
 	{
-		return nMagick_pixel_get_green( __d );
+		return nMagick_pixel_get_green(__d);
 	}
 
 	/*
 	@description	Sets the normalized green color of the pixel wand.
 	*/
-	public function setGreen( green : Float ) : Void
+	public function setGreen(green:Float) : Void
 	{
-		nMagick_pixel_set_green( __d, green );
+		nMagick_pixel_set_green(__d, green);
 	}
 
 	/*
@@ -122,35 +122,35 @@ class ImagickPixel
 	*/
 	public function getBlue() : Float
 	{
-		return nMagick_pixel_get_blue( __d );
+		return nMagick_pixel_get_blue(__d);
 	}
 
 	/*
 	@description	Sets the normalized blue color of the pixel wand.
 	*/
-	public function setBlue( blue : Float ) : Void
+	public function setBlue(blue:Float) : Void
 	{
-		nMagick_pixel_set_blue( __d, blue );
+		nMagick_pixel_set_blue(__d, blue);
 	}
 
 	/*
-	@description	Sets the color of the pixel wand with a string 
-					(e.g. "blue", "#0000ff", "rgb(0,0,255)", "cmyk(100,100,100,10)", 
+	@description	Sets the color of the pixel wand with a string
+					(e.g. "blue", "#0000ff", "rgb(0,0,255)", "cmyk(100,100,100,10)",
 					etc.).
 	@param			color	The string to convert.
 	*/
-	public function setColor( color : String ) : Void
+	public function setColor(color:String) : Void
 	{
-		nMagick_pixel_set_color( __d, untyped color.__s );
+		nMagick_pixel_set_color(__d, untyped color.__s);
 	}
 
 	/*
 	@description	Sets the color count of the pixel wand.
 	@param			count	The number of colors required
 	*/
-	public function setColorCount( count : Int ) : Void
+	public function setColorCount(count:Int) : Void
 	{
-		nMagick_pixel_set_color_count( __d, count );
+		nMagick_pixel_set_color_count(__d, count);
 	}
 	
 	static var nMagick_pixel_close = neko.Lib.load("nMagick","nMagick_pixel_close",1);

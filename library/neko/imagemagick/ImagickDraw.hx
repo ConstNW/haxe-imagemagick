@@ -40,22 +40,22 @@ class ImagickDraw
 	
 	public function close()
 	{
-		nMagick_draw_close( __d );
+		nMagick_draw_close(__d);
 	}
 	
 	public function clear() : Bool
 	{
-		return nMagick_draw_clear( __d );
+		return nMagick_draw_clear(__d);
 	}
 	
 	public function clone() : ImagickDraw
 	{
-		return nMagick_draw_clone( __d );
+		return nMagick_draw_clone(__d);
 	}
 	
 	public function dispose()
 	{
-		return nMagick_draw_destroy( __d );
+		return nMagick_draw_destroy(__d);
 	}
 	
 	static var nMagick_draw_close = neko.Lib.load("nMagick","nMagick_draw_close",1);

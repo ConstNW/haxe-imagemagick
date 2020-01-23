@@ -5,77 +5,77 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 @:native("Imagick") extern class Imagick
 {
 	/**
-	 * Black color 
+	 * Black color
 	 */
 	public static inline var COLOR_BLACK(COLOR_BLACK_getter, null) : Int; private static inline function COLOR_BLACK_getter() : Int { return untyped __php__("imagick::COLOR_BLACK"); }
 
 	/**
-	 * Blue color 
+	 * Blue color
 	 */
 	public static inline var COLOR_BLUE(COLOR_BLUE_getter, null) : Int; private static inline function COLOR_BLUE_getter() : Int { return untyped __php__("imagick::COLOR_BLUE"); }
 
 	/**
-	 * Cyan color 
+	 * Cyan color
 	 */
 	public static inline var COLOR_CYAN(COLOR_CYAN_getter, null) : Int; private static inline function COLOR_CYAN_getter() : Int { return untyped __php__("imagick::COLOR_CYAN"); }
 
 	/**
-	 * Green color 
+	 * Green color
 	 */
 	public static inline var COLOR_GREEN(COLOR_GREEN_getter, null) : Int; private static inline function COLOR_GREEN_getter() : Int { return untyped __php__("imagick::COLOR_GREEN"); }
 
 	/**
-	 * Red color 
+	 * Red color
 	 */
 	public static inline var COLOR_RED(COLOR_RED_getter, null) : Int; private static inline function COLOR_RED_getter() : Int { return untyped __php__("imagick::COLOR_RED"); }
 
 	/**
-	 * Yellow color 
+	 * Yellow color
 	 */
 	public static inline var COLOR_YELLOW(COLOR_YELLOW_getter, null) : Int; private static inline function COLOR_YELLOW_getter() : Int { return untyped __php__("imagick::COLOR_YELLOW"); }
 
 	/**
-	 * Magenta color 
+	 * Magenta color
 	 */
 	public static inline var COLOR_MAGENTA(COLOR_MAGENTA_getter, null) : Int; private static inline function COLOR_MAGENTA_getter() : Int { return untyped __php__("imagick::COLOR_MAGENTA"); }
 
 	/**
-	 * Color's opacity 
+	 * Color's opacity
 	 */
 	public static inline var COLOR_OPACITY(COLOR_OPACITY_getter, null) : Int; private static inline function COLOR_OPACITY_getter() : Int { return untyped __php__("imagick::COLOR_OPACITY"); }
 
 	/**
-	 * Color's alpha 
+	 * Color's alpha
 	 */
 	public static inline var COLOR_ALPHA(COLOR_ALPHA_getter, null) : Int; private static inline function COLOR_ALPHA_getter() : Int { return untyped __php__("imagick::COLOR_ALPHA"); }
 
 	/**
-	 * Color's fuzz 
+	 * Color's fuzz
 	 */
 	public static inline var COLOR_FUZZ(COLOR_FUZZ_getter, null) : Int; private static inline function COLOR_FUZZ_getter() : Int { return untyped __php__("imagick::COLOR_FUZZ"); }
 
 	/**
-	 * Unrecognized dispose type 
+	 * Unrecognized dispose type
 	 */
 	public static inline var DISPOSE_UNRECOGNIZED(DISPOSE_UNRECOGNIZED_getter, null) : Int; private static inline function DISPOSE_UNRECOGNIZED_getter() : Int { return untyped __php__("imagick::DISPOSE_UNRECOGNIZED"); }
 
 	/**
-	 * Undefined dispose type 
+	 * Undefined dispose type
 	 */
 	public static inline var DISPOSE_UNDEFINED(DISPOSE_UNDEFINED_getter, null) : Int; private static inline function DISPOSE_UNDEFINED_getter() : Int { return untyped __php__("imagick::DISPOSE_UNDEFINED"); }
 
 	/**
-	 * No dispose type defined 
+	 * No dispose type defined
 	 */
 	public static inline var DISPOSE_NONE(DISPOSE_NONE_getter, null) : Int; private static inline function DISPOSE_NONE_getter() : Int { return untyped __php__("imagick::DISPOSE_NONE"); }
 
 	/**
-	 * Dispose background 
+	 * Dispose background
 	 */
 	public static inline var DISPOSE_BACKGROUND(DISPOSE_BACKGROUND_getter, null) : Int; private static inline function DISPOSE_BACKGROUND_getter() : Int { return untyped __php__("imagick::DISPOSE_BACKGROUND"); }
 
 	/**
-	 * Dispose previous 
+	 * Dispose previous
 	 */
 	public static inline var DISPOSE_PREVIOUS(DISPOSE_PREVIOUS_getter, null) : Int; private static inline function DISPOSE_PREVIOUS_getter() : Int { return untyped __php__("imagick::DISPOSE_PREVIOUS"); }
 
@@ -129,17 +129,17 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 	public static inline var COMPRESSION_ZIP(COMPRESSION_ZIP_getter, null) : Int; private static inline function COMPRESSION_ZIP_getter() : Int { return untyped __php__("imagick::COMPRESSION_ZIP"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.0 or higher.
 	 */
 	public static inline var COMPRESSION_DXT1(COMPRESSION_DXT1_getter, null) : Int; private static inline function COMPRESSION_DXT1_getter() : Int { return untyped __php__("imagick::COMPRESSION_DXT1"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.0 or higher.
 	 */
 	public static inline var COMPRESSION_DXT3(COMPRESSION_DXT3_getter, null) : Int; private static inline function COMPRESSION_DXT3_getter() : Int { return untyped __php__("imagick::COMPRESSION_DXT3"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.0 or higher.
 	 */
 	public static inline var COMPRESSION_DXT5(COMPRESSION_DXT5_getter, null) : Int; private static inline function COMPRESSION_DXT5_getter() : Int { return untyped __php__("imagick::COMPRESSION_DXT5"); }
 	public static inline var PAINT_POINT(PAINT_POINT_getter, null) : Int; private static inline function PAINT_POINT_getter() : Int { return untyped __php__("imagick::PAINT_POINT"); }
@@ -181,7 +181,7 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 	public static inline var NOISE_POISSON(NOISE_POISSON_getter, null) : Int; private static inline function NOISE_POISSON_getter() : Int { return untyped __php__("imagick::NOISE_POISSON"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher.
 	 */
 	public static inline var NOISE_RANDOM(NOISE_RANDOM_getter, null) : Int; private static inline function NOISE_RANDOM_getter() : Int { return untyped __php__("imagick::NOISE_RANDOM"); }
 	public static inline var CHANNEL_UNDEFINED(CHANNEL_UNDEFINED_getter, null) : Int; private static inline function CHANNEL_UNDEFINED_getter() : Int { return untyped __php__("imagick::CHANNEL_UNDEFINED"); }
@@ -227,72 +227,72 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 	public static inline var EVALUATE_XOR(EVALUATE_XOR_getter, null) : Int; private static inline function EVALUATE_XOR_getter() : Int { return untyped __php__("imagick::EVALUATE_XOR"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher.
 	 */
 	public static inline var EVALUATE_POW(EVALUATE_POW_getter, null) : Int; private static inline function EVALUATE_POW_getter() : Int { return untyped __php__("imagick::EVALUATE_POW"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher.
 	 */
 	public static inline var EVALUATE_LOG(EVALUATE_LOG_getter, null) : Int; private static inline function EVALUATE_LOG_getter() : Int { return untyped __php__("imagick::EVALUATE_LOG"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher.
 	 */
 	public static inline var EVALUATE_THRESHOLD(EVALUATE_THRESHOLD_getter, null) : Int; private static inline function EVALUATE_THRESHOLD_getter() : Int { return untyped __php__("imagick::EVALUATE_THRESHOLD"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher.
 	 */
 	public static inline var EVALUATE_THRESHOLDBLACK(EVALUATE_THRESHOLDBLACK_getter, null) : Int; private static inline function EVALUATE_THRESHOLDBLACK_getter() : Int { return untyped __php__("imagick::EVALUATE_THRESHOLDBLACK"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher.
 	 */
 	public static inline var EVALUATE_THRESHOLDWHITE(EVALUATE_THRESHOLDWHITE_getter, null) : Int; private static inline function EVALUATE_THRESHOLDWHITE_getter() : Int { return untyped __php__("imagick::EVALUATE_THRESHOLDWHITE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher.
 	 */
 	public static inline var EVALUATE_GAUSSIANNOISE(EVALUATE_GAUSSIANNOISE_getter, null) : Int; private static inline function EVALUATE_GAUSSIANNOISE_getter() : Int { return untyped __php__("imagick::EVALUATE_GAUSSIANNOISE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher.
 	 */
 	public static inline var EVALUATE_IMPULSENOISE(EVALUATE_IMPULSENOISE_getter, null) : Int; private static inline function EVALUATE_IMPULSENOISE_getter() : Int { return untyped __php__("imagick::EVALUATE_IMPULSENOISE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher.
 	 */
 	public static inline var EVALUATE_LAPLACIANNOISE(EVALUATE_LAPLACIANNOISE_getter, null) : Int; private static inline function EVALUATE_LAPLACIANNOISE_getter() : Int { return untyped __php__("imagick::EVALUATE_LAPLACIANNOISE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher.
 	 */
 	public static inline var EVALUATE_MULTIPLICATIVENOISE(EVALUATE_MULTIPLICATIVENOISE_getter, null) : Int; private static inline function EVALUATE_MULTIPLICATIVENOISE_getter() : Int { return untyped __php__("imagick::EVALUATE_MULTIPLICATIVENOISE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher.
 	 */
 	public static inline var EVALUATE_POISSONNOISE(EVALUATE_POISSONNOISE_getter, null) : Int; private static inline function EVALUATE_POISSONNOISE_getter() : Int { return untyped __php__("imagick::EVALUATE_POISSONNOISE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher.
 	 */
 	public static inline var EVALUATE_UNIFORMNOISE(EVALUATE_UNIFORMNOISE_getter, null) : Int; private static inline function EVALUATE_UNIFORMNOISE_getter() : Int { return untyped __php__("imagick::EVALUATE_UNIFORMNOISE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher.
 	 */
 	public static inline var EVALUATE_COSINE(EVALUATE_COSINE_getter, null) : Int; private static inline function EVALUATE_COSINE_getter() : Int { return untyped __php__("imagick::EVALUATE_COSINE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher.
 	 */
 	public static inline var EVALUATE_SINE(EVALUATE_SINE_getter, null) : Int; private static inline function EVALUATE_SINE_getter() : Int { return untyped __php__("imagick::EVALUATE_SINE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.4 or higher.
 	 */
 	public static inline var EVALUATE_ADDMODULUS(EVALUATE_ADDMODULUS_getter, null) : Int; private static inline function EVALUATE_ADDMODULUS_getter() : Int { return untyped __php__("imagick::EVALUATE_ADDMODULUS"); }
 	public static inline var COLORSPACE_UNDEFINED(COLORSPACE_UNDEFINED_getter, null) : Int; private static inline function COLORSPACE_UNDEFINED_getter() : Int { return untyped __php__("imagick::COLORSPACE_UNDEFINED"); }
@@ -317,7 +317,7 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 	public static inline var COLORSPACE_LOG(COLORSPACE_LOG_getter, null) : Int; private static inline function COLORSPACE_LOG_getter() : Int { return untyped __php__("imagick::COLORSPACE_LOG"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.2 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.2 or higher.
 	 */
 	public static inline var COLORSPACE_CMY(COLORSPACE_CMY_getter, null) : Int; private static inline function COLORSPACE_CMY_getter() : Int { return untyped __php__("imagick::COLORSPACE_CMY"); }
 	public static inline var VIRTUALPIXELMETHOD_UNDEFINED(VIRTUALPIXELMETHOD_UNDEFINED_getter, null) : Int; private static inline function VIRTUALPIXELMETHOD_UNDEFINED_getter() : Int { return untyped __php__("imagick::VIRTUALPIXELMETHOD_UNDEFINED"); }
@@ -329,32 +329,32 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 	public static inline var VIRTUALPIXELMETHOD_TRANSPARENT(VIRTUALPIXELMETHOD_TRANSPARENT_getter, null) : Int; private static inline function VIRTUALPIXELMETHOD_TRANSPARENT_getter() : Int { return untyped __php__("imagick::VIRTUALPIXELMETHOD_TRANSPARENT"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.2 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.2 or higher.
 	 */
 	public static inline var VIRTUALPIXELMETHOD_MASK(VIRTUALPIXELMETHOD_MASK_getter, null) : Int; private static inline function VIRTUALPIXELMETHOD_MASK_getter() : Int { return untyped __php__("imagick::VIRTUALPIXELMETHOD_MASK"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.2 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.2 or higher.
 	 */
 	public static inline var VIRTUALPIXELMETHOD_BLACK(VIRTUALPIXELMETHOD_BLACK_getter, null) : Int; private static inline function VIRTUALPIXELMETHOD_BLACK_getter() : Int { return untyped __php__("imagick::VIRTUALPIXELMETHOD_BLACK"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.2 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.2 or higher.
 	 */
 	public static inline var VIRTUALPIXELMETHOD_GRAY(VIRTUALPIXELMETHOD_GRAY_getter, null) : Int; private static inline function VIRTUALPIXELMETHOD_GRAY_getter() : Int { return untyped __php__("imagick::VIRTUALPIXELMETHOD_GRAY"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.2 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.2 or higher.
 	 */
 	public static inline var VIRTUALPIXELMETHOD_WHITE(VIRTUALPIXELMETHOD_WHITE_getter, null) : Int; private static inline function VIRTUALPIXELMETHOD_WHITE_getter() : Int { return untyped __php__("imagick::VIRTUALPIXELMETHOD_WHITE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.3 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.3 or higher.
 	 */
 	public static inline var VIRTUALPIXELMETHOD_HORIZONTALTILE(VIRTUALPIXELMETHOD_HORIZONTALTILE_getter, null) : Int; private static inline function VIRTUALPIXELMETHOD_HORIZONTALTILE_getter() : Int { return untyped __php__("imagick::VIRTUALPIXELMETHOD_HORIZONTALTILE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.3 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.3 or higher.
 	 */
 	public static inline var VIRTUALPIXELMETHOD_VERTICALTILE(VIRTUALPIXELMETHOD_VERTICALTILE_getter, null) : Int; private static inline function VIRTUALPIXELMETHOD_VERTICALTILE_getter() : Int { return untyped __php__("imagick::VIRTUALPIXELMETHOD_VERTICALTILE"); }
 	public static inline var PREVIEW_UNDEFINED(PREVIEW_UNDEFINED_getter, null) : Int; private static inline function PREVIEW_UNDEFINED_getter() : Int { return untyped __php__("imagick::PREVIEW_UNDEFINED"); }
@@ -399,7 +399,7 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 	public static inline var INTERLACE_PARTITION(INTERLACE_PARTITION_getter, null) : Int; private static inline function INTERLACE_PARTITION_getter() : Int { return untyped __php__("imagick::INTERLACE_PARTITION"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.4 or higher.
 	 */
 	public static inline var INTERLACE_GIF(INTERLACE_GIF_getter, null) : Int; private static inline function INTERLACE_GIF_getter() : Int { return untyped __php__("imagick::INTERLACE_GIF"); }
 	public static inline var INTERLACE_JPEG(INTERLACE_JPEG_getter, null) : Int; private static inline function INTERLACE_JPEG_getter() : Int { return untyped __php__("imagick::INTERLACE_JPEG"); }
@@ -427,367 +427,367 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 	public static inline var RESOURCETYPE_MEMORY(RESOURCETYPE_MEMORY_getter, null) : Int; private static inline function RESOURCETYPE_MEMORY_getter() : Int { return untyped __php__("imagick::RESOURCETYPE_MEMORY"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher.
 	 */
 	public static inline var LAYERMETHOD_UNDEFINED(LAYERMETHOD_UNDEFINED_getter, null) : Int; private static inline function LAYERMETHOD_UNDEFINED_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_UNDEFINED"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher.
 	 */
 	public static inline var LAYERMETHOD_COALESCE(LAYERMETHOD_COALESCE_getter, null) : Int; private static inline function LAYERMETHOD_COALESCE_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_COALESCE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher.
 	 */
 	public static inline var LAYERMETHOD_COMPAREANY(LAYERMETHOD_COMPAREANY_getter, null) : Int; private static inline function LAYERMETHOD_COMPAREANY_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_COMPAREANY"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher.
 	 */
 	public static inline var LAYERMETHOD_COMPARECLEAR(LAYERMETHOD_COMPARECLEAR_getter, null) : Int; private static inline function LAYERMETHOD_COMPARECLEAR_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_COMPARECLEAR"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher.
 	 */
 	public static inline var LAYERMETHOD_COMPAREOVERLAY(LAYERMETHOD_COMPAREOVERLAY_getter, null) : Int; private static inline function LAYERMETHOD_COMPAREOVERLAY_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_COMPAREOVERLAY"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher.
 	 */
 	public static inline var LAYERMETHOD_DISPOSE(LAYERMETHOD_DISPOSE_getter, null) : Int; private static inline function LAYERMETHOD_DISPOSE_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_DISPOSE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher.
 	 */
 	public static inline var LAYERMETHOD_OPTIMIZE(LAYERMETHOD_OPTIMIZE_getter, null) : Int; private static inline function LAYERMETHOD_OPTIMIZE_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_OPTIMIZE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.2.9 or higher.
 	 */
 	public static inline var LAYERMETHOD_OPTIMIZEPLUS(LAYERMETHOD_OPTIMIZEPLUS_getter, null) : Int; private static inline function LAYERMETHOD_OPTIMIZEPLUS_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_OPTIMIZEPLUS"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher.
 	 */
 	public static inline var LAYERMETHOD_OPTIMIZEIMAGE(LAYERMETHOD_OPTIMIZEIMAGE_getter, null) : Int; private static inline function LAYERMETHOD_OPTIMIZEIMAGE_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_OPTIMIZEIMAGE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher.
 	 */
 	public static inline var LAYERMETHOD_OPTIMIZETRANS(LAYERMETHOD_OPTIMIZETRANS_getter, null) : Int; private static inline function LAYERMETHOD_OPTIMIZETRANS_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_OPTIMIZETRANS"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher.
 	 */
 	public static inline var LAYERMETHOD_REMOVEDUPS(LAYERMETHOD_REMOVEDUPS_getter, null) : Int; private static inline function LAYERMETHOD_REMOVEDUPS_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_REMOVEDUPS"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher.
 	 */
 	public static inline var LAYERMETHOD_REMOVEZERO(LAYERMETHOD_REMOVEZERO_getter, null) : Int; private static inline function LAYERMETHOD_REMOVEZERO_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_REMOVEZERO"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher.
 	 */
 	public static inline var LAYERMETHOD_COMPOSITE(LAYERMETHOD_COMPOSITE_getter, null) : Int; private static inline function LAYERMETHOD_COMPOSITE_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_COMPOSITE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.7 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.7 or higher.
 	 */
 	public static inline var LAYERMETHOD_MERGE(LAYERMETHOD_MERGE_getter, null) : Int; private static inline function LAYERMETHOD_MERGE_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_MERGE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.7 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.7 or higher.
 	 */
 	public static inline var LAYERMETHOD_FLATTEN(LAYERMETHOD_FLATTEN_getter, null) : Int; private static inline function LAYERMETHOD_FLATTEN_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_FLATTEN"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.7 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.7 or higher.
 	 */
 	public static inline var LAYERMETHOD_MOSAIC(LAYERMETHOD_MOSAIC_getter, null) : Int; private static inline function LAYERMETHOD_MOSAIC_getter() : Int { return untyped __php__("imagick::LAYERMETHOD_MOSAIC"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher.
 	 */
 	public static inline var ORIENTATION_UNDEFINED(ORIENTATION_UNDEFINED_getter, null) : Int; private static inline function ORIENTATION_UNDEFINED_getter() : Int { return untyped __php__("imagick::ORIENTATION_UNDEFINED"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher.
 	 */
 	public static inline var ORIENTATION_TOPLEFT(ORIENTATION_TOPLEFT_getter, null) : Int; private static inline function ORIENTATION_TOPLEFT_getter() : Int { return untyped __php__("imagick::ORIENTATION_TOPLEFT"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher.
 	 */
 	public static inline var ORIENTATION_TOPRIGHT(ORIENTATION_TOPRIGHT_getter, null) : Int; private static inline function ORIENTATION_TOPRIGHT_getter() : Int { return untyped __php__("imagick::ORIENTATION_TOPRIGHT"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher.
 	 */
 	public static inline var ORIENTATION_BOTTOMRIGHT(ORIENTATION_BOTTOMRIGHT_getter, null) : Int; private static inline function ORIENTATION_BOTTOMRIGHT_getter() : Int { return untyped __php__("imagick::ORIENTATION_BOTTOMRIGHT"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher.
 	 */
 	public static inline var ORIENTATION_BOTTOMLEFT(ORIENTATION_BOTTOMLEFT_getter, null) : Int; private static inline function ORIENTATION_BOTTOMLEFT_getter() : Int { return untyped __php__("imagick::ORIENTATION_BOTTOMLEFT"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher.
 	 */
 	public static inline var ORIENTATION_LEFTTOP(ORIENTATION_LEFTTOP_getter, null) : Int; private static inline function ORIENTATION_LEFTTOP_getter() : Int { return untyped __php__("imagick::ORIENTATION_LEFTTOP"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher.
 	 */
 	public static inline var ORIENTATION_RIGHTTOP(ORIENTATION_RIGHTTOP_getter, null) : Int; private static inline function ORIENTATION_RIGHTTOP_getter() : Int { return untyped __php__("imagick::ORIENTATION_RIGHTTOP"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher.
 	 */
 	public static inline var ORIENTATION_RIGHTBOTTOM(ORIENTATION_RIGHTBOTTOM_getter, null) : Int; private static inline function ORIENTATION_RIGHTBOTTOM_getter() : Int { return untyped __php__("imagick::ORIENTATION_RIGHTBOTTOM"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.0 or higher.
 	 */
 	public static inline var ORIENTATION_LEFTBOTTOM(ORIENTATION_LEFTBOTTOM_getter, null) : Int; private static inline function ORIENTATION_LEFTBOTTOM_getter() : Int { return untyped __php__("imagick::ORIENTATION_LEFTBOTTOM"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher.
 	 */
 	public static inline var DISTORTION_UNDEFINED(DISTORTION_UNDEFINED_getter, null) : Int; private static inline function DISTORTION_UNDEFINED_getter() : Int { return untyped __php__("imagick::DISTORTION_UNDEFINED"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher.
 	 */
 	public static inline var DISTORTION_AFFINE(DISTORTION_AFFINE_getter, null) : Int; private static inline function DISTORTION_AFFINE_getter() : Int { return untyped __php__("imagick::DISTORTION_AFFINE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher.
 	 */
 	public static inline var DISTORTION_AFFINEPROJECTION(DISTORTION_AFFINEPROJECTION_getter, null) : Int; private static inline function DISTORTION_AFFINEPROJECTION_getter() : Int { return untyped __php__("imagick::DISTORTION_AFFINEPROJECTION"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher.
 	 */
 	public static inline var DISTORTION_ARC(DISTORTION_ARC_getter, null) : Int; private static inline function DISTORTION_ARC_getter() : Int { return untyped __php__("imagick::DISTORTION_ARC"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher.
 	 */
 	public static inline var DISTORTION_BILINEAR(DISTORTION_BILINEAR_getter, null) : Int; private static inline function DISTORTION_BILINEAR_getter() : Int { return untyped __php__("imagick::DISTORTION_BILINEAR"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher.
 	 */
 	public static inline var DISTORTION_PERSPECTIVE(DISTORTION_PERSPECTIVE_getter, null) : Int; private static inline function DISTORTION_PERSPECTIVE_getter() : Int { return untyped __php__("imagick::DISTORTION_PERSPECTIVE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher.
 	 */
 	public static inline var DISTORTION_PERSPECTIVEPROJECTION(DISTORTION_PERSPECTIVEPROJECTION_getter, null) : Int; private static inline function DISTORTION_PERSPECTIVEPROJECTION_getter() : Int { return untyped __php__("imagick::DISTORTION_PERSPECTIVEPROJECTION"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.6 or higher.
 	 */
 	public static inline var DISTORTION_SCALEROTATETRANSLATE(DISTORTION_SCALEROTATETRANSLATE_getter, null) : Int; private static inline function DISTORTION_SCALEROTATETRANSLATE_getter() : Int { return untyped __php__("imagick::DISTORTION_SCALEROTATETRANSLATE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var DISTORTION_POLYNOMIAL(DISTORTION_POLYNOMIAL_getter, null) : Int; private static inline function DISTORTION_POLYNOMIAL_getter() : Int { return untyped __php__("imagick::DISTORTION_POLYNOMIAL"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var DISTORTION_POLAR(DISTORTION_POLAR_getter, null) : Int; private static inline function DISTORTION_POLAR_getter() : Int { return untyped __php__("imagick::DISTORTION_POLAR"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var DISTORTION_DEPOLAR(DISTORTION_DEPOLAR_getter, null) : Int; private static inline function DISTORTION_DEPOLAR_getter() : Int { return untyped __php__("imagick::DISTORTION_DEPOLAR"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var DISTORTION_BARREL(DISTORTION_BARREL_getter, null) : Int; private static inline function DISTORTION_BARREL_getter() : Int { return untyped __php__("imagick::DISTORTION_BARREL"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var DISTORTION_BARRELINVERSE(DISTORTION_BARRELINVERSE_getter, null) : Int; private static inline function DISTORTION_BARRELINVERSE_getter() : Int { return untyped __php__("imagick::DISTORTION_BARRELINVERSE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var DISTORTION_SHEPARDS(DISTORTION_SHEPARDS_getter, null) : Int; private static inline function DISTORTION_SHEPARDS_getter() : Int { return untyped __php__("imagick::DISTORTION_SHEPARDS"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var DISTORTION_SENTINEL(DISTORTION_SENTINEL_getter, null) : Int; private static inline function DISTORTION_SENTINEL_getter() : Int { return untyped __php__("imagick::DISTORTION_SENTINEL"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.8 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.8 or higher.
 	 */
 	public static inline var ALPHACHANNEL_ACTIVATE(ALPHACHANNEL_ACTIVATE_getter, null) : Int; private static inline function ALPHACHANNEL_ACTIVATE_getter() : Int { return untyped __php__("imagick::ALPHACHANNEL_ACTIVATE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.8 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.8 or higher.
 	 */
 	public static inline var ALPHACHANNEL_DEACTIVATE(ALPHACHANNEL_DEACTIVATE_getter, null) : Int; private static inline function ALPHACHANNEL_DEACTIVATE_getter() : Int { return untyped __php__("imagick::ALPHACHANNEL_DEACTIVATE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.8 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.8 or higher.
 	 */
 	public static inline var ALPHACHANNEL_RESET(ALPHACHANNEL_RESET_getter, null) : Int; private static inline function ALPHACHANNEL_RESET_getter() : Int { return untyped __php__("imagick::ALPHACHANNEL_RESET"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.8 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.8 or higher.
 	 */
 	public static inline var ALPHACHANNEL_SET(ALPHACHANNEL_SET_getter, null) : Int; private static inline function ALPHACHANNEL_SET_getter() : Int { return untyped __php__("imagick::ALPHACHANNEL_SET"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var ALPHACHANNEL_UNDEFINED(ALPHACHANNEL_UNDEFINED_getter, null) : Int; private static inline function ALPHACHANNEL_UNDEFINED_getter() : Int { return untyped __php__("imagick::ALPHACHANNEL_UNDEFINED"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var ALPHACHANNEL_COPY(ALPHACHANNEL_COPY_getter, null) : Int; private static inline function ALPHACHANNEL_COPY_getter() : Int { return untyped __php__("imagick::ALPHACHANNEL_COPY"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var ALPHACHANNEL_EXTRACT(ALPHACHANNEL_EXTRACT_getter, null) : Int; private static inline function ALPHACHANNEL_EXTRACT_getter() : Int { return untyped __php__("imagick::ALPHACHANNEL_EXTRACT"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var ALPHACHANNEL_OPAQUE(ALPHACHANNEL_OPAQUE_getter, null) : Int; private static inline function ALPHACHANNEL_OPAQUE_getter() : Int { return untyped __php__("imagick::ALPHACHANNEL_OPAQUE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var ALPHACHANNEL_SHAPE(ALPHACHANNEL_SHAPE_getter, null) : Int; private static inline function ALPHACHANNEL_SHAPE_getter() : Int { return untyped __php__("imagick::ALPHACHANNEL_SHAPE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var ALPHACHANNEL_TRANSPARENT(ALPHACHANNEL_TRANSPARENT_getter, null) : Int; private static inline function ALPHACHANNEL_TRANSPARENT_getter() : Int { return untyped __php__("imagick::ALPHACHANNEL_TRANSPARENT"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var SPARSECOLORMETHOD_UNDEFINED(SPARSECOLORMETHOD_UNDEFINED_getter, null) : Int; private static inline function SPARSECOLORMETHOD_UNDEFINED_getter() : Int { return untyped __php__("imagick::SPARSECOLORMETHOD_UNDEFINED"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var SPARSECOLORMETHOD_BARYCENTRIC(SPARSECOLORMETHOD_BARYCENTRIC_getter, null) : Int; private static inline function SPARSECOLORMETHOD_BARYCENTRIC_getter() : Int { return untyped __php__("imagick::SPARSECOLORMETHOD_BARYCENTRIC"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var SPARSECOLORMETHOD_BILINEAR(SPARSECOLORMETHOD_BILINEAR_getter, null) : Int; private static inline function SPARSECOLORMETHOD_BILINEAR_getter() : Int { return untyped __php__("imagick::SPARSECOLORMETHOD_BILINEAR"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var SPARSECOLORMETHOD_POLYNOMIAL(SPARSECOLORMETHOD_POLYNOMIAL_getter, null) : Int; private static inline function SPARSECOLORMETHOD_POLYNOMIAL_getter() : Int { return untyped __php__("imagick::SPARSECOLORMETHOD_POLYNOMIAL"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var SPARSECOLORMETHOD_SPEPARDS(SPARSECOLORMETHOD_SPEPARDS_getter, null) : Int; private static inline function SPARSECOLORMETHOD_SPEPARDS_getter() : Int { return untyped __php__("imagick::SPARSECOLORMETHOD_SPEPARDS"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var SPARSECOLORMETHOD_VORONOI(SPARSECOLORMETHOD_VORONOI_getter, null) : Int; private static inline function SPARSECOLORMETHOD_VORONOI_getter() : Int { return untyped __php__("imagick::SPARSECOLORMETHOD_VORONOI"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.9 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.9 or higher.
 	 */
 	public static inline var FUNCTION_UNDEFINED(FUNCTION_UNDEFINED_getter, null) : Int; private static inline function FUNCTION_UNDEFINED_getter() : Int { return untyped __php__("imagick::FUNCTION_UNDEFINED"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.9 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.9 or higher.
 	 */
 	public static inline var FUNCTION_POLYNOMIAL(FUNCTION_POLYNOMIAL_getter, null) : Int; private static inline function FUNCTION_POLYNOMIAL_getter() : Int { return untyped __php__("imagick::FUNCTION_POLYNOMIAL"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.9 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.9 or higher.
 	 */
 	public static inline var FUNCTION_SINUSOID(FUNCTION_SINUSOID_getter, null) : Int; private static inline function FUNCTION_SINUSOID_getter() : Int { return untyped __php__("imagick::FUNCTION_SINUSOID"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher.
 	 */
 	public static inline var INTERPOLATE_UNDEFINED(INTERPOLATE_UNDEFINED_getter, null) : Int; private static inline function INTERPOLATE_UNDEFINED_getter() : Int { return untyped __php__("imagick::INTERPOLATE_UNDEFINED"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher.
 	 */
 	public static inline var INTERPOLATE_AVERAGE(INTERPOLATE_AVERAGE_getter, null) : Int; private static inline function INTERPOLATE_AVERAGE_getter() : Int { return untyped __php__("imagick::INTERPOLATE_AVERAGE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher.
 	 */
 	public static inline var INTERPOLATE_BICUBIC(INTERPOLATE_BICUBIC_getter, null) : Int; private static inline function INTERPOLATE_BICUBIC_getter() : Int { return untyped __php__("imagick::INTERPOLATE_BICUBIC"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher.
 	 */
 	public static inline var INTERPOLATE_BILINEAR(INTERPOLATE_BILINEAR_getter, null) : Int; private static inline function INTERPOLATE_BILINEAR_getter() : Int { return untyped __php__("imagick::INTERPOLATE_BILINEAR"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher.
 	 */
 	public static inline var INTERPOLATE_FILTER(INTERPOLATE_FILTER_getter, null) : Int; private static inline function INTERPOLATE_FILTER_getter() : Int { return untyped __php__("imagick::INTERPOLATE_FILTER"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher.
 	 */
 	public static inline var INTERPOLATE_INTEGER(INTERPOLATE_INTEGER_getter, null) : Int; private static inline function INTERPOLATE_INTEGER_getter() : Int { return untyped __php__("imagick::INTERPOLATE_INTEGER"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher.
 	 */
 	public static inline var INTERPOLATE_MESH(INTERPOLATE_MESH_getter, null) : Int; private static inline function INTERPOLATE_MESH_getter() : Int { return untyped __php__("imagick::INTERPOLATE_MESH"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.2 or higher.
 	 */
 	public static inline var INTERPOLATE_NEARESTNEIGHBOR(INTERPOLATE_NEARESTNEIGHBOR_getter, null) : Int; private static inline function INTERPOLATE_NEARESTNEIGHBOR_getter() : Int { return untyped __php__("imagick::INTERPOLATE_NEARESTNEIGHBOR"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.4 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.3.4 or higher.
 	 */
 	public static inline var INTERPOLATE_SPLINE(INTERPOLATE_SPLINE_getter, null) : Int; private static inline function INTERPOLATE_SPLINE_getter() : Int { return untyped __php__("imagick::INTERPOLATE_SPLINE"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var DITHERMETHOD_UNDEFINED(DITHERMETHOD_UNDEFINED_getter, null) : Int; private static inline function DITHERMETHOD_UNDEFINED_getter() : Int { return untyped __php__("imagick::DITHERMETHOD_UNDEFINED"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var DITHERMETHOD_NO(DITHERMETHOD_NO_getter, null) : Int; private static inline function DITHERMETHOD_NO_getter() : Int { return untyped __php__("imagick::DITHERMETHOD_NO"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
 	public static inline var DITHERMETHOD_RIEMERSMA(DITHERMETHOD_RIEMERSMA_getter, null) : Int; private static inline function DITHERMETHOD_RIEMERSMA_getter() : Int { return untyped __php__("imagick::DITHERMETHOD_RIEMERSMA"); }
 
 	/**
-	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher. 
+	 * This constant is available if Imagick has been compiled against ImageMagick version 6.4.6 or higher.
 	 */
-	public static inline var DITHERMETHOD_FLOYDSTEINBERG(DITHERMETHOD_FLOYDSTEINBERG_getter, null) : Int; private static inline function DITHERMETHOD_FLOYDSTEINBERG_getter() : Int { return untyped __php__("imagick::DITHERMETHOD_FLOYDSTEINBERG"); }  
+	public static inline var DITHERMETHOD_FLOYDSTEINBERG(DITHERMETHOD_FLOYDSTEINBERG_getter, null) : Int; private static inline function DITHERMETHOD_FLOYDSTEINBERG_getter() : Int { return untyped __php__("imagick::DITHERMETHOD_FLOYDSTEINBERG"); }
 
 	public function adaptiveBlurImage(radius:Float, sigma:Float, ?channel:Int = Imagick.CHANNEL_DEFAULT) : Bool;
-	public function adaptiveResizeImage(columns:Int, rows:Int, ?bestfit:Bool = false) : Bool;
+	public function adaptiveResizeImage(columns:Int, rows:Int, bestfit=false) : Bool;
 	public function adaptiveSharpenImage(radius:Float, sigma:Float, ?channel:Int = Imagick.CHANNEL_DEFAULT) : Bool;
 	public function adaptiveThresholdImage(width:Int, height:Int, offset:Int) : Bool;
 	public function addImage(source:Imagick) : Bool;
@@ -873,7 +873,7 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 	public function getImageChannelDistortion(reference:Imagick, channel:Int, metric:Int) : Float;
 	public function getImageChannelDistortions(reference:Imagick, metric:Int, ?channel:Int = Imagick.CHANNEL_DEFAULT) : Float;
 	public function getImageChannelExtrema(channel:Int) : NativeArray;
-	public function getImageChannelKurtosis(?channel:Int = Imagick.CHANNEL_DEFAULT) : NativeArray;
+	public function getImageChannelKurtosis(channel=Imagick.CHANNEL_DEFAULT) : NativeArray;
 	public function getImageChannelMean(channel:Int) : NativeArray;
 	public function getImageChannelRange(channel:Int) : NativeArray;
 	public function getImageChannelStatistics() : NativeArray;
@@ -908,8 +908,8 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 	public function getImagePage() : NativeArray;
 	public function getImagePixelColor(x:Int, y:Int) : ImagickPixel;
 	public function getImageProfile(name:String) : String;
-	public function getImageProfiles(?pattern:String = "*", ?only_names:Bool = true) : NativeArray;
-	public function getImageProperties(?pattern:String = "*", ?only_names:Bool = true) : NativeArray;
+	public function getImageProfiles(pattern="*", only_names=true) : NativeArray;
+	public function getImageProperties(pattern="*", only_names=true) : NativeArray;
 	public function getImageProperty(name:String) : String;
 	public function getImageRedPrimary() : NativeArray;
 	public function getImageRegion(width:Int, height:Int, x:Int, y:Int) : Imagick;
@@ -947,7 +947,7 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 	public function haldClutImage(clut:Imagick, ?channel:Int = Imagick.CHANNEL_DEFAULT) : Bool;
 	public function hasNextImage() : Bool;
 	public function hasPreviousImage() : Bool;
-	public function identifyImage(?appendRawOutput:Bool = false) : NativeArray;
+	public function identifyImage(appendRawOutput=false) : NativeArray;
 	public function implodeImage(radius:Float) : Bool;
 	public function importImagePixels(x:Int, y:Int, width:Int, height:Int, map:String, storage:Int, pixels:NativeArray) : Bool;
 	public function labelImage(label:String) : Bool;
@@ -969,7 +969,7 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 	public function newImage(cols:Int, rows:Int, background:Dynamic, ?format:String) : Bool;
 	public function newPseudoImage(columns:Int, rows:Int, pseudoString:String) : Bool;
 	public function nextImage() : Bool;
-	public function normalizeImage(?channel:Int = Imagick.CHANNEL_ALL) : Bool;
+	public function normalizeImage(channel=Imagick.CHANNEL_ALL) : Bool;
 	public function oilPaintImage(radius:Float) : Bool;
 	public function opaquePaintImage(target:Dynamic, fill:Dynamic, fuzz:Float, invert:Bool, ?channel:Int = Imagick.CHANNEL_DEFAULT) : Bool;
 	public function optimizeImageLayers() : Bool;
@@ -988,14 +988,14 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 	public function quantizeImage(numberColors:Int, colorspace:Int, treedepth:Int, dither:Bool, measureError:Bool) : Bool;
 	public function quantizeImages(numberColors:Int, colorspace:Int, treedepth:Int, dither:Bool, measureError:Bool) : Bool;
 	public function queryFontMetrics(properties:ImagickDraw, text:String, ?multiline:Bool) : NativeArray;
-	public function queryFonts(?pattern:String = "*") : NativeArray;
-	public function queryFormats(?pattern:String = "*") : NativeArray;
+	public function queryFonts(pattern="*") : NativeArray;
+	public function queryFormats(pattern="*") : NativeArray;
 	public function radialBlurImage(angle:Float, ?channel:Int = Imagick.CHANNEL_ALL) : Bool;
 	public function raiseImage(width:Int, height:Int, x:Int, y:Int, raise:Bool) : Bool;
 	public function randomThresholdImage(low:Float, high:Float, ?channel:Int = Imagick.CHANNEL_ALL) : Bool;
 	public function readImage(filename:String) : Bool;
 	public function readImageBlob(image:String, ?filename:String) : Bool;
-	public function readImageFile(filehandle:Int/*resource*/, ?fileName:String = null) : Bool;
+	public function readImageFile(filehandle:Int/*resource*/, ??fileName:String) : Bool;
 	public function recolorImage(matrix:NativeArray) : Bool;
 	public function reduceNoiseImage(radius:Float) : Bool;
 	public function remapImage(replacement:Imagick, DITHER:Int) : Bool;
@@ -1004,13 +1004,13 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 	public function render() : Bool;
 	public function resampleImage(x_resolution:Float, y_resolution:Float, filter:Int, blur:Float) : Bool;
 	public function resetImagePage(page:String) : Bool;
-	public function resizeImage(columns:Int, rows:Int, filter:Int, blur:Float, ?bestfit:Bool = false) : Bool;
+	public function resizeImage(columns:Int, rows:Int, filter:Int, blur:Float, bestfit=false) : Bool;
 	public function rollImage(x:Int, y:Int) : Bool;
 	public function rotateImage(background:Dynamic, degrees:Float) : Bool;
 	public function roundCorners(x_rounding:Float, y_rounding:Float, ?stroke_width:Float = 10, ?displace:Float = 5, ?size_correction:Float = -6) : Bool;
 	public function sampleImage(columns:Int, rows:Int) : Bool;
-	public function scaleImage(cols:Int, rows:Int, ?bestfit:Bool = false) : Bool;
-	public function segmentImage(COLORSPACE:Int, cluster_threshold:Float, smooth_threshold:Float, ?verbose:Bool = false) : Bool;
+	public function scaleImage(cols:Int, rows:Int, bestfit=false) : Bool;
+	public function segmentImage(COLORSPACE:Int, cluster_threshold:Float, smooth_threshold:Float, verbose=false) : Bool;
 	public function separateImageChannel(channel:Int) : Bool;
 	public function sepiaToneImage(threshold:Float) : Bool;
 	public function setBackgroundColor(background:Dynamic) : Bool;
@@ -1094,7 +1094,7 @@ typedef ImagickCompositeOperator = haxe.imagemagick.internal.ImagickCompositeOpe
 	public function swirlImage(degrees:Float) : Bool;
 	public function textureImage(texture_wand:Imagick) : Bool;
 	public function thresholdImage(threshold:Float, ?channel:Int = Imagick.CHANNEL_ALL) : Bool;
-	public function thumbnailImage(columns:Int, rows:Int, ?bestfit:Bool = false, ?fill:Bool = false) : Bool;
+	public function thumbnailImage(columns:Int, rows:Int, bestfit=false, fill=false) : Bool;
 	public function tintImage(tint:Dynamic, opacity:Dynamic) : Bool;
 	public function transformImage(crop:String, geometry:String) : Imagick;
 	public function transparentPaintImage(target:Dynamic, alpha:Float, fuzz:Float, invert:Bool) : Bool;

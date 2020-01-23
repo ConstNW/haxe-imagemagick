@@ -7,7 +7,7 @@ import php.NativeArray;
 	public function clear() : Bool;
 	public function new(?color:String) : Void;
 	public function destroy() : Bool;
-	public function getColor(normalized:Bool = false) : NativeArray;
+	public function getColor(normalized=false) : NativeArray;
 	public function getColorAsString() : String;
 	public function getColorCount() : Int;
 	public function getColorValue(color:Int) : Float;
